@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.monsterrat{
+    font-family: "Montserrat", sans-serif;
+}
+.box-shadow{
+box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+}
+
+#react-select-3-input, #react-select-4-input, #react-select-5-input, #react-select-6-input, #react-select-7-input,
+#react-select-8-input{
+    outline: auto;
+    border: none;
+    box-shadow: none;
+}
