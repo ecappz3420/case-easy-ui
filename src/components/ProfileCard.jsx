@@ -6,7 +6,7 @@ const ProfileCard = () => {
         <>
             <div className='flex justify-between border-b'>
                 <div className='font-bold text-lg'>Profile Details</div>
-                <a className='cursor-pointer text-blue-600 text-sm' href={`https://creatorapp.zoho.in/torontoimmigrationcompany/visa-management/#Form:Lead?recLinkID=${client.ID}&viewLinkName=LeadsA`} target='_Blank' >Edit</a>
+                <a className='cursor-pointer text-blue-600 text-sm' href={`https://creatorapp.zoho.in/torontoimmigrationcompany/visa-management/#Form:Lead?recLinkID=${client ? client.ID:0}&viewLinkName=LeadsA`} target='_Blank' >Edit</a>
             </div>
             <div className='font-semibold py-3 border-b text-blue-600 cursor-pointer'>Primary</div>
             <div className='overflow-y-auto h-[220px]'>
