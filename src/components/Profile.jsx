@@ -3,10 +3,13 @@ import React, { useState } from 'react'
 import { Modal, ModalContent } from 'semantic-ui-react'
 import ChatMessage from './ChatMessage';
 import Email from './Email';
+import { useSelector } from 'react-redux';
 const Profile = () => {
     const [open, setOpen] = useState(false);
     const [openEmail, setOpenEmail] = useState(false);
     const [openProfileModal, setOpenProfileModal] = useState(false);
+    const leadData = useSelector((state) => state.client.details);
+
     return (
         <div className=''>
             <div className='flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row'>
@@ -49,9 +52,9 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className=''>
-                    <div className='text-2xl font-semibold py-2 text-blue-500'>Perry, Katy</div>
-                    <div className='text-sm font-semibold'>Marital Status: <span className='font-normal'>Never Married/Single  </span><span className='text-sm font-semibold'>Date of Birth: <span className='font-normal'>Sep 4 2000</span></span><small className='bg-blue-600 p-1 rounded-xl text-white font-semibold text-[10px] ms-2'>AGE:24</small></div>
-                    <div className='text-sm font-semibold'>Country of Residence: <span className='font-normal'>Canada   </span><span className='text-sm font-semibold'>Client ID: <span className='font-normal'>KP-2</span></span></div>
+                    <div className='text-2xl font-semibold py-2 text-blue-500'>{leadData ? leadData.Name: ""}</div>
+                    <div className='text-sm font-semibold'>Marital Status: <span className='font-normal'>Never Married/Single  </span><span className='text-sm font-semibold'>Date of Birth: <span className='font-normal'>{leadData ? leadData.DOB:""}</span></span><small className='bg-blue-600 p-1 rounded-xl text-white font-semibold text-[10px] ms-2'>AGE:24</small></div>
+                    <div className='text-sm font-semibold'>Country of Residence: <span className='font-normal'>{leadData ? leadData.Country_of_Residence: ""}   </span><span className='text-sm font-semibold'>Client ID: <span className='font-normal'>{leadData ? leadData.Lead_id: ""}</span></span></div>
                     <div className='flex gap-[30px] my-3'>
                         <div className='flex justify-center flex-col items-center' onClick={() => setOpen(true)}>
                             <div className='flex justify-center p-2 rounded-full bg-white hover:bg-blue-100 cursor-pointer transition-all'>
@@ -66,16 +69,16 @@ const Profile = () => {
                             </Drawer.Items>
                         </Drawer>
                         <Tooltip style='dark' content='test@gmail.com' placement='bottom'>
-                            <div className='flex justify-center flex-col items-center' onClick={()=>setOpenEmail(true)}>
+                            <div className='flex justify-center flex-col items-center' onClick={() => setOpenEmail(true)}>
                                 <div className='flex justify-center p-2 rounded-full bg-white hover:bg-blue-100 cursor-pointer transition-all'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-mail text-blue-500"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
                                 </div>
                                 <div className='text-xs text-blue-600'>Email</div>
                             </div>
-                            <Drawer position='right' className='w-[70vw] h-dvh overflow-y-hidden' open={openEmail} onClose={()=>setOpenEmail(false)}>
-                                <Drawer.Header/>
+                            <Drawer position='right' className='w-[70vw] h-dvh overflow-y-hidden' open={openEmail} onClose={() => setOpenEmail(false)}>
+                                <Drawer.Header />
                                 <DrawerItems>
-                                    <Email/>
+                                    <Email />
                                 </DrawerItems>
                             </Drawer>
                         </Tooltip>

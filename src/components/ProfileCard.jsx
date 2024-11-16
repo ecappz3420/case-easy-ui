@@ -1,11 +1,12 @@
 import React from 'react'
-
+import { useSelector } from 'react-redux'
 const ProfileCard = () => {
+    const client = useSelector((state)=> state.client.details);
     return (
         <>
             <div className='flex justify-between border-b'>
                 <div className='font-bold text-lg'>Profile Details</div>
-                <div className='cursor-pointer text-blue-600 text-sm'>Edit</div>
+                <a className='cursor-pointer text-blue-600 text-sm' href={`https://creatorapp.zoho.in/torontoimmigrationcompany/visa-management/#Form:Lead?recLinkID=${client.ID}&viewLinkName=LeadsA`} target='_Blank' >Edit</a>
             </div>
             <div className='font-semibold py-3 border-b text-blue-600 cursor-pointer'>Primary</div>
             <div className='overflow-y-auto h-[220px]'>
@@ -27,17 +28,17 @@ const ProfileCard = () => {
                 <div className='flex justify-between'>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>First Name</div>
-                        <div className='text-sm'>Katy</div>
+                        <div className='text-sm'>{client ? client.Name : ""}</div>
                     </div>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>last Name</div>
-                        <div className='text-sm'>Perry</div>
+                        <div className='text-sm'>-</div>
                     </div>
                 </div>
                 <div className='flex justify-between'>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm'>DATE OF BIRTH</div>
-                        <div className='text-sm'>04/09/2000</div>
+                        <div className='text-sm'>{client ? client.DOB: ""}</div>
                     </div>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm'>AGE</div>
@@ -47,7 +48,7 @@ const ProfileCard = () => {
                 <div className='flex justify-between'>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>Country of Residence</div>
-                        <div className='text-sm'>Canada</div>
+                        <div className='text-sm'>{client ? client.Country_of_Residence:""}</div>
                     </div>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>Country of Citizenship</div>
@@ -61,7 +62,7 @@ const ProfileCard = () => {
                     </div>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>Client ID</div>
-                        <div className='text-sm'>KP-2</div>
+                        <div className='text-sm'>{client? client.Lead_id:""}</div>
                     </div>
                 </div>
                 <div className='flex justify-between'>
@@ -71,14 +72,14 @@ const ProfileCard = () => {
                     </div>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>Login Email</div>
-                        <div className='text-sm'>katy@fakeemail.com</div>
+                        <div className='text-sm'>{client? client.Email: ""}</div>
                     </div>
                 </div>
                 <div className='flex justify-between'>
                     <div className='w-1/2'></div>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>Primary Phone</div>
-                        <div className='text-sm'>647-123-4567</div>
+                        <div className='text-sm'>{client ? client.Mobile: ""}</div>
                     </div>
                 </div>
                 <div className='flex justify-between'>
@@ -88,7 +89,7 @@ const ProfileCard = () => {
                     </div>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>Other Contacts</div>
-                        <div className='text-sm'>{'1) 647-123-4567'}</div>
+                        <div className='text-sm'>{client ? client.Secondary_Number : ""}</div>
                     </div>
                 </div>
             </div>
