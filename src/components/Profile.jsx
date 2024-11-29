@@ -52,9 +52,15 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className=''>
-                    <div className='text-2xl font-semibold py-2 text-blue-500'>{leadData ? leadData.Name: ""}</div>
-                    <div className='text-sm font-semibold'>Marital Status: <span className='font-normal'>Never Married/Single  </span><span className='text-sm font-semibold'>Date of Birth: <span className='font-normal'>{leadData ? leadData.DOB:""}</span></span><small className='bg-blue-600 p-1 rounded-xl text-white font-semibold text-[10px] ms-2'>AGE:24</small></div>
-                    <div className='text-sm font-semibold'>Country of Residence: <span className='font-normal'>{leadData ? leadData.Country_of_Residence: ""}   </span><span className='text-sm font-semibold'>Client ID: <span className='font-normal'>{leadData ? leadData.Lead_id: ""}</span></span></div>
+                    <div className='text-2xl font-semibold py-2 text-blue-500'>{leadData ? `${leadData.Name.first_name} ${leadData.Name.last_name}` : ""}</div>
+                    <div className='text-sm font-semibold'>Marital Status: <span className='font-normal'>{leadData ? leadData.Marital_Status: ""}  </span>
+                        <span className='text-sm font-semibold'>Date of Birth: <span className='font-normal'>{leadData ? leadData.DOB : ""}</span></span>
+                        {
+                            (leadData && leadData.Age) && <small className='bg-blue-600 p-1 rounded-xl text-white font-semibold text-[10px] ms-2'>{(leadData && leadData.AGE) && `AGE:${leadData.Age}`}</small>
+                        }
+                        
+                    </div>
+                    <div className='text-sm font-semibold'>Country of Residence: <span className='font-normal'>{leadData ? leadData.Country_of_Residence : ""}   </span><span className='text-sm font-semibold'>Client ID: <span className='font-normal'>{leadData ? leadData.Lead_id : ""}</span></span></div>
                     <div className='flex gap-[30px] my-3'>
                         <div className='flex justify-center flex-col items-center' onClick={() => setOpen(true)}>
                             <div className='flex justify-center p-2 rounded-full bg-white hover:bg-blue-100 cursor-pointer transition-all'>

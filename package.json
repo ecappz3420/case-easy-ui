@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.1.6",
     "@reduxjs/toolkit": "^2.3.0",
+    "antd": "^5.22.2",
     "bootstrap-icons": "^1.11.3",
     "flowbite-react": "^0.10.2",
     "froala-editor": "^4.3.0",

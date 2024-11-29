@@ -16,7 +16,6 @@ const dispatch = useDispatch();
       await ZOHO.CREATOR.init();
       const queryParams = await ZOHO.CREATOR.UTIL.getQueryParams();
       const result = await fetchRecordByID(queryParams.lead);
-      console.log(result);
       dispatch(setClient(result));
     }
     runApi();

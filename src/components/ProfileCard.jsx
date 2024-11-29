@@ -28,11 +28,11 @@ const ProfileCard = () => {
                 <div className='flex justify-between'>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>First Name</div>
-                        <div className='text-sm'>{client ? client.Name : ""}</div>
+                        <div className='text-sm'>{client ? client.Name.first_name : "-"}</div>
                     </div>
                     <div className='w-1/2'>
                         <div className='text-slate-500 font-semibold text-sm uppercase'>last Name</div>
-                        <div className='text-sm'>-</div>
+                        <div className='text-sm'>{client ? client.Name.last_name : "-"}</div>
                     </div>
                 </div>
                 <div className='flex justify-between'>

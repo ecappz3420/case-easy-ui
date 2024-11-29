@@ -1,7 +1,7 @@
 const fetchRecordByID = async (id) => {
     const config = {
         appName: "visa-management",
-        reportName: "LeadsA",
+        reportName: "All_Leads",
         id: id
     }    
     try {
