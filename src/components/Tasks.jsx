@@ -24,6 +24,20 @@ const Tasks = () => {
   const [checkBox, setCheckBox] = useState(false);
   const [form] = Form.useForm();
 
+  const assignees = useSelector((state) => state.teamMember.details);
+
+  useEffect(() => {
+    if (assignees && Array.isArray(assignees)) {
+      setTeamMembers(() =>
+        assignees.map((user) => ({
+          label: user.User_Name,
+          value: user.User_Name,
+          id: user.ID,
+        }))
+      );
+    }
+  }, [assignees]);
+
   const fetchTask = async () => {
     try {
       const response = await ZOHO.CREATOR.API.getAllRecords({
@@ -50,33 +64,13 @@ const Tasks = () => {
       setIsData(true);
       console.log("Updated Tasks:", records);
     } catch (error) {
-      console.log(error);
+      console.error("Error Fetching Tasks", error);
       setTasks([]);
     }
   };
   useEffect(() => {
     fetchTask();
   }, [leadData]);
-
-  useEffect(() => {
-    const fetchRecords = async () => {
-      try {
-        await ZOHO.CREATOR.init();
-        const response = await ZOHO.CREATOR.API.getAllRecords({
-          appName: "visa-management",
-          reportName: "All_Users",
-        });
-        setTeamMembers(
-          response.data.map((rec) => ({
-            label: rec.User_Name,
-            value: rec.User_Name,
-            id: rec.ID,
-          }))
-        );
-      } catch (error) {}
-    };
-    open && fetchRecords();
-  }, [open]);
 
   const priorityOptions = [
     { label: "High", value: "High" },
