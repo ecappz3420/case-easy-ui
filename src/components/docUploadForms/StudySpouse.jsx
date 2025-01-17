@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Select, InputNumber, Button, Flex } from "antd";
-import { CASE_TYPE_OPTIONS } from "../selectOptions";
+import { CASE_TYPE_OPTIONS } from "./utils/selectOptions";
 
 const StudySpouse = () => {
   const [form] = Form.useForm();
@@ -40,7 +40,7 @@ const StudySpouse = () => {
               />
             </Form.Item>
           </div>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"

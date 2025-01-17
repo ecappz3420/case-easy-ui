@@ -28,7 +28,7 @@ import {
   REFUSAL_VISA_TYPE_OPTIONS,
   RELATION_OPTIONS,
   COUNTRY_CODE_OPTIONS,
-} from "../selectOptions";
+} from "./utils/selectOptions";
 
 const { TextArea } = Input;
 
@@ -128,7 +128,7 @@ const VisitorVisa = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Personal Information
             </legend>
@@ -296,7 +296,7 @@ const VisitorVisa = () => {
               />
             </Form.Item>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Necessary documents will be
             </legend>
@@ -343,7 +343,7 @@ const VisitorVisa = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Visitor Visa</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
@@ -405,7 +405,7 @@ const VisitorVisa = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Sponsor</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
@@ -460,7 +460,7 @@ const VisitorVisa = () => {
           >
             {({ getFieldValue }) =>
               getFieldValue("Sponse_Status") !== undefined && (
-                <fieldset>
+                <fieldset className="p-0">
                   <legend className="font-bold !text-black">
                     Sponsor checklist
                   </legend>
@@ -1006,7 +1006,7 @@ const VisitorVisa = () => {
               )
             }
           </Form.Item>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Occupation Details
             </legend>
@@ -1663,7 +1663,7 @@ const VisitorVisa = () => {
               </Form.Item> */}
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Compulsory Question
             </legend>
@@ -1692,11 +1692,11 @@ const VisitorVisa = () => {
             >
               {({ getFieldValue }) =>
                 getFieldValue("Any_previous_travel_history") === "yes" && (
-                  <fieldset>
+                  <fieldset className="p-0">
                     <legend className="font-bold !text-black !border-b-0 !mb-2">
                       Travel History
                     </legend>
-                    <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
+                    <div className="w-[600px] max-w-max overflow-x-auto mb-6">
                       <Space
                         className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                         align="baseline"
@@ -1837,11 +1837,11 @@ const VisitorVisa = () => {
             >
               {({ getFieldValue }) =>
                 getFieldValue("Any_refusal") === "yes" && (
-                  <fieldset>
+                  <fieldset className="p-0">
                     <legend className="font-bold !text-black !border-b-0 !mb-2">
                       Refusal History
                     </legend>
-                    <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
+                    <div className="w-[600px] max-w-max overflow-x-auto mb-6">
                       <Space
                         className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                         align="baseline"
@@ -2191,7 +2191,7 @@ const VisitorVisa = () => {
               }
             </Form.Item>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"
@@ -2204,7 +2204,7 @@ const VisitorVisa = () => {
               />
             </Form.Item>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Sponser Check List
             </legend>

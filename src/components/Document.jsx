@@ -2,6 +2,16 @@ import { Button, Form, Input, Modal } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
+import StudyPermitExtension from "../components/docUploadForms/StudyPermitExtension";
+import StudySpouse from "../components/docUploadForms/StudySpouse";
+import StudyVisa from "../components/docUploadForms/StudyVisa";
+import StudyWorkPermitExtension from "../components/docUploadForms/StudyWorkPermitExtension";
+import USA from "../components/docUploadForms/USA";
+import VisitorStudies from "../components/docUploadForms/VisitorStudies";
+import VisitorVisa from "../components/docUploadForms/VisitorVisa";
+import WorkPermitExtension from "../components/docUploadForms/WorkPermitExtension";
+import WorkVisa from "../components/docUploadForms/WorkVisa";
+
 const Document = () => {
   const lead = useSelector((state) => state.client.details);
   const [open, setOpen] = useState(false);
@@ -19,20 +29,12 @@ const Document = () => {
           </Button>
           <Modal
             open={open}
+            width={700}
             footer={<></>}
             onClose={() => setOpen((curr) => !curr)}
             onCancel={() => setOpen((curr) => !curr)}
           >
-            <div className="p-2">
-              <Form>
-                <Form.Item label="Test">
-                  <Input />
-                </Form.Item>
-                <Form.Item>
-                  <Button>Submit</Button>
-                </Form.Item>
-              </Form>
-            </div>
+            <USA />
           </Modal>
         </div>
         <div className="mt-3">

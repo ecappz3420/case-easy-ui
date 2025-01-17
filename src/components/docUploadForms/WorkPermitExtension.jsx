@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Select, Input, InputNumber, Checkbox, Button, Flex } from "antd";
-import { CASE_TYPE_OPTIONS } from "../selectOptions";
+import { CASE_TYPE_OPTIONS } from "./utils/selectOptions";
 
 const WorkPermitExtension = () => {
   const [form] = Form.useForm();
@@ -62,7 +62,7 @@ const WorkPermitExtension = () => {
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"

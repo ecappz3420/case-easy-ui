@@ -10,7 +10,7 @@ import {
   Upload,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { CASE_TYPE_OPTIONS } from "../selectOptions";
+import { CASE_TYPE_OPTIONS } from "./utils/selectOptions";
 
 const StudyWorkPermitExtension = () => {
   const [form] = Form.useForm();
@@ -106,7 +106,7 @@ const StudyWorkPermitExtension = () => {
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Study + Work Extension
             </legend>
@@ -360,7 +360,7 @@ const StudyWorkPermitExtension = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"
@@ -373,14 +373,14 @@ const StudyWorkPermitExtension = () => {
               />
             </Form.Item>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0 w-[600px]">
             <legend className="font-bold !text-black">Check List</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 justify-items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-1 justify-items-start">
               <Form.Item
                 name="Study_Permit2"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center w-[300px]"
+                className="justify-self-start md:self-center"
               >
                 <Checkbox>Study Permit</Checkbox>
               </Form.Item>
@@ -397,7 +397,6 @@ const StudyWorkPermitExtension = () => {
                 name="Medical1"
                 layout="horizontal"
                 colon={false}
-                className="w-[300px]"
               >
                 <Input maxLength={255} className="sm:max-w-[200px]" />
               </Form.Item>
@@ -405,7 +404,7 @@ const StudyWorkPermitExtension = () => {
                 name="File_upload1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center w-[300px]"
+                className="justify-self-start md:self-center"
               >
                 <Checkbox>File Upload</Checkbox>
               </Form.Item>
@@ -413,7 +412,7 @@ const StudyWorkPermitExtension = () => {
                 name="Digital_Photo1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center w-[300px]"
+                className="justify-self-start md:self-center"
               >
                 <Checkbox>Digital Photo</Checkbox>
               </Form.Item>
@@ -421,7 +420,7 @@ const StudyWorkPermitExtension = () => {
                 name="New_Loa_And_2_Pay_Slips1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center w-[300px]"
+                className="justify-self-start md:self-center"
               >
                 <Checkbox>New Loa And 2 Pay Slips</Checkbox>
               </Form.Item>
@@ -429,7 +428,7 @@ const StudyWorkPermitExtension = () => {
                 name="Enrollment_Completion_Letter1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center w-[300px]"
+                className="justify-self-start md:self-center"
               >
                 <Checkbox>Enrollment / Completion Letter</Checkbox>
               </Form.Item>
@@ -437,7 +436,7 @@ const StudyWorkPermitExtension = () => {
                 name="Study_Permit3"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center w-[300px]"
+                className="justify-self-start md:self-center"
               >
                 <Checkbox>Study Permit</Checkbox>
               </Form.Item>
@@ -445,7 +444,7 @@ const StudyWorkPermitExtension = () => {
                 name="Marriage_Certificate1"
                 valuePropName="checked"
                 layout="horizontal"
-                className="justify-self-start md:self-center w-[300px]"
+                className="justify-self-start md:self-center"
               >
                 <Checkbox>Marriage Certificate</Checkbox>
               </Form.Item>

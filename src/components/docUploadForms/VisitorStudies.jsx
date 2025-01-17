@@ -14,7 +14,7 @@ import {
   Divider,
 } from "antd";
 import { UploadOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
-import { CASE_TYPE_OPTIONS } from "../selectOptions";
+import { CASE_TYPE_OPTIONS } from "./utils/selectOptions";
 
 const VisitorStudies = () => {
   const [form] = Form.useForm();
@@ -109,11 +109,11 @@ const VisitorStudies = () => {
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black !border-b-0 !mb-2">
               Education Details
             </legend>
-            <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
+            <div className="w-[600px] max-w-max overflow-x-auto mb-6">
               <Space
                 className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                 align="baseline"
@@ -206,7 +206,7 @@ const VisitorStudies = () => {
               </Form.List>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Visitor To Study</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
@@ -262,7 +262,7 @@ const VisitorStudies = () => {
           >
             {({ getFieldValue }) =>
               getFieldValue("IELTS") === "yes" && (
-                <fieldset>
+                <fieldset className="p-0">
                   <legend className="font-bold !text-black !border-b-0 !mb-2">
                     IELTS Details
                   </legend>
@@ -406,7 +406,7 @@ const VisitorStudies = () => {
               />
             </Form.Item>
           </div>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Check List</legend>
             <Form.Item
               name="TRF1"

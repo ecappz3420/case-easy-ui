@@ -10,7 +10,7 @@ import {
   Upload,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { CASE_TYPE_OPTIONS_WORK_VISA } from "../selectOptions";
+import { CASE_TYPE_OPTIONS_WORK_VISA } from "./utils/selectOptions";
 
 const WorkVisa = () => {
   const [form] = Form.useForm();
@@ -91,7 +91,7 @@ const WorkVisa = () => {
               />
             </Form.Item>
           </div>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Necessary Information For Work Permit
             </legend>
@@ -189,7 +189,7 @@ const WorkVisa = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Documents</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
               <Form.Item
@@ -304,7 +304,7 @@ const WorkVisa = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Applicant Documents
             </legend>
@@ -441,7 +441,7 @@ const WorkVisa = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Sponsor</legend>
             <Form.Item
               name="If_field"
@@ -949,7 +949,7 @@ const WorkVisa = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Compulsory Question
             </legend>
@@ -970,7 +970,7 @@ const WorkVisa = () => {
               </Radio.Group>
             </Form.Item>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"

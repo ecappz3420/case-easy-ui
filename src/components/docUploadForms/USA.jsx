@@ -23,8 +23,8 @@ import {
   CASE_TYPE_OPTIONS_USA,
   PAYMENT_DETAILS_OPTIONS,
   COUNTRY_CODE_OPTIONS,
-} from "../selectOptions";
-import { LANGUAGE_OPTIONS } from "../languageSelectOptions";
+} from "./utils/selectOptions";
+import { LANGUAGE_OPTIONS } from "./utils/languageSelectOptions";
 
 const { TextArea } = Input;
 
