@@ -27,7 +27,7 @@ const WorkPermitExtension = () => {
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item
@@ -38,7 +38,7 @@ const WorkPermitExtension = () => {
             >
               <Select
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS}
                 disabled
               />
@@ -50,7 +50,7 @@ const WorkPermitExtension = () => {
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
           </div>
@@ -70,7 +70,7 @@ const WorkPermitExtension = () => {
               className="w-[300px]"
             >
               <InputNumber
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
             </Form.Item>

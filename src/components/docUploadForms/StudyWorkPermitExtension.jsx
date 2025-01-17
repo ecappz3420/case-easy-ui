@@ -71,7 +71,7 @@ const StudyWorkPermitExtension = () => {
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item
@@ -82,7 +82,7 @@ const StudyWorkPermitExtension = () => {
             >
               <Select
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS}
                 disabled
               />
@@ -94,7 +94,7 @@ const StudyWorkPermitExtension = () => {
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
           </div>
@@ -118,7 +118,7 @@ const StudyWorkPermitExtension = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -141,7 +141,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -167,7 +167,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -193,7 +193,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -219,7 +219,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -248,7 +248,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select Image
                   </Button>
@@ -274,7 +274,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -300,7 +300,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -326,7 +326,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -352,7 +352,7 @@ const StudyWorkPermitExtension = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -368,14 +368,14 @@ const StudyWorkPermitExtension = () => {
               className="w-[300px]"
             >
               <InputNumber
-                className="w-[300px] sm:w-[260px] md:w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
             </Form.Item>
           </fieldset>
-          <fieldset className="p-0 w-[600px]">
+          <fieldset className="p-0 w-[70vw]">
             <legend className="font-bold !text-black">Check List</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-1 justify-items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 justify-items-start">
               <Form.Item
                 name="Study_Permit2"
                 valuePropName="checked"
@@ -398,7 +398,10 @@ const StudyWorkPermitExtension = () => {
                 layout="horizontal"
                 colon={false}
               >
-                <Input maxLength={255} className="sm:max-w-[200px]" />
+                <Input
+                  maxLength={255}
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                />
               </Form.Item>
               <Form.Item
                 name="File_upload1"

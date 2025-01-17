@@ -29,7 +29,7 @@ const Document = () => {
           </Button>
           <Modal
             open={open}
-            width={700}
+            width={"80vw"}
             footer={<></>}
             onClose={() => setOpen((curr) => !curr)}
             onCancel={() => setOpen((curr) => !curr)}

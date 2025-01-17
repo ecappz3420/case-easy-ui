@@ -136,7 +136,7 @@ const VisitorVisa = () => {
               <Form.Item label="Lead" name="Lead" className="w-[300px]">
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -147,7 +147,7 @@ const VisitorVisa = () => {
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   options={CASE_TYPE_OPTIONS}
                   disabled
                 />
@@ -190,7 +190,7 @@ const VisitorVisa = () => {
                   stringMode
                   maxLength={15}
                   addonBefore={selectCountry}
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -202,7 +202,7 @@ const VisitorVisa = () => {
                 <Input
                   maxLength={80}
                   addonAfter={<MailOutlined />}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
             </div>
@@ -214,7 +214,7 @@ const VisitorVisa = () => {
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   options={WHOM_THEY_MEET_OPTIONS}
                 />
               </Form.Item>
@@ -239,7 +239,7 @@ const VisitorVisa = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   )
@@ -254,7 +254,7 @@ const VisitorVisa = () => {
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   options={VISIT_PURPOSE_OPTIONS}
                 />
               </Form.Item>
@@ -278,7 +278,7 @@ const VisitorVisa = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   )
@@ -292,7 +292,7 @@ const VisitorVisa = () => {
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
           </fieldset>
@@ -321,7 +321,7 @@ const VisitorVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -338,7 +338,7 @@ const VisitorVisa = () => {
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[260px] md:!max-w-[300px]"
+                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
             </div>
@@ -354,7 +354,7 @@ const VisitorVisa = () => {
               >
                 <InputNumber
                   max={150}
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   placeholder="#######"
                 />
               </Form.Item>
@@ -362,7 +362,7 @@ const VisitorVisa = () => {
                 <InputNumber
                   stringMode
                   maxLength={10}
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   addonAfter="₹"
                   placeholder="##,##,###.##"
                 />
@@ -395,7 +395,7 @@ const VisitorVisa = () => {
                       <InputNumber
                         stringMode
                         maxLength={10}
-                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                         addonAfter="₹"
                         placeholder="##,##,###.##"
                       />
@@ -415,7 +415,7 @@ const VisitorVisa = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -425,7 +425,7 @@ const VisitorVisa = () => {
                 <InputNumber
                   stringMode
                   maxLength={10}
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   placeholder="#######"
                 />
               </Form.Item>
@@ -436,7 +436,7 @@ const VisitorVisa = () => {
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   options={SPONSOR_STATUS_OPTIONS}
                 />
               </Form.Item>
@@ -447,7 +447,7 @@ const VisitorVisa = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
             </div>
@@ -493,7 +493,7 @@ const VisitorVisa = () => {
                               <Button
                                 icon={<UploadOutlined />}
                                 iconPosition="end"
-                                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
                                 Select File
                               </Button>
@@ -530,7 +530,7 @@ const VisitorVisa = () => {
                               <Button
                                 icon={<UploadOutlined />}
                                 iconPosition="end"
-                                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
                                 Select File
                               </Button>
@@ -568,7 +568,7 @@ const VisitorVisa = () => {
                               <Button
                                 icon={<UploadOutlined />}
                                 iconPosition="end"
-                                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
                                 Select File
                               </Button>
@@ -605,7 +605,7 @@ const VisitorVisa = () => {
                               <Button
                                 icon={<UploadOutlined />}
                                 iconPosition="end"
-                                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
                                 Select File
                               </Button>
@@ -634,7 +634,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -678,7 +678,7 @@ const VisitorVisa = () => {
                                   <Button
                                     icon={<UploadOutlined />}
                                     iconPosition="end"
-                                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                                   >
                                     Select File
                                   </Button>
@@ -704,7 +704,7 @@ const VisitorVisa = () => {
                                   <Button
                                     icon={<UploadOutlined />}
                                     iconPosition="end"
-                                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                                   >
                                     Select File
                                   </Button>
@@ -747,7 +747,7 @@ const VisitorVisa = () => {
                               <Button
                                 icon={<UploadOutlined />}
                                 iconPosition="end"
-                                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
                                 Select File
                               </Button>
@@ -786,7 +786,7 @@ const VisitorVisa = () => {
                               <Button
                                 icon={<UploadOutlined />}
                                 iconPosition="end"
-                                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
                                 Select File
                               </Button>
@@ -842,7 +842,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -869,7 +869,7 @@ const VisitorVisa = () => {
                           >
                             <Input
                               maxLength={255}
-                              className="sm:max-w-[260px] md:max-w-[300px]"
+                              className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                             />
                           </Form.Item>
                         )
@@ -903,7 +903,7 @@ const VisitorVisa = () => {
                               <Button
                                 icon={<UploadOutlined />}
                                 iconPosition="end"
-                                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
                                 Select File
                               </Button>
@@ -940,7 +940,7 @@ const VisitorVisa = () => {
                               <Button
                                 icon={<UploadOutlined />}
                                 iconPosition="end"
-                                className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
                                 Select File
                               </Button>
@@ -969,7 +969,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -995,7 +995,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1017,7 +1017,7 @@ const VisitorVisa = () => {
             >
               <Select
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 options={OCCUPATION_OPTIONS}
               />
             </Form.Item>
@@ -1043,7 +1043,7 @@ const VisitorVisa = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   )
@@ -1088,7 +1088,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select Image
                         </Button>
@@ -1127,7 +1127,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1166,7 +1166,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1204,7 +1204,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1233,7 +1233,7 @@ const VisitorVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -1270,7 +1270,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1313,7 +1313,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1352,7 +1352,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1391,7 +1391,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1420,7 +1420,7 @@ const VisitorVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -1456,7 +1456,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1494,7 +1494,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1533,7 +1533,7 @@ const VisitorVisa = () => {
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -1560,7 +1560,7 @@ const VisitorVisa = () => {
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -1586,7 +1586,7 @@ const VisitorVisa = () => {
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -1626,7 +1626,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -1655,7 +1655,7 @@ const VisitorVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -1696,7 +1696,7 @@ const VisitorVisa = () => {
                     <legend className="font-bold !text-black !border-b-0 !mb-2">
                       Travel History
                     </legend>
-                    <div className="w-[600px] max-w-max overflow-x-auto mb-6">
+                    <div className="w-[70vw] max-w-max overflow-x-auto mb-6">
                       <Space
                         className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                         align="baseline"
@@ -1841,7 +1841,7 @@ const VisitorVisa = () => {
                     <legend className="font-bold !text-black !border-b-0 !mb-2">
                       Refusal History
                     </legend>
-                    <div className="w-[600px] max-w-max overflow-x-auto mb-6">
+                    <div className="w-[70vw] max-w-max overflow-x-auto mb-6">
                       <Space
                         className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                         align="baseline"
@@ -1986,7 +1986,7 @@ const VisitorVisa = () => {
                           height: 100,
                           resize: "none",
                         }}
-                        className="sm:!max-w-[260px] md:!max-w-[300px]"
+                        className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -2009,7 +2009,7 @@ const VisitorVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -2057,7 +2057,7 @@ const VisitorVisa = () => {
                       ]}
                     >
                       <InputNumber
-                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                         placeholder="#######"
                       />
                     </Form.Item>
@@ -2074,7 +2074,7 @@ const VisitorVisa = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -2090,7 +2090,7 @@ const VisitorVisa = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -2106,7 +2106,7 @@ const VisitorVisa = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -2122,7 +2122,7 @@ const VisitorVisa = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -2138,7 +2138,7 @@ const VisitorVisa = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </>
@@ -2183,7 +2183,7 @@ const VisitorVisa = () => {
                   >
                     <Select
                       placeholder="Choose"
-                      className="sm:max-w-[260px] md:max-w-[300px]"
+                      className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       options={RELATION_OPTIONS}
                     />
                   </Form.Item>
@@ -2199,7 +2199,7 @@ const VisitorVisa = () => {
               className="w-[300px]"
             >
               <InputNumber
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
             </Form.Item>
@@ -2228,7 +2228,7 @@ const VisitorVisa = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>

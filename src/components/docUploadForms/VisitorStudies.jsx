@@ -74,7 +74,7 @@ const VisitorStudies = () => {
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item
@@ -85,7 +85,7 @@ const VisitorStudies = () => {
             >
               <Select
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS}
                 disabled
               />
@@ -97,7 +97,7 @@ const VisitorStudies = () => {
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
           </div>
@@ -113,7 +113,7 @@ const VisitorStudies = () => {
             <legend className="font-bold !text-black !border-b-0 !mb-2">
               Education Details
             </legend>
-            <div className="w-[600px] max-w-max overflow-x-auto mb-6">
+            <div className="w-[70vw] max-w-max overflow-x-auto mb-6">
               <Space
                 className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                 align="baseline"
@@ -243,7 +243,7 @@ const VisitorStudies = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -266,7 +266,7 @@ const VisitorStudies = () => {
                   <legend className="font-bold !text-black !border-b-0 !mb-2">
                     IELTS Details
                   </legend>
-                  <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
+                  <div className="w-[70vw] max-w-max overflow-x-auto mb-6">
                     <Space
                       className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                       align="baseline"
@@ -384,25 +384,25 @@ const VisitorStudies = () => {
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item label="Location" name="Location" className="w-[300px]">
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item label="Program" name="Program" className="w-[300px]">
               <Input
                 maxLength={255}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item label="Intake" name="intake" className="w-[300px]">
               <DatePicker
                 format="DD-MMM-YYYY"
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
           </div>

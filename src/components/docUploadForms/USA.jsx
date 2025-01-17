@@ -154,7 +154,7 @@ const USA = () => {
             <Form.Item label="Lead" name="Lead" className="w-[300px]">
               <Select
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item
@@ -165,7 +165,7 @@ const USA = () => {
             >
               <Select
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS_USA}
                 disabled
               />
@@ -208,7 +208,7 @@ const USA = () => {
                 stringMode
                 maxLength={15}
                 addonBefore={MobileCountrySelect}
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 disabled
               />
             </Form.Item>
@@ -221,7 +221,7 @@ const USA = () => {
               <Input
                 maxLength={80}
                 addonAfter={<MailOutlined />}
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 disabled
               />
             </Form.Item>
@@ -247,7 +247,7 @@ const USA = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -273,7 +273,7 @@ const USA = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -299,7 +299,7 @@ const USA = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -325,7 +325,7 @@ const USA = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -351,7 +351,7 @@ const USA = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -377,7 +377,7 @@ const USA = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -403,7 +403,7 @@ const USA = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:w-[260px] md:w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -420,7 +420,7 @@ const USA = () => {
                 <Space direction="vertical">
                   <Checkbox
                     value="Sevis"
-                    className="w-max sm:w-[260px] md:w-[300px]"
+                    className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
                     }}
@@ -429,7 +429,7 @@ const USA = () => {
                   </Checkbox>
                   <Checkbox
                     value="DS160"
-                    className="w-max sm:w-[260px] md:w-[300px]"
+                    className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
                     }}
@@ -438,7 +438,7 @@ const USA = () => {
                   </Checkbox>
                   <Checkbox
                     value="Offer Letter fees"
-                    className="w-max sm:w-[260px] md:w-[300px]"
+                    className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
                     }}
@@ -456,7 +456,7 @@ const USA = () => {
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
@@ -467,7 +467,7 @@ const USA = () => {
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
@@ -478,7 +478,7 @@ const USA = () => {
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
@@ -508,7 +508,7 @@ const USA = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -518,17 +518,17 @@ const USA = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Person Paying for your trip (Relationship with person)"
                 name="p"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[280px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -554,7 +554,7 @@ const USA = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -564,7 +564,7 @@ const USA = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item label="Address" name="Address" className="w-[300px]">
@@ -574,7 +574,7 @@ const USA = () => {
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[260px] md:!max-w-[300px]"
+                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
               <Flex vertical>
@@ -616,7 +616,7 @@ const USA = () => {
                     stringMode
                     maxLength={15}
                     addonBefore={Phone1CountrySelect}
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   />
                 </Form.Item>
                 <Form.Item
@@ -628,7 +628,7 @@ const USA = () => {
                   <Input
                     maxLength={80}
                     addonAfter={<MailOutlined />}
-                    className="sm:max-w-[260px] md:max-w-[300px]"
+                    className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                   />
                 </Form.Item>
               </Flex>
@@ -639,7 +639,7 @@ const USA = () => {
               >
                 <DatePicker
                   format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -649,7 +649,7 @@ const USA = () => {
               >
                 <DatePicker
                   format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
             </div>
@@ -700,7 +700,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -716,7 +716,7 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -732,7 +732,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -748,7 +748,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </div>
@@ -768,7 +768,7 @@ const USA = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -778,7 +778,7 @@ const USA = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
@@ -786,7 +786,7 @@ const USA = () => {
                 name="Telephone_Number"
                 className="w-[300px]"
               >
-                <InputNumber className="w-[300px] sm:max-w-[260px] md:max-w-[300px]" />
+                <InputNumber className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]" />
               </Form.Item>
             </div>
             <Form.Item
@@ -796,7 +796,7 @@ const USA = () => {
             >
               <DatePicker
                 format="DD-MMM-YYYY"
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item
@@ -836,7 +836,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -852,7 +852,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -897,7 +897,7 @@ const USA = () => {
                         stringMode
                         maxLength={15}
                         addonBefore={Phone2CountrySelect}
-                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -913,7 +913,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -930,7 +930,7 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -946,7 +946,7 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -962,7 +962,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </div>
@@ -1005,7 +1005,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -1022,7 +1022,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -1038,7 +1038,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[260px] md:max-w-[300px]"
+                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </div>
@@ -1056,7 +1056,7 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
@@ -1072,7 +1072,7 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </div>
@@ -1092,7 +1092,7 @@ const USA = () => {
                 options={LANGUAGE_OPTIONS}
                 allowClear
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px] max-h-[145px] overflow-y-auto"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] max-h-[145px] overflow-y-auto"
               />
             </Form.Item>
             <Form.Item
@@ -1119,7 +1119,7 @@ const USA = () => {
                     <legend className="font-bold !text-black !border-b-0 !mb-2">
                       Traveling History
                     </legend>
-                    <div className="w-[600px] max-w-max overflow-x-auto mb-6">
+                    <div className="w-[70vw] max-w-max overflow-x-auto mb-6">
                       <Space
                         className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                         align="baseline"
@@ -1244,7 +1244,7 @@ const USA = () => {
                         height: 100,
                         resize: "none",
                       }}
-                      className="sm:!max-w-[260px] md:!max-w-[300px]"
+                      className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
                     />
                   </Form.Item>
                 )

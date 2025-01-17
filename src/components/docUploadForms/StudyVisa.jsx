@@ -69,7 +69,7 @@ const StudyVisa = () => {
             <Form.Item label="Lead" name="Lead" className="w-[300px]">
               <Select
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item
@@ -80,7 +80,7 @@ const StudyVisa = () => {
             >
               <Select
                 placeholder="Choose"
-                className="sm:max-w-[260px] md:max-w-[300px]"
+                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 options={CASE_TYPE_OPTIONS}
                 disabled
               />
@@ -127,7 +127,7 @@ const StudyVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -172,7 +172,7 @@ const StudyVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -275,7 +275,7 @@ const StudyVisa = () => {
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -303,7 +303,7 @@ const StudyVisa = () => {
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -331,7 +331,7 @@ const StudyVisa = () => {
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -359,7 +359,7 @@ const StudyVisa = () => {
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -387,7 +387,7 @@ const StudyVisa = () => {
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -404,7 +404,7 @@ const StudyVisa = () => {
                 valuePropName="checked"
                 className="w-[300px]"
               >
-                <Checkbox className="sm:max-w-[260px] md:max-w-[300px]">
+                <Checkbox className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]">
                   if spouse is in CANADA but on Work Permit
                 </Checkbox>
               </Form.Item>
@@ -436,7 +436,7 @@ const StudyVisa = () => {
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -467,7 +467,7 @@ const StudyVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -493,7 +493,7 @@ const StudyVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -519,7 +519,7 @@ const StudyVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -545,7 +545,7 @@ const StudyVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -571,7 +571,7 @@ const StudyVisa = () => {
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[260px] md:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -591,13 +591,13 @@ const StudyVisa = () => {
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[260px] md:max-w-[300px]"
+                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Backlog"
                 name="Backlog"
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <TextArea
                   maxLength={100}
@@ -605,13 +605,13 @@ const StudyVisa = () => {
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[260px] md:!max-w-[300px]"
+                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Any Specific preference for College, Program or Campus"
                 name="Any_Specific_preference_for_College_Program_or_Campus"
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <TextArea
                   maxLength={100}
@@ -619,13 +619,13 @@ const StudyVisa = () => {
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[260px] md:!max-w-[300px]"
+                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Gap Justification"
                 name="Gap_Justification"
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 labelCol={{ style: { height: 52 } }}
               >
                 <TextArea
@@ -634,7 +634,7 @@ const StudyVisa = () => {
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[260px] md:!max-w-[300px]"
+                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
             </div>
@@ -643,7 +643,7 @@ const StudyVisa = () => {
             <legend className="font-bold !text-black !border-b-0 !mb-2">
               Education Details
             </legend>
-            <div className="w-[600px] max-w-max overflow-x-auto mb-6">
+            <div className="w-[70vw] max-w-max overflow-x-auto mb-6">
               <Space
                 className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                 align="baseline"
@@ -744,7 +744,7 @@ const StudyVisa = () => {
               className="w-[300px]"
             >
               <InputNumber
-                className="w-[300px] sm:max-w-[260px] md:max-w-[300px]"
+                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
             </Form.Item>
