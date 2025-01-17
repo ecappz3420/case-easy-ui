@@ -496,7 +496,7 @@ const USA = () => {
             If Applicant want to Apply for Masters Degree then, education
             Assessment :-2500
           </p>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !border-b-0 !text-black !text-2xl !mb-3">
               Question
             </legend>
@@ -542,7 +542,7 @@ const USA = () => {
               </Form.Item>
             </div>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !border-b-0 !text-black !text-lg !mb-3">
               USA Person Contact Where You Stay
             </legend>
@@ -682,7 +682,7 @@ const USA = () => {
           >
             {({ getFieldValue }) =>
               getFieldValue("Marital_Status1") === "Married" && (
-                <fieldset>
+                <fieldset className="p-0">
                   <legend className="font-bold !text-black">
                     Marital Status
                   </legend>
@@ -756,7 +756,7 @@ const USA = () => {
               )
             }
           </Form.Item>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Occupation Details
             </legend>
@@ -818,7 +818,7 @@ const USA = () => {
           >
             {({ getFieldValue }) =>
               getFieldValue("Previous_Employed1") === "yes" && (
-                <fieldset>
+                <fieldset className="p-0">
                   <legend className="font-bold !text-black">
                     Experience Details
                   </legend>
@@ -1080,7 +1080,7 @@ const USA = () => {
               )
             }
           </Form.Item>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Language Details</legend>
             <Form.Item
               label="List of languages you speak"
@@ -1115,11 +1115,11 @@ const USA = () => {
                 getFieldValue(
                   "Have_you_travel_to_any_country_within_last_five_years"
                 ) === "yes" && (
-                  <fieldset>
+                  <fieldset className="p-0">
                     <legend className="font-bold !text-black !border-b-0 !mb-2">
                       Traveling History
                     </legend>
-                    <div className="w-[92vw] max-w-max overflow-x-auto mb-6">
+                    <div className="w-[600px] max-w-max overflow-x-auto mb-6">
                       <Space
                         className="border-t border-b w-max py-2 bg-zinc-50 !flex !mb-[15px]"
                         align="baseline"
@@ -1206,7 +1206,7 @@ const USA = () => {
               }
             </Form.Item>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">Health Details</legend>
             <Form.Item
               name="Do_you_have_any_health_issues"
@@ -1251,7 +1251,7 @@ const USA = () => {
               }
             </Form.Item>
           </fieldset>
-          <fieldset>
+          <fieldset className="p-0">
             <legend className="font-bold !text-black">
               Additional Details
             </legend>
