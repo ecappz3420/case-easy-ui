@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal } from "antd";
+import { Button, Modal } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -11,6 +11,7 @@ import VisitorStudies from "../components/docUploadForms/VisitorStudies";
 import VisitorVisa from "../components/docUploadForms/VisitorVisa";
 import WorkPermitExtension from "../components/docUploadForms/WorkPermitExtension";
 import WorkVisa from "../components/docUploadForms/WorkVisa";
+import USADocumentView from "./USADocumentView";
 
 const Document = () => {
   const lead = useSelector((state) => state.client.details);
@@ -23,33 +24,27 @@ const Document = () => {
   if (lead.Case_Type === "USA") {
     return (
       <div className="p-2">
-        <div className="text-end">
-          <Button type="primary" onClick={() => setOpen(true)}>
-            Upload Document
-          </Button>
-          <Modal
-            open={open}
-            width={"80vw"}
-            footer={<></>}
-            onClose={() => setOpen((curr) => !curr)}
-            onCancel={() => setOpen((curr) => !curr)}
-          >
-            <USA />
-          </Modal>
-        </div>
-        <div className="mt-3">
-          {docObj ? (
-            <></>
-          ) : (
-            <div className="text-center text-2xl">
-              <Form>
-                <Form.Item label="Passport">
-                  <a href="#">Passport.pdf</a>
-                </Form.Item>
-              </Form>
+        {docObj ? (
+          <USADocumentView />
+        ) : (
+          <div className="">
+            <div className="h-[40vh] flex justify-center items-center">
+              <Button type="primary" onClick={() => setOpen(true)}>
+                Upload Documents
+              </Button>
             </div>
-          )}
-        </div>
+
+            <Modal
+              open={open}
+              width={"80vw"}
+              footer={<></>}
+              onClose={() => setOpen((curr) => !curr)}
+              onCancel={() => setOpen((curr) => !curr)}
+            >
+              <USA />
+            </Modal>
+          </div>
+        )}
       </div>
     );
   }

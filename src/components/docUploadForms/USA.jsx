@@ -26,6 +26,8 @@ import {
 } from "./utils/selectOptions";
 import { LANGUAGE_OPTIONS } from "./utils/languageSelectOptions";
 
+import addRecord from "../../api/addRecord";
+
 const { TextArea } = Input;
 
 const MobileCountrySelect = (
@@ -138,6 +140,7 @@ const USA = () => {
     } = formattedValues;
 
     console.log("Submitted Data:", submissionValues);
+    addRecord("USA", submissionValues);
   };
 
   return (
