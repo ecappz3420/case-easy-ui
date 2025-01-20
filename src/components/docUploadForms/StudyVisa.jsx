@@ -65,7 +65,7 @@ const StudyVisa = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
             <Form.Item label="Lead" name="Lead" className="w-[300px]">
               <Select
                 placeholder="Choose"
@@ -88,7 +88,7 @@ const StudyVisa = () => {
           </div>
           <fieldset className="p-0">
             <legend className="font-bold !text-black">Basic Questions</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 name="Is_Passport"
                 label="Is Passport"
@@ -137,7 +137,7 @@ const StudyVisa = () => {
                 }
               </Form.Item>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
                 <Radio.Group>
                   <Radio value="yes">Yes</Radio>
@@ -398,7 +398,7 @@ const StudyVisa = () => {
                 );
               }}
             </Form.Item>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 name="if_spou"
                 valuePropName="checked"
@@ -446,7 +446,7 @@ const StudyVisa = () => {
                 }
               </Form.Item>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 name="Pay_Slips"
                 label="3 Pay Slips"
@@ -583,7 +583,7 @@ const StudyVisa = () => {
             <legend className="font-bold !text-black">
               Study Visa Questions
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 label="Any Previous Refusal"
                 name="Any_Previous_Refusal"

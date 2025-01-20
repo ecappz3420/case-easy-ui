@@ -70,7 +70,7 @@ const WorkVisa = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
             <Form.Item label="Lead" name="Lead" className="w-[300px]">
               <Select
                 placeholder="Choose"
@@ -95,7 +95,7 @@ const WorkVisa = () => {
             <legend className="font-bold !text-black">
               Necessary Information For Work Permit
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item label="Name" name="Name1" className="w-[300px]">
                 <Input
                   maxLength={255}
@@ -150,7 +150,7 @@ const WorkVisa = () => {
                 />
               </Form.Item>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item name="ITR" label="ITR" className="w-[300px]">
                 <Radio.Group>
                   <Radio value="yes">Yes</Radio>
@@ -191,7 +191,7 @@ const WorkVisa = () => {
           </fieldset>
           <fieldset className="p-0">
             <legend className="font-bold !text-black">Documents</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 name="Passport"
                 label="Passport"
@@ -308,7 +308,7 @@ const WorkVisa = () => {
             <legend className="font-bold !text-black">
               Applicant Documents
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 name="Education_Details"
                 label="Education Documents"
@@ -470,7 +470,7 @@ const WorkVisa = () => {
                 )
               }
             </Form.Item>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 noStyle
                 shouldUpdate={(prevValues, currentValues) =>

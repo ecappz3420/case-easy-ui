@@ -2,14 +2,13 @@ const addRecord = async (formName, formData) => {
   const config = {
     appName: "visa-management",
     formName: formName,
-    data: formData,
+    data: {
+      data: formData,
+    },
   };
-
   try {
-    await ZOHO.CREATOR.init();
     const response = await ZOHO.CREATOR.API.addRecord(config);
-    console.log(response);
-    if (response?.code === 3000) console.log(response?.message, response?.data);
+    return response;
   } catch (error) {
     console.log(error);
   }

@@ -66,7 +66,7 @@ const VisitorStudies = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
             <Form.Item
               label="counselling id"
               name="counselling_id"
@@ -208,7 +208,7 @@ const VisitorStudies = () => {
           </fieldset>
           <fieldset className="p-0">
             <legend className="font-bold !text-black">Visitor To Study</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
                 <Radio.Group>
                   <Radio value="yes">Yes</Radio>
@@ -376,7 +376,7 @@ const VisitorStudies = () => {
               )
             }
           </Form.Item>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
             <Form.Item
               label="Preferred College"
               name="Preferred_College"

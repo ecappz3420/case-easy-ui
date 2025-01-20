@@ -19,7 +19,7 @@ const WorkPermitExtension = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
             <Form.Item
               label="counselling id"
               name="counselling_id"

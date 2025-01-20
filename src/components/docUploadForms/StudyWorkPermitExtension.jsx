@@ -63,7 +63,7 @@ const StudyWorkPermitExtension = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
             <Form.Item
               label="counselling id"
               name="counselling_id"
@@ -110,7 +110,7 @@ const StudyWorkPermitExtension = () => {
             <legend className="font-bold !text-black">
               Study + Work Extension
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 label="Applicant"
                 name="Study_work_extension1"
@@ -375,7 +375,7 @@ const StudyWorkPermitExtension = () => {
           </fieldset>
           <fieldset className="p-0 w-[70vw]">
             <legend className="font-bold !text-black">Check List</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 justify-items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-[10em] justify-items-start">
               <Form.Item
                 name="Study_Permit2"
                 valuePropName="checked"

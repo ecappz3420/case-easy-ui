@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
   Select,
@@ -12,6 +12,7 @@ import {
   Flex,
   Space,
   Divider,
+  message,
 } from "antd";
 import {
   UploadOutlined,
@@ -24,9 +25,12 @@ import {
   PAYMENT_DETAILS_OPTIONS,
   COUNTRY_CODE_OPTIONS,
 } from "./utils/selectOptions";
+
 import { LANGUAGE_OPTIONS } from "./utils/languageSelectOptions";
 
 import addRecord from "../../api/addRecord";
+import { useSelector } from "react-redux";
+import uploadFile from "../../api/uploadFile";
 
 const { TextArea } = Input;
 
@@ -74,17 +78,11 @@ const Phone2CountrySelect = (
 
 const USA = () => {
   const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
+  const [loading, setLoading] = useState(false);
 
-  //For file upload, setting File fields in form with respective file details
-  const getFile = (e) => {
-    console.log("Upload event:", e);
-    if (e?.file && e.file.status !== "removed") {
-      return e.file; // Return the uploaded file
-    }
-    return null; // If no file or file is removed
-  };
+  const lead = useSelector((state) => state.client.details);
 
-  //Upload file checked if empty
   const isFileEmpty = (_, file) => {
     if (file?.size === 0) {
       return Promise.reject(
@@ -93,54 +91,50 @@ const USA = () => {
         )
       );
     }
-    return Promise.resolve(); // Validation passed
+    return Promise.resolve();
   };
 
-  const onFinish = (values) => {
-    const formattedValues = {
-      ...values,
+  const getFile = (e) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
+  };
 
-      // If phone numbers exist, concatenate phone numbers with country codes
-      ...(values?.Mobile && {
-        Mobile: values.Mobile_Country_Code + values.Mobile,
-      }),
-      ...(values?.Phone_Number1 && {
-        Phone_Number1: values.Phone1_Country_Code + values.Phone_Number1,
-      }),
-      ...(values?.Phone_Number2 && {
-        Phone_Number2: values.Phone2_Country_Code + values.Phone_Number2,
-      }),
-
-      // Format date fields
-      Father_DOB: values.Father_DOB?.format("DD-MMM-YYYY") || "",
-      Mother_DOB: values.Mother_DOB?.format("DD-MMM-YYYY") || "",
-      DOB: values.DOB?.format("DD-MMM-YYYY") || "",
-      Starting_Date: values.Starting_Date?.format("DD-MMM-YYYY") || "",
-      Employment_Starting_Date:
-        values.Employment_Starting_Date?.format("DD-MMM-YYYY") || "",
-      Employment_End_Date:
-        values.Employment_End_Date?.format("DD-MMM-YYYY") || "",
-      Course_Starting_Date:
-        values.Course_Starting_Date?.format("DD-MMM-YYYY") || "",
-      Course_End_Date: values.Course_End_Date?.format("DD-MMM-YYYY") || "",
-
-      // Format Year fields in the Traveling_History array
-      Traveling_History: values.Traveling_History?.map((item) => ({
-        ...item,
-        Year_field: item.Year_field?.format("YYYY") || "",
-      })),
-    };
-
-    //Exclude Country codes on form submission
-    const {
-      Mobile_Country_Code,
-      Phone1_Country_Code,
-      Phone2_Country_Code,
-      ...submissionValues
-    } = formattedValues;
-
-    console.log("Submitted Data:", submissionValues);
-    addRecord("USA", submissionValues);
+  const onFinish = async (data) => {
+    try {
+      messageApi.open({
+        type: "loading",
+        content: "Adding Record...",
+      });
+      setLoading(true);
+      const formData = {
+        ...data,
+        Passport: "",
+        Lead: lead.ID,
+        Case_Type: lead.Case_Type,
+        Father_DOB: data.Father_DOB?.format("DD-MMM-YYYY") || "",
+      };
+      await ZOHO.CREATOR.init();
+      const response = await addRecord("USA", formData);
+      if (response.code !== 3000) return;
+      const recordId = response.data.ID;
+      if (data.Passport.length > 0) {
+        const pasportResp = await uploadFile(
+          "All_Usa",
+          recordId,
+          "Passport",
+          data.Passport[0].originFileObj
+        );
+        console.log(pasportResp);
+      }
+      messageApi.destroy();
+      messageApi.success("Record Successfully Added!");
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      messageApi.error("Error Adding Record");
+    }
   };
 
   return (
@@ -153,100 +147,20 @@ const USA = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
-            <Form.Item label="Lead" name="Lead" className="w-[300px]">
-              <Select
-                placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-              />
-            </Form.Item>
-            <Form.Item
-              label="Case Type"
-              name="Case_Type"
-              initialValue="USA"
-              className="w-[300px]"
-            >
-              <Select
-                placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-                options={CASE_TYPE_OPTIONS_USA}
-                disabled
-              />
-            </Form.Item>
-            <Form.Item
-              label="Mobile"
-              name="Mobile"
-              className="w-[300px]"
-              rules={[
-                {
-                  validator: (_, value) => {
-                    if (value) {
-                      // Get the country code from the `MobileCountrySelect` dropdown
-                      let countryCode =
-                        form.getFieldValue("Mobile_Country_Code") || "";
-                      // Strip the '+' if present
-                      countryCode = countryCode.startsWith("+")
-                        ? countryCode.slice(1)
-                        : countryCode;
-
-                      // Combine the country code and mobile number
-                      const fullNumber = `${countryCode}${value}`;
-
-                      // Validate the length
-                      if (fullNumber.length > 15) {
-                        return Promise.reject(
-                          new Error(
-                            `The mobile number (including the country code) should not exceed 15 digits.`
-                          )
-                        );
-                      }
-                    }
-
-                    return Promise.resolve();
-                  },
-                },
-              ]}
-            >
-              <InputNumber
-                stringMode
-                maxLength={15}
-                addonBefore={MobileCountrySelect}
-                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-                disabled
-              />
-            </Form.Item>
-            <Form.Item
-              name="Email"
-              label="Email"
-              rules={[{ type: "email" }]}
-              className="w-[300px]"
-            >
-              <Input
-                maxLength={80}
-                addonAfter={<MailOutlined />}
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-                disabled
-              />
-            </Form.Item>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
             <Form.Item
               name="Passport"
               label="Passport"
-              valuePropName="file"
-              getValueFromEvent={getFile}
+              valuePropName="fileList"
               className="w-[300px]"
+              getValueFromEvent={getFile}
               rules={[
-                // {
-                //   required: true,
-                //   message: "Kindly upload your Passport!",
-                // },
                 {
                   validator: isFileEmpty,
                 },
               ]}
             >
-              <Upload name="Passport" maxCount={1}>
+              <Upload name="Passport" maxCount={1} beforeUpload={() => false}>
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
@@ -286,7 +200,6 @@ const USA = () => {
               name="th1"
               label="10th"
               valuePropName="file"
-              getValueFromEvent={getFile}
               className="w-[300px]"
               rules={[
                 // {
@@ -339,7 +252,6 @@ const USA = () => {
               label="TRF"
               className="w-[300px]"
               valuePropName="file"
-              getValueFromEvent={getFile}
               rules={[
                 // {
                 //   required: true,
@@ -365,7 +277,6 @@ const USA = () => {
               label="Offer Letter (Study)"
               className="w-[300px]"
               valuePropName="file"
-              getValueFromEvent={getFile}
               rules={[
                 // {
                 //   required: true,
@@ -422,7 +333,7 @@ const USA = () => {
               <Checkbox.Group>
                 <Space direction="vertical">
                   <Checkbox
-                    value="Sevis"
+                    value="Sevis fee :- 29750"
                     className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
@@ -431,7 +342,7 @@ const USA = () => {
                     Sevis fee :- 29750
                   </Checkbox>
                   <Checkbox
-                    value="DS160"
+                    value="DS160:-15725"
                     className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
@@ -440,7 +351,7 @@ const USA = () => {
                     DS160:-15725
                   </Checkbox>
                   <Checkbox
-                    value="Offer Letter fees"
+                    value="Offer Letter  fees"
                     className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
@@ -503,7 +414,7 @@ const USA = () => {
             <legend className="font-bold !border-b-0 !text-black !text-2xl !mb-3">
               Question
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 label="Preferred location of interview?"
                 name="preferred_location_of_interview"
@@ -549,7 +460,7 @@ const USA = () => {
             <legend className="font-bold !border-b-0 !text-black !text-lg !mb-3">
               USA Person Contact Where You Stay
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 label="Person Or Organization Name"
                 name="Person_Or_Organization_Name"
@@ -689,7 +600,7 @@ const USA = () => {
                   <legend className="font-bold !text-black">
                     Marital Status
                   </legend>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
                     <Form.Item
                       label="Spouse Name"
                       name="Spouse_Name"
@@ -763,7 +674,7 @@ const USA = () => {
             <legend className="font-bold !text-black">
               Occupation Details
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 label="Primary Or Current Occupation"
                 name="Primary_Or_Current_ccupation"
@@ -825,7 +736,7 @@ const USA = () => {
                   <legend className="font-bold !text-black">
                     Experience Details
                   </legend>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
                     <Form.Item
                       label="Organization Name"
                       name="Organization_Name"
@@ -994,7 +905,7 @@ const USA = () => {
                 "Have_you_ever_Attended_any_Educational_institution_at_secondary_level_or_above"
               ) === "yes" && (
                 <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
                     <Form.Item
                       label="Provide name of institution"
                       name="Provide_name_of_institution"
@@ -1045,7 +956,7 @@ const USA = () => {
                       />
                     </Form.Item>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
                     <Form.Item
                       label="Course Starting Date"
                       name="Course_Starting_Date"
@@ -1269,6 +1180,7 @@ const USA = () => {
               </Radio.Group>
             </Form.Item>
           </fieldset>
+          {contextHolder}
           <Flex justify="center" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
@@ -1276,7 +1188,12 @@ const USA = () => {
               </Button>
             </Form.Item>
             <Form.Item label={null}>
-              <Button type="primary" htmlType="submit" className="w-28">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="w-28"
+                loading={loading}
+              >
                 Submit
               </Button>
             </Form.Item>

@@ -132,7 +132,7 @@ const VisitorVisa = () => {
             <legend className="font-bold !text-black">
               Personal Information
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item label="Lead" name="Lead" className="w-[300px]">
                 <Select
                   placeholder="Choose"
@@ -206,7 +206,7 @@ const VisitorVisa = () => {
                 />
               </Form.Item>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start items-end max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start items-end max-w-max">
               <Form.Item
                 label="Whom They Meet"
                 name="Whom_They_Meet"
@@ -246,7 +246,7 @@ const VisitorVisa = () => {
                 }
               </Form.Item>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start items-end max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start items-end max-w-max">
               <Form.Item
                 label="Purpose of Visit"
                 name="Purpose_of_Visit"
@@ -300,7 +300,7 @@ const VisitorVisa = () => {
             <legend className="font-bold !text-black">
               Necessary documents will be
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 name="Passport"
                 label="Passport"
@@ -345,7 +345,7 @@ const VisitorVisa = () => {
           </fieldset>
           <fieldset className="p-0">
             <legend className="font-bold !text-black">Visitor Visa</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 label="Age"
                 name="Age"
@@ -407,7 +407,7 @@ const VisitorVisa = () => {
           </fieldset>
           <fieldset className="p-0">
             <legend className="font-bold !text-black">Sponsor</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 name="Name_Of_Sponsor"
                 label="Name Of Sponsor"
@@ -464,7 +464,7 @@ const VisitorVisa = () => {
                   <legend className="font-bold !text-black">
                     Sponsor checklist
                   </legend>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
                     <Form.Item
                       noStyle
                       shouldUpdate={(prevValues, currentValues) =>
@@ -1021,7 +1021,7 @@ const VisitorVisa = () => {
                 options={OCCUPATION_OPTIONS}
               />
             </Form.Item>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
               <Form.Item
                 noStyle
                 shouldUpdate={(prevValues, currentValues) =>
