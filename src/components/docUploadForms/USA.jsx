@@ -21,7 +21,6 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import {
-  CASE_TYPE_OPTIONS_USA,
   PAYMENT_DETAILS_OPTIONS,
   COUNTRY_CODE_OPTIONS,
 } from "./utils/selectOptions";
@@ -33,20 +32,6 @@ import { useSelector } from "react-redux";
 import uploadFile from "../../api/uploadFile";
 
 const { TextArea } = Input;
-
-const MobileCountrySelect = (
-  <Form.Item name="Mobile_Country_Code" initialValue="+91" noStyle>
-    <Select
-      showSearch
-      popupMatchSelectWidth={false}
-      options={COUNTRY_CODE_OPTIONS.map(({ key, ...rest }) => ({
-        ...rest,
-        key,
-      }))}
-      optionFilterProp="label"
-    />
-  </Form.Item>
-);
 
 const Phone1CountrySelect = (
   <Form.Item name="Phone1_Country_Code" initialValue="+91" noStyle>
@@ -83,8 +68,8 @@ const USA = () => {
 
   const lead = useSelector((state) => state.client.details);
 
-  const isFileEmpty = (_, file) => {
-    if (file?.size === 0) {
+  const isFileEmpty = (_, fileList) => {
+    if (fileList[0]?.size === 0) {
       return Promise.reject(
         new Error(
           "Empty file found. Please try uploading another file with data."
