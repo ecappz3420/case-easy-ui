@@ -439,7 +439,7 @@ const VisitorVisa = () => {
               <Form.Item
                 label="Whom They Meet"
                 name="Whom_They_Meet"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Select
                   placeholder="Choose"
@@ -457,7 +457,7 @@ const VisitorVisa = () => {
                   getFieldValue("Whom_They_Meet") === "Other" && (
                     <Form.Item
                       name="Other_Whom_They_Meet"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -479,7 +479,7 @@ const VisitorVisa = () => {
               <Form.Item
                 label="Purpose of Visit"
                 name="Purpose_of_Visit"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Select
                   placeholder="Choose"
@@ -497,7 +497,7 @@ const VisitorVisa = () => {
                   getFieldValue("Purpose_of_Visit") === "Other" && (
                     <Form.Item
                       name="Other_Purpose_of_Visit"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -517,7 +517,7 @@ const VisitorVisa = () => {
             <Form.Item
               label="GC Key Username"
               name="GC_Key_Username"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <Input
                 maxLength={255}
@@ -535,7 +535,7 @@ const VisitorVisa = () => {
                 label="Passport"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -559,7 +559,7 @@ const VisitorVisa = () => {
               <Form.Item
                 label="Ties to visiting country"
                 name="Ties_to_visiting_country"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <TextArea
                   maxLength={100}
@@ -578,7 +578,7 @@ const VisitorVisa = () => {
               <Form.Item
                 label="Age"
                 name="Age"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[{ validator: isWholeNumber }]}
               >
                 <InputNumber
@@ -587,7 +587,11 @@ const VisitorVisa = () => {
                   placeholder="#######"
                 />
               </Form.Item>
-              <Form.Item label="Salary" name="Sallary" className="w-[300px]">
+              <Form.Item
+                label="Salary"
+                name="Sallary"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
+              >
                 <InputNumber
                   stringMode
                   maxLength={10}
@@ -596,7 +600,11 @@ const VisitorVisa = () => {
                   placeholder="##,##,###.##"
                 />
               </Form.Item>
-              <Form.Item name="ITR" label="ITR" className="w-[300px]">
+              <Form.Item
+                name="ITR"
+                label="ITR"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
+              >
                 <Radio.Group>
                   <Radio value="Yes">Yes</Radio>
                   <Radio value="No">No</Radio>
@@ -613,7 +621,7 @@ const VisitorVisa = () => {
                     <Form.Item
                       label="ITR Amount"
                       name="ITR_Amount"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -640,7 +648,7 @@ const VisitorVisa = () => {
               <Form.Item
                 name="Name_Of_Sponsor"
                 label="Name Of Sponsor"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
@@ -650,6 +658,7 @@ const VisitorVisa = () => {
               <Form.Item
                 label="Number of Applicants"
                 name="Number_of_Applicants"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <InputNumber
                   stringMode
@@ -661,7 +670,7 @@ const VisitorVisa = () => {
               <Form.Item
                 label="Sponsor Status"
                 name="Sponse_Status"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Select
                   placeholder="Choose"
@@ -672,7 +681,7 @@ const VisitorVisa = () => {
               <Form.Item
                 label="Reason Of Visit"
                 name="Reason_Of_Visit"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
@@ -707,7 +716,7 @@ const VisitorVisa = () => {
                             label="Passport"
                             valuePropName="fileList"
                             getValueFromEvent={getFile}
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -748,7 +757,7 @@ const VisitorVisa = () => {
                             label="Study Permit"
                             valuePropName="fileList"
                             getValueFromEvent={getFile}
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -789,7 +798,7 @@ const VisitorVisa = () => {
                             label="Canadian Passport"
                             valuePropName="fileList"
                             getValueFromEvent={getFile}
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -831,7 +840,7 @@ const VisitorVisa = () => {
                             label="LOA"
                             valuePropName="fileList"
                             getValueFromEvent={getFile}
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -864,7 +873,7 @@ const VisitorVisa = () => {
                       label="Convocation Letter"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         // {
                         //   required: true,
@@ -908,7 +917,7 @@ const VisitorVisa = () => {
                                 label="Pay Slips"
                                 valuePropName="fileList"
                                 getValueFromEvent={getFile}
-                                className="w-[300px]"
+                                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                                 rules={[
                                   {
                                     required: true,
@@ -938,7 +947,7 @@ const VisitorVisa = () => {
                                 label="Job Letter"
                                 valuePropName="fileList"
                                 getValueFromEvent={getFile}
-                                className="w-[300px]"
+                                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                                 rules={[
                                   {
                                     required: true,
@@ -981,7 +990,7 @@ const VisitorVisa = () => {
                             label="Enrollment / Completion Letter"
                             valuePropName="fileList"
                             getValueFromEvent={getFile}
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -1024,7 +1033,7 @@ const VisitorVisa = () => {
                             label="Business Documents"
                             valuePropName="fileList"
                             getValueFromEvent={getFile}
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -1064,7 +1073,7 @@ const VisitorVisa = () => {
                           <Form.Item
                             name="Current_Add"
                             label="Current Occupation"
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -1085,7 +1094,7 @@ const VisitorVisa = () => {
                       label="Completion Letter"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         // {
                         //   required: true,
@@ -1117,7 +1126,7 @@ const VisitorVisa = () => {
                           <Form.Item
                             label="Current Address"
                             name="Current_Address"
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -1146,7 +1155,7 @@ const VisitorVisa = () => {
                             label="Work Permit"
                             valuePropName="fileList"
                             getValueFromEvent={getFile}
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -1187,7 +1196,7 @@ const VisitorVisa = () => {
                             label="PR Card"
                             valuePropName="fileList"
                             getValueFromEvent={getFile}
-                            className="w-[300px]"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                             rules={[
                               {
                                 required: true,
@@ -1220,7 +1229,7 @@ const VisitorVisa = () => {
                       label="Indian Passport"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1250,7 +1259,7 @@ const VisitorVisa = () => {
                       label="Driving Licence"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         // {
                         //   required: true,
@@ -1283,7 +1292,7 @@ const VisitorVisa = () => {
             <Form.Item
               label="Present Occupation"
               name="Present_Occupation"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <Select
                 placeholder="Choose"
@@ -1303,7 +1312,7 @@ const VisitorVisa = () => {
                   getFieldValue("Present_Occupation") === "Other" && (
                     <Form.Item
                       name="Other_Present_Occupation"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1336,7 +1345,7 @@ const VisitorVisa = () => {
                       label="Digital Photo"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1383,7 +1392,7 @@ const VisitorVisa = () => {
                       label="Lease Agreement"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1426,7 +1435,7 @@ const VisitorVisa = () => {
                       label="NOC"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1468,7 +1477,7 @@ const VisitorVisa = () => {
                       label="3 Month Statement"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1501,7 +1510,7 @@ const VisitorVisa = () => {
                 label="Study Permit"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -1538,7 +1547,7 @@ const VisitorVisa = () => {
                       label="ITR"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1581,7 +1590,7 @@ const VisitorVisa = () => {
                       label="3 Month Current Account Statement"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1624,7 +1633,7 @@ const VisitorVisa = () => {
                       label="Pension / Retirement Order"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1667,7 +1676,7 @@ const VisitorVisa = () => {
                       label="Shop Establishment"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1701,7 +1710,7 @@ const VisitorVisa = () => {
                 label="Translated"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -1737,7 +1746,7 @@ const VisitorVisa = () => {
                       label="Fard With Translation"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1779,7 +1788,7 @@ const VisitorVisa = () => {
                       label="Job Letter"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1822,7 +1831,7 @@ const VisitorVisa = () => {
                         label="Last 2 Pay Slips"
                         valuePropName="fileList"
                         getValueFromEvent={getFile}
-                        className="w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         rules={[
                           {
                             required: true,
@@ -1852,7 +1861,7 @@ const VisitorVisa = () => {
                         label="Business ITR (if possible)"
                         valuePropName="fileList"
                         getValueFromEvent={getFile}
-                        className="w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         rules={[
                           {
                             required: true,
@@ -1883,7 +1892,7 @@ const VisitorVisa = () => {
                         label="Business Proof"
                         valuePropName="fileList"
                         getValueFromEvent={getFile}
-                        className="w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         rules={[
                           {
                             required: true,
@@ -1927,7 +1936,7 @@ const VisitorVisa = () => {
                       label="J Form"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -1960,7 +1969,7 @@ const VisitorVisa = () => {
                 label="Fard"
                 valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -1990,7 +1999,7 @@ const VisitorVisa = () => {
             <Form.Item
               name="Any_previous_travel_history"
               label="Any previous travel history"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 {
                   required: true,
@@ -2135,7 +2144,7 @@ const VisitorVisa = () => {
             <Form.Item
               name="Any_refusal"
               label="Any refusal"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 {
                   required: true,
@@ -2265,7 +2274,7 @@ const VisitorVisa = () => {
             <Form.Item
               name="Any_health_issues"
               label="Any health issues"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 {
                   required: true,
@@ -2290,7 +2299,7 @@ const VisitorVisa = () => {
                     <Form.Item
                       label="Health issues Details"
                       name="Health_issues_Deatils"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -2312,7 +2321,7 @@ const VisitorVisa = () => {
                       label="Medical Certificate"
                       valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -2344,7 +2353,7 @@ const VisitorVisa = () => {
             <Form.Item
               name="English_proficiency_test"
               label="English proficiency test"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 {
                   required: true,
@@ -2370,7 +2379,7 @@ const VisitorVisa = () => {
                     <Form.Item
                       label="Band Score"
                       name="Band_Score"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -2386,7 +2395,7 @@ const VisitorVisa = () => {
                     <Form.Item
                       label="Reading"
                       name="Reading"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -2402,7 +2411,7 @@ const VisitorVisa = () => {
                     <Form.Item
                       label="Listening"
                       name="Listining"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -2418,7 +2427,7 @@ const VisitorVisa = () => {
                     <Form.Item
                       label="Writing"
                       name="Writing"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -2434,7 +2443,7 @@ const VisitorVisa = () => {
                     <Form.Item
                       label="Speaking"
                       name="Speaking"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -2450,7 +2459,7 @@ const VisitorVisa = () => {
                     <Form.Item
                       label="Overall"
                       name="Overall"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -2470,7 +2479,7 @@ const VisitorVisa = () => {
             <Form.Item
               name="Do_you_Depend_On_someone"
               label="Do You Need Financial help ?"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 {
                   required: true,
@@ -2495,7 +2504,7 @@ const VisitorVisa = () => {
                   <Form.Item
                     label="Relation"
                     name="Relation"
-                    className="w-[300px]"
+                    className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                     rules={[
                       {
                         required: true,
@@ -2518,7 +2527,7 @@ const VisitorVisa = () => {
             <Form.Item
               label="Visa Chances"
               name="Visa_Chances1"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <InputNumber
                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
@@ -2535,7 +2544,7 @@ const VisitorVisa = () => {
               label="Bank Statement"
               valuePropName="fileList"
               getValueFromEvent={getFile}
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 {
                   validator: isFileEmpty,
