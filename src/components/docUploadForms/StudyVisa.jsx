@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
-  Select,
   Input,
   InputNumber,
   Radio,
@@ -14,27 +13,35 @@ import {
   Upload,
   DatePicker,
   Divider,
+  message,
 } from "antd";
 import { UploadOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
-import { CASE_TYPE_OPTIONS } from "./utils/selectOptions";
+
+import addRecord from "../../api/addRecord";
+import { useSelector } from "react-redux";
+import uploadFile from "../../api/uploadFile";
 
 const { TextArea } = Input;
 
 const StudyVisa = () => {
   const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
+  const [loading, setLoading] = useState(false);
+
+  const lead = useSelector((state) => state.client.details);
 
   //For file upload, setting File fields in form with respective file details
   const getFile = (e) => {
-    console.log("Upload event:", e);
-    if (e?.file && e.file.status !== "removed") {
-      return e.file; // Return the uploaded file
+    if (Array.isArray(e)) {
+      return e;
     }
-    return null; // If no file or file is removed
+    console.log("Upload: ", e?.fileList);
+    return e?.fileList;
   };
 
   //Upload file checked if empty
-  const isFileEmpty = (_, file) => {
-    if (file?.size === 0) {
+  const isFileEmpty = (_, fileList) => {
+    if (fileList[0]?.size === 0) {
       return Promise.reject(
         new Error(
           "Empty file found. Please try uploading another file with data."
@@ -44,15 +51,177 @@ const StudyVisa = () => {
     return Promise.resolve(); // Validation passed
   };
 
-  const onFinish = (values) => {
-    const formattedValues = {
-      ...values,
-      Education_Details: values.Education_Details?.map((item) => ({
-        ...item,
-        Year_field: item.Year_field?.format("YYYY") || "",
-      })),
-    };
-    console.log("Submitted Data:", formattedValues);
+  const onFinish = async (data) => {
+    try {
+      messageApi.open({
+        type: "loading",
+        content: "Adding Record...",
+      });
+      setLoading(true);
+
+      const formattedData = {
+        ...data,
+
+        Lead: lead.ID,
+        Case_Type: lead.Case_Type,
+
+        //File upload fields
+        Passport_Upload: "",
+        TRF: "",
+        th1: "",
+        th: "",
+        Bachelors: "",
+        Masters: "",
+        Diploma: "",
+        Spouse_Passport: "",
+        Pay_Slips: "",
+        Account_Balance: "",
+        Work_Permit: "",
+        Job_Letter_Appointment_Letter: "",
+        Chat_and_call_History: "",
+
+        //Format date field in the Education_Details array
+        Education_Details: data.Education_Details?.map((item) => ({
+          ...item,
+          Year_field: item.Year_field?.format("DD-MMM-YYYY") || "",
+        })),
+      };
+
+      await ZOHO.CREATOR.init();
+
+      const response = await addRecord("Study_Visa", formattedData);
+      if (response.code !== 3000) throw new Error(response.error);
+
+      //Uploading Files to Zoho after successful adding of Record
+      const recordId = response.data.ID;
+
+      data.Passport_Upload?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Passport_Upload",
+            data.Passport_Upload[0].originFileObj
+          )
+        );
+      data.TRF?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "TRF",
+            data.TRF[0].originFileObj
+          )
+        );
+      data.th1?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "th1",
+            data.th1[0].originFileObj
+          )
+        );
+      data.th?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "th",
+            data.th[0].originFileObj
+          )
+        );
+      data.Bachelors?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Bachelors",
+            data.Bachelors[0].originFileObj
+          )
+        );
+      data.Masters?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Masters",
+            data.Masters[0].originFileObj
+          )
+        );
+      data.Diploma?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Diploma",
+            data.Diploma[0].originFileObj
+          )
+        );
+      data.Spouse_Passport?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Spouse_Passport",
+            data.Spouse_Passport[0].originFileObj
+          )
+        );
+      data.Pay_Slips?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Pay_Slips",
+            data.Pay_Slips[0].originFileObj
+          )
+        );
+      data.Account_Balance?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Account_Balance",
+            data.Account_Balance[0].originFileObj
+          )
+        );
+      data.Work_Permit?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Work_Permit",
+            data.Work_Permit[0].originFileObj
+          )
+        );
+      data.Job_Letter_Appointment_Letter?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Job_Letter_Appointment_Letter",
+            data.Job_Letter_Appointment_Letter[0].originFileObj
+          )
+        );
+      data.Chat_and_call_History?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Visa",
+            recordId,
+            "Chat_and_call_History",
+            data.Chat_and_call_History[0].originFileObj
+          )
+        );
+
+      messageApi.destroy();
+      messageApi.success("Record Successfully Added!");
+      console.log("Submitted Data:", formattedData);
+    } catch (error) {
+      console.log(error);
+      messageApi.error("Error Adding Record");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -65,38 +234,17 @@ const StudyVisa = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
-            <Form.Item label="Lead" name="Lead" className="w-[300px]">
-              <Select
-                placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-              />
-            </Form.Item>
-            <Form.Item
-              label="Case Type"
-              name="Case_Type"
-              initialValue="Study Visa"
-              className="w-[300px]"
-            >
-              <Select
-                placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-                options={CASE_TYPE_OPTIONS}
-                disabled
-              />
-            </Form.Item>
-          </div>
           <fieldset className="p-0">
             <legend className="font-bold !text-black">Basic Questions</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
               <Form.Item
                 name="Is_Passport"
                 label="Is Passport"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Radio.Group>
-                  <Radio value="yes">Yes</Radio>
-                  <Radio value="no">No</Radio>
+                  <Radio value="Yes">Yes</Radio>
+                  <Radio value="No">No</Radio>
                 </Radio.Group>
               </Form.Item>
               <Form.Item
@@ -106,13 +254,13 @@ const StudyVisa = () => {
                 }
               >
                 {({ getFieldValue }) =>
-                  getFieldValue("Is_Passport") === "yes" && (
+                  getFieldValue("Is_Passport") === "Yes" && (
                     <Form.Item
                       name="Passport_Upload"
                       label="Passport Upload"
-                      valuePropName="file"
+                      valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -123,11 +271,15 @@ const StudyVisa = () => {
                         },
                       ]}
                     >
-                      <Upload name="Passport_Upload" maxCount={1}>
+                      <Upload
+                        name="Passport_Upload"
+                        maxCount={1}
+                        beforeUpload={() => false}
+                      >
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -137,11 +289,15 @@ const StudyVisa = () => {
                 }
               </Form.Item>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
-              <Form.Item name="IELTS" label="IELTS" className="w-[300px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
+              <Form.Item
+                name="IELTS"
+                label="IELTS"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
+              >
                 <Radio.Group>
-                  <Radio value="yes">Yes</Radio>
-                  <Radio value="no">No</Radio>
+                  <Radio value="Yes">Yes</Radio>
+                  <Radio value="No">No</Radio>
                 </Radio.Group>
               </Form.Item>
               <Form.Item
@@ -151,13 +307,13 @@ const StudyVisa = () => {
                 }
               >
                 {({ getFieldValue }) =>
-                  getFieldValue("IELTS") === "yes" && (
+                  getFieldValue("IELTS") === "Yes" && (
                     <Form.Item
                       name="TRF"
                       label="TRF"
-                      valuePropName="file"
+                      valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -168,11 +324,15 @@ const StudyVisa = () => {
                         },
                       ]}
                     >
-                      <Upload name="TRF" maxCount={1}>
+                      <Upload
+                        name="TRF"
+                        maxCount={1}
+                        beforeUpload={() => false}
+                      >
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -185,7 +345,7 @@ const StudyVisa = () => {
             <Form.Item
               name="All_Education_Documents"
               label="All Education Documents"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <Checkbox.Group>
                 <Row>
@@ -211,7 +371,7 @@ const StudyVisa = () => {
                   </Col>
                   <Col span={8}>
                     <Checkbox
-                      value="Bachelors"
+                      value="Bachelor"
                       style={{
                         lineHeight: "32px",
                       }}
@@ -258,9 +418,9 @@ const StudyVisa = () => {
                       <Form.Item
                         name="th1"
                         label="10th"
-                        valuePropName="file"
+                        valuePropName="fileList"
                         getValueFromEvent={getFile}
-                        className="w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         rules={[
                           {
                             required: true,
@@ -271,11 +431,15 @@ const StudyVisa = () => {
                           },
                         ]}
                       >
-                        <Upload name="th1" maxCount={1}>
+                        <Upload
+                          name="th1"
+                          maxCount={1}
+                          beforeUpload={() => false}
+                        >
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -286,9 +450,9 @@ const StudyVisa = () => {
                       <Form.Item
                         name="th"
                         label="12th"
-                        valuePropName="file"
+                        valuePropName="fileList"
                         getValueFromEvent={getFile}
-                        className="w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         rules={[
                           {
                             required: true,
@@ -299,24 +463,28 @@ const StudyVisa = () => {
                           },
                         ]}
                       >
-                        <Upload name="th" maxCount={1}>
+                        <Upload
+                          name="th"
+                          maxCount={1}
+                          beforeUpload={() => false}
+                        >
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
                         </Upload>
                       </Form.Item>
                     )}
-                    {selectedDocs.includes("Bachelors") && (
+                    {selectedDocs.includes("Bachelor") && (
                       <Form.Item
                         name="Bachelors"
                         label="Bachelors"
-                        valuePropName="file"
+                        valuePropName="fileList"
                         getValueFromEvent={getFile}
-                        className="w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         rules={[
                           {
                             required: true,
@@ -327,11 +495,15 @@ const StudyVisa = () => {
                           },
                         ]}
                       >
-                        <Upload name="Bachelors" maxCount={1}>
+                        <Upload
+                          name="Bachelors"
+                          maxCount={1}
+                          beforeUpload={() => false}
+                        >
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -342,9 +514,9 @@ const StudyVisa = () => {
                       <Form.Item
                         name="Masters"
                         label="Masters"
-                        valuePropName="file"
+                        valuePropName="fileList"
                         getValueFromEvent={getFile}
-                        className="w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         rules={[
                           {
                             required: true,
@@ -355,11 +527,15 @@ const StudyVisa = () => {
                           },
                         ]}
                       >
-                        <Upload name="Masters" maxCount={1}>
+                        <Upload
+                          name="Masters"
+                          maxCount={1}
+                          beforeUpload={() => false}
+                        >
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -370,9 +546,9 @@ const StudyVisa = () => {
                       <Form.Item
                         name="Diploma"
                         label="Diploma"
-                        valuePropName="file"
+                        valuePropName="fileList"
                         getValueFromEvent={getFile}
-                        className="w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         rules={[
                           {
                             required: true,
@@ -383,11 +559,15 @@ const StudyVisa = () => {
                           },
                         ]}
                       >
-                        <Upload name="Diploma" maxCount={1}>
+                        <Upload
+                          name="Diploma"
+                          maxCount={1}
+                          beforeUpload={() => false}
+                        >
                           <Button
                             icon={<UploadOutlined />}
                             iconPosition="end"
-                            className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
                             Select File
                           </Button>
@@ -398,13 +578,13 @@ const StudyVisa = () => {
                 );
               }}
             </Form.Item>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
               <Form.Item
                 name="if_spou"
                 valuePropName="checked"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
-                <Checkbox className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]">
+                <Checkbox className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]">
                   if spouse is in CANADA but on Work Permit
                 </Checkbox>
               </Form.Item>
@@ -419,9 +599,9 @@ const StudyVisa = () => {
                     <Form.Item
                       name="Spouse_Passport"
                       label="Spouse Passport"
-                      valuePropName="file"
+                      valuePropName="fileList"
                       getValueFromEvent={getFile}
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -432,11 +612,15 @@ const StudyVisa = () => {
                         },
                       ]}
                     >
-                      <Upload name="Spouse_Passport" maxCount={1}>
+                      <Upload
+                        name="Spouse_Passport"
+                        maxCount={1}
+                        beforeUpload={() => false}
+                      >
                         <Button
                           icon={<UploadOutlined />}
                           iconPosition="end"
-                          className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                          className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
                           Select File
                         </Button>
@@ -446,13 +630,13 @@ const StudyVisa = () => {
                 }
               </Form.Item>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
               <Form.Item
                 name="Pay_Slips"
                 label="3 Pay Slips"
-                valuePropName="file"
+                valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -463,11 +647,15 @@ const StudyVisa = () => {
                   },
                 ]}
               >
-                <Upload name="Pay_Slips" maxCount={1}>
+                <Upload
+                  name="Pay_Slips"
+                  maxCount={1}
+                  beforeUpload={() => false}
+                >
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -476,9 +664,9 @@ const StudyVisa = () => {
               <Form.Item
                 name="Account_Balance"
                 label="Account Summary and Balance"
-                valuePropName="file"
+                valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -489,11 +677,15 @@ const StudyVisa = () => {
                   },
                 ]}
               >
-                <Upload name="Account_Balance" maxCount={1}>
+                <Upload
+                  name="Account_Balance"
+                  maxCount={1}
+                  beforeUpload={() => false}
+                >
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -502,9 +694,9 @@ const StudyVisa = () => {
               <Form.Item
                 name="Work_Permit"
                 label="Work Permit"
-                valuePropName="file"
+                valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -515,11 +707,15 @@ const StudyVisa = () => {
                   },
                 ]}
               >
-                <Upload name="Work_Permit" maxCount={1}>
+                <Upload
+                  name="Work_Permit"
+                  maxCount={1}
+                  beforeUpload={() => false}
+                >
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -528,9 +724,9 @@ const StudyVisa = () => {
               <Form.Item
                 name="Job_Letter_Appointment_Letter"
                 label="Job Letter / Appointment Letter"
-                valuePropName="file"
+                valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -541,11 +737,15 @@ const StudyVisa = () => {
                   },
                 ]}
               >
-                <Upload name="Job_Letter_Appointment_Letter" maxCount={1}>
+                <Upload
+                  name="Job_Letter_Appointment_Letter"
+                  maxCount={1}
+                  beforeUpload={() => false}
+                >
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -554,9 +754,9 @@ const StudyVisa = () => {
               <Form.Item
                 name="Chat_and_call_History"
                 label="Chat and Call History"
-                valuePropName="file"
+                valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -567,11 +767,15 @@ const StudyVisa = () => {
                   },
                 ]}
               >
-                <Upload name="Chat_and_call_History" maxCount={1}>
+                <Upload
+                  name="Chat_and_call_History"
+                  maxCount={1}
+                  beforeUpload={() => false}
+                >
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                    className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -583,21 +787,21 @@ const StudyVisa = () => {
             <legend className="font-bold !text-black">
               Study Visa Questions
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
               <Form.Item
                 label="Any Previous Refusal"
                 name="Any_Previous_Refusal"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Backlog"
                 name="Backlog"
-                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <TextArea
                   maxLength={100}
@@ -605,13 +809,13 @@ const StudyVisa = () => {
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
+                  className="sm:!max-w-[200px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Any Specific preference for College, Program or Campus"
                 name="Any_Specific_preference_for_College_Program_or_Campus"
-                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <TextArea
                   maxLength={100}
@@ -619,13 +823,13 @@ const StudyVisa = () => {
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
+                  className="sm:!max-w-[200px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Gap Justification"
                 name="Gap_Justification"
-                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 labelCol={{ style: { height: 52 } }}
               >
                 <TextArea
@@ -634,7 +838,7 @@ const StudyVisa = () => {
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
+                  className="sm:!max-w-[200px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
             </div>
@@ -698,8 +902,7 @@ const StudyVisa = () => {
                           className="w-[200px]"
                         >
                           <DatePicker
-                            picker="year"
-                            format="YYYY"
+                            format="DD-MMM-YYYY"
                             className="w-[200px]"
                           />
                         </Form.Item>
@@ -741,14 +944,15 @@ const StudyVisa = () => {
             <Form.Item
               label="Visa Chances"
               name="Visa_Chances"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <InputNumber
-                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
             </Form.Item>
           </fieldset>
+          {contextHolder}
           <Flex justify="center" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
@@ -756,7 +960,12 @@ const StudyVisa = () => {
               </Button>
             </Form.Item>
             <Form.Item label={null}>
-              <Button type="primary" htmlType="submit" className="w-28">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="w-28"
+                loading={loading}
+              >
                 Submit
               </Button>
             </Form.Item>
