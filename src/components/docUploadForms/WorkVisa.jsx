@@ -33,7 +33,7 @@ const WorkVisa = () => {
 
   //Upload file checked if empty
   const isFileEmpty = (_, fileList) => {
-    if (fileList[0]?.size === 0) {
+    if (fileList && fileList[0]?.size === 0) {
       return Promise.reject(
         new Error(
           "Empty file found. Please try uploading another file with data."
@@ -45,7 +45,7 @@ const WorkVisa = () => {
 
   //Upload file type check for images
   const isImage = (_, fileList) => {
-    if (fileList[0]) {
+    if (fileList && fileList[0]) {
       const isImage = fileList[0].type.startsWith("image/");
       if (!isImage) {
         return Promise.reject(
