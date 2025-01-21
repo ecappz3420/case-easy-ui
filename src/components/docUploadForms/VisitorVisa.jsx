@@ -150,8 +150,9 @@ const VisitorVisa = () => {
       await ZOHO.CREATOR.init();
 
       const response = await addRecord("Visitor_Visa", formattedData);
-      if (response.code !== 3000) return;
+      if (response.code !== 3000) throw new Error(response.message);
 
+      //Uploading Files to Zoho after successful adding of Record
       const recordId = response.data.ID;
 
       data.Passport?.length > 0 &&
