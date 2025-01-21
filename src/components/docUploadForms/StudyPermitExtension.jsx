@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
-  Select,
   Input,
   InputNumber,
   Checkbox,
@@ -11,25 +10,33 @@ import {
   Upload,
   DatePicker,
   Divider,
+  message,
 } from "antd";
 import { UploadOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
-import { CASE_TYPE_OPTIONS } from "./utils/selectOptions";
+
+import addRecord from "../../api/addRecord";
+import { useSelector } from "react-redux";
+import uploadFile from "../../api/uploadFile";
 
 const StudyPermitExtension = () => {
   const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
+  const [loading, setLoading] = useState(false);
+
+  const lead = useSelector((state) => state.client.details);
 
   //For file upload, setting File fields in form with respective file details
   const getFile = (e) => {
-    console.log("Upload event:", e);
-    if (e?.file && e.file.status !== "removed") {
-      return e.file; // Return the uploaded file
+    if (Array.isArray(e)) {
+      return e;
     }
-    return null; // If no file or file is removed
+    console.log("Upload: ", e?.fileList);
+    return e?.fileList;
   };
 
   //Upload file checked if empty
-  const isFileEmpty = (_, file) => {
-    if (file?.size === 0) {
+  const isFileEmpty = (_, fileList) => {
+    if (fileList && fileList[0]?.size === 0) {
       return Promise.reject(
         new Error(
           "Empty file found. Please try uploading another file with data."
@@ -39,17 +46,67 @@ const StudyPermitExtension = () => {
     return Promise.resolve(); // Validation passed
   };
 
-  const onFinish = (values) => {
-    const formattedValues = {
-      ...values,
+  const onFinish = async (data) => {
+    try {
+      messageApi.open({
+        type: "loading",
+        content: "Adding Record...",
+      });
+      setLoading(true);
 
-      // Format Year fields in the Education_Details array
-      Education_Details: values.Education_Details?.map((item) => ({
-        ...item,
-        Year_field: item.Year_field?.format("YYYY") || "",
-      })),
-    };
-    console.log("Submitted Data:", formattedValues);
+      const formattedData = {
+        ...data,
+
+        Case_Type: lead.Case_Type,
+
+        Medical_Certificate: "",
+        Study_Permit: "",
+
+        // Format Year fields in the Education_Details array
+        Education_Details: data.Education_Details?.map((item) => ({
+          ...item,
+          Year_field: item.Year_field?.format("DD-MMM-YYYY") || "",
+        })),
+      };
+
+      await ZOHO.CREATOR.init();
+      const response = await addRecord("Study_Permit_Extension", formattedData);
+
+      console.log(response);
+      if (response.code !== 3000) throw new Error(response.error);
+
+      //Uploading Files to Zoho after successful adding of Record
+      const recordId = response.data.ID;
+
+      data.Medical_Certificate?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Permit_Extensions",
+            recordId,
+            "Medical_Certificate",
+            data.Medical_Certificate[0].originFileObj
+          )
+        );
+
+      data.Study_Permit?.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Study_Permit_Extensions",
+            recordId,
+            "Study_Permit",
+            data.Study_Permit[0].originFileObj
+          )
+        );
+
+      messageApi.destroy();
+      messageApi.success("Record Successfully Added!");
+      console.log("Submitted Data:", formattedData);
+    } catch (error) {
+      console.log(error);
+      messageApi.error("Error Adding Record");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -62,38 +119,25 @@ const StudyPermitExtension = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
             <Form.Item
               label="counselling id"
               name="counselling_id"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-              />
-            </Form.Item>
-            <Form.Item
-              label="Case Type"
-              name="Case_Type"
-              className="w-[300px]"
-              initialValue="Study Permit Extension"
-            >
-              <Select
-                placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-                options={CASE_TYPE_OPTIONS}
-                disabled
+                className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item
               label="Counselling Name"
               name="Counselling_Name"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
           </div>
@@ -163,8 +207,7 @@ const StudyPermitExtension = () => {
                           className="w-[200px]"
                         >
                           <DatePicker
-                            picker="year"
-                            format="YYYY"
+                            format="DD-MMM-YYYY"
                             className="w-[200px]"
                           />
                         </Form.Item>
@@ -204,9 +247,9 @@ const StudyPermitExtension = () => {
           <Form.Item
             label="Medical Certificate"
             name="Medical_Certificate"
-            valuePropName="file"
+            valuePropName="fileList"
             getValueFromEvent={getFile}
-            className="w-[300px]"
+            className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             rules={[
               // {
               //   required: true,
@@ -217,11 +260,15 @@ const StudyPermitExtension = () => {
               },
             ]}
           >
-            <Upload name="Medical_Certificate" maxCount={1}>
+            <Upload
+              name="Medical_Certificate"
+              maxCount={1}
+              beforeUpload={() => false}
+            >
               <Button
                 icon={<UploadOutlined />}
                 iconPosition="end"
-                className="w-[300px] sm:w-[210px] md:w-[250px] lg:w-[300px] mb-1"
+                className="w-[300px] sm:w-[200px] md:w-[250px] lg:w-[300px] mb-1"
               >
                 Select File
               </Button>
@@ -229,23 +276,23 @@ const StudyPermitExtension = () => {
           </Form.Item>
           <fieldset className="p-0">
             <legend className="font-bold !text-black">Visa Chances</legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-max">
               <Form.Item
                 label="Visa Chances"
                 name="Visa_Chances1"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <InputNumber
-                  className="w-full sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   addonAfter="%"
                 />
               </Form.Item>
               <Form.Item
                 label="Study Permit"
                 name="Study_Permit"
-                valuePropName="file"
+                valuePropName="fileList"
                 getValueFromEvent={getFile}
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 rules={[
                   // {
                   //   required: true,
@@ -256,11 +303,15 @@ const StudyPermitExtension = () => {
                   },
                 ]}
               >
-                <Upload name="Study_Permit" maxCount={1}>
+                <Upload
+                  name="Study_Permit"
+                  maxCount={1}
+                  beforeUpload={() => false}
+                >
                   <Button
                     icon={<UploadOutlined />}
                     iconPosition="end"
-                    className="w-[300px] sm:w-[210px] md:w-[250px] lg:w-[300px] mb-1"
+                    className="w-[300px] sm:w-[200px] md:w-[250px] lg:w-[300px] mb-1"
                   >
                     Select File
                   </Button>
@@ -279,6 +330,7 @@ const StudyPermitExtension = () => {
               <Checkbox>Medical Certificate</Checkbox>
             </Form.Item>
           </fieldset>
+          {contextHolder}
           <Flex justify="center" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
@@ -286,7 +338,12 @@ const StudyPermitExtension = () => {
               </Button>
             </Form.Item>
             <Form.Item label={null}>
-              <Button type="primary" htmlType="submit" className="w-28">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="w-28"
+                loading={loading}
+              >
                 Submit
               </Button>
             </Form.Item>
