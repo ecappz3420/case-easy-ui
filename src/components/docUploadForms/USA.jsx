@@ -69,7 +69,7 @@ const USA = () => {
   const lead = useSelector((state) => state.client.details);
 
   const isFileEmpty = (_, fileList) => {
-    if (fileList[0]?.size === 0) {
+    if (fileList && fileList[0]?.size === 0) {
       return Promise.reject(
         new Error(
           "Empty file found. Please try uploading another file with data."
@@ -93,32 +93,128 @@ const USA = () => {
         content: "Adding Record...",
       });
       setLoading(true);
-      const formData = {
+
+      const formattedData = {
         ...data,
-        Passport: "",
+
         Lead: lead.ID,
         Case_Type: lead.Case_Type,
+        Mobile: lead.Mobile,
+        Email: lead.Email,
+
+        Passport: "",
+        Aadhar_card: "",
+        th1: "",
+        th: "",
+        TRF: "",
+        Offer_Letter: "",
+        I20_Study: "",
+
+        ...(data?.Phone_Number1 && {
+          Phone_Number1: data.Phone1_Country_Code + data.Phone_Number1,
+        }),
+        ...(data?.Phone_Number2 && {
+          Phone_Number2: data.Phone2_Country_Code + data.Phone_Number2,
+        }),
+
+        // Format date fields
         Father_DOB: data.Father_DOB?.format("DD-MMM-YYYY") || "",
+        Mother_DOB: data.Mother_DOB?.format("DD-MMM-YYYY") || "",
+        DOB: data.DOB?.format("DD-MMM-YYYY") || "",
+        Starting_Date: data.Starting_Date?.format("DD-MMM-YYYY") || "",
+        Employment_Starting_Date:
+          data.Employment_Starting_Date?.format("DD-MMM-YYYY") || "",
+        Employment_End_Date:
+          data.Employment_End_Date?.format("DD-MMM-YYYY") || "",
+        Course_Starting_Date:
+          data.Course_Starting_Date?.format("DD-MMM-YYYY") || "",
+        Course_End_Date: data.Course_End_Date?.format("DD-MMM-YYYY") || "",
+
+        // Format Year fields in the Traveling_History array
+        Traveling_History: data.Traveling_History?.map((item) => ({
+          ...item,
+          Year_field: item.Year_field?.format("DD-MMM-YYYY") || "",
+        })),
       };
+
+      //Exclude Country codes on form submission
+      const { Phone1_Country_Code, Phone2_Country_Code, ...formData } =
+        formattedData;
+
       await ZOHO.CREATOR.init();
       const response = await addRecord("USA", formData);
-      if (response.code !== 3000) return;
+
+      if (response.code !== 3000) throw new Error(response.error);
+
       const recordId = response.data.ID;
-      if (data.Passport.length > 0) {
-        const pasportResp = await uploadFile(
-          "All_Usa",
-          recordId,
-          "Passport",
-          data.Passport[0].originFileObj
+
+      data.Passport.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Usa",
+            recordId,
+            "Passport",
+            data.Passport[0].originFileObj
+          )
         );
-        console.log(pasportResp);
-      }
+      data.Aadhar_card.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Usa",
+            recordId,
+            "Aadhar_card",
+            data.Aadhar_card[0].originFileObj
+          )
+        );
+      data.th1.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Usa",
+            recordId,
+            "th1",
+            data.th1[0].originFileObj
+          )
+        );
+      data.th.length > 0 &&
+        console.log(
+          await uploadFile("All_Usa", recordId, "th", data.th[0].originFileObj)
+        );
+      data.TRF.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Usa",
+            recordId,
+            "TRF",
+            data.TRF[0].originFileObj
+          )
+        );
+      data.Offer_Letter.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Usa",
+            recordId,
+            "Offer_Letter",
+            data.Offer_Letter[0].originFileObj
+          )
+        );
+      data.I20_Study.length > 0 &&
+        console.log(
+          await uploadFile(
+            "All_Usa",
+            recordId,
+            "I20_Study",
+            data.I20_Study[0].originFileObj
+          )
+        );
+
       messageApi.destroy();
       messageApi.success("Record Successfully Added!");
-      setLoading(false);
+      console.log("Submitted Data:", formattedData);
     } catch (error) {
       console.log(error);
       messageApi.error("Error Adding Record");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -132,12 +228,12 @@ const USA = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
             <Form.Item
               name="Passport"
               label="Passport"
               valuePropName="fileList"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               getValueFromEvent={getFile}
               rules={[
                 {
@@ -149,7 +245,7 @@ const USA = () => {
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -158,9 +254,9 @@ const USA = () => {
             <Form.Item
               name="Aadhar_card"
               label="Aadhaar Card"
-              valuePropName="file"
+              valuePropName="fileList"
               getValueFromEvent={getFile}
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 // {
                 //   required: true,
@@ -171,11 +267,15 @@ const USA = () => {
                 },
               ]}
             >
-              <Upload name="Aadhar_card" maxCount={1}>
+              <Upload
+                name="Aadhar_card"
+                maxCount={1}
+                beforeUpload={() => false}
+              >
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -184,8 +284,9 @@ const USA = () => {
             <Form.Item
               name="th1"
               label="10th"
-              valuePropName="file"
-              className="w-[300px]"
+              valuePropName="fileList"
+              getValueFromEvent={getFile}
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 // {
                 //   required: true,
@@ -196,11 +297,11 @@ const USA = () => {
                 },
               ]}
             >
-              <Upload name="th1" maxCount={1}>
+              <Upload name="th1" maxCount={1} beforeUpload={() => false}>
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -209,9 +310,9 @@ const USA = () => {
             <Form.Item
               name="th"
               label="12th"
-              valuePropName="file"
+              valuePropName="fileList"
               getValueFromEvent={getFile}
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               rules={[
                 // {
                 //   required: true,
@@ -222,11 +323,11 @@ const USA = () => {
                 },
               ]}
             >
-              <Upload name="th" maxCount={1}>
+              <Upload name="th" maxCount={1} beforeUpload={() => false}>
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -235,8 +336,9 @@ const USA = () => {
             <Form.Item
               name="TRF"
               label="TRF"
-              className="w-[300px]"
-              valuePropName="file"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
+              valuePropName="fileList"
+              getValueFromEvent={getFile}
               rules={[
                 // {
                 //   required: true,
@@ -247,11 +349,11 @@ const USA = () => {
                 },
               ]}
             >
-              <Upload name="TRF" maxCount={1}>
+              <Upload name="TRF" maxCount={1} beforeUpload={() => false}>
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -260,8 +362,9 @@ const USA = () => {
             <Form.Item
               name="Offer_Letter"
               label="Offer Letter (Study)"
-              className="w-[300px]"
-              valuePropName="file"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
+              valuePropName="fileList"
+              getValueFromEvent={getFile}
               rules={[
                 // {
                 //   required: true,
@@ -272,11 +375,15 @@ const USA = () => {
                 },
               ]}
             >
-              <Upload name="Offer_Letter_Study" maxCount={1}>
+              <Upload
+                name="Offer_Letter_Study"
+                maxCount={1}
+                beforeUpload={() => false}
+              >
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -285,8 +392,8 @@ const USA = () => {
             <Form.Item
               name="I20_Study"
               label="I20 (Study)"
-              className="w-[300px]"
-              valuePropName="file"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
+              valuePropName="fileList"
               getValueFromEvent={getFile}
               rules={[
                 // {
@@ -298,11 +405,11 @@ const USA = () => {
                 },
               ]}
             >
-              <Upload name="I20_Study" maxCount={1}>
+              <Upload name="I20_Study" maxCount={1} beforeUpload={() => false}>
                 <Button
                   icon={<UploadOutlined />}
                   iconPosition="end"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] mb-1"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
                   Select File
                 </Button>
@@ -313,13 +420,13 @@ const USA = () => {
             <Form.Item
               name="Embassy_Fee"
               label={<label className="font-semibold">Embassy Fee</label>}
-              className="w-[300px] me-5 mb-0"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] me-5 mb-0"
             >
               <Checkbox.Group>
                 <Space direction="vertical">
                   <Checkbox
                     value="Sevis fee :- 29750"
-                    className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                    className="w-max sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
                     }}
@@ -328,7 +435,7 @@ const USA = () => {
                   </Checkbox>
                   <Checkbox
                     value="DS160:-15725"
-                    className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                    className="w-max sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
                     }}
@@ -336,8 +443,8 @@ const USA = () => {
                     DS160:-15725
                   </Checkbox>
                   <Checkbox
-                    value="Offer Letter  fees"
-                    className="w-max sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                    value="Offer Letter fees"
+                    className="w-max sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                     style={{
                       lineHeight: "86px",
                     }}
@@ -351,33 +458,33 @@ const USA = () => {
               <Form.Item
                 label="Sevis Payment Details"
                 name="Sevis_Payment_Details"
-                className="w-[200px] sm:w-[300px]"
+                className="w-[200px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
               <Form.Item
                 label="DS160 Payment Details"
                 name="DS160_Payment_Details"
-                className="w-[200px] sm:w-[300px]"
+                className="w-[200px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
               <Form.Item
                 label="Offer Letter Payment Details"
                 name="Offer_Letter_Payment_Details"
-                className="w-[200px] sm:w-[300px]"
+                className="w-[200px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Select
                   placeholder="Choose"
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   options={PAYMENT_DETAILS_OPTIONS}
                 />
               </Form.Item>
@@ -399,44 +506,45 @@ const USA = () => {
             <legend className="font-bold !border-b-0 !text-black !text-2xl !mb-3">
               Question
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
               <Form.Item
                 label="Preferred location of interview?"
                 name="preferred_location_of_interview"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Instagram or Feedback Id (If Possible)"
                 name="Instagram_or_Feedback_Id_If_Possible"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Person Paying for your trip (Relationship with person)"
                 name="p"
-                className="w-[300px] sm:max-w-[210px] md:max-w-[280px] lg:max-w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 name="Have_You_Ever_Been_in_USA_or_Issued_any_USA_Visa"
                 label="Have You Ever Been in USA or Issued any USA Visa?"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Radio.Group>
-                  <Radio value="yes">Yes</Radio>
-                  <Radio value="no">No</Radio>
+                  <Radio value="Yes">Yes</Radio>
+                  <Radio value="No">No</Radio>
                 </Radio.Group>
               </Form.Item>
             </div>
@@ -445,42 +553,46 @@ const USA = () => {
             <legend className="font-bold !border-b-0 !text-black !text-lg !mb-3">
               USA Person Contact Where You Stay
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
               <Form.Item
                 label="Person Or Organization Name"
                 name="Person_Or_Organization_Name"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Relationship to You"
                 name="Relationship_to_the_Sponser"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
-              <Form.Item label="Address" name="Address" className="w-[300px]">
+              <Form.Item
+                label="Address"
+                name="Address"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
+              >
                 <TextArea
                   maxLength={100}
                   style={{
                     height: 100,
                     resize: "none",
                   }}
-                  className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
+                  className="sm:!max-w-[200px] md:!max-w-[250px] lg:!max-w-[300px]"
                 />
               </Form.Item>
               <Flex vertical>
                 <Form.Item
                   label="Phone Number"
                   name="Phone_Number1"
-                  className="w-[300px]"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   rules={[
                     {
                       validator: (_, value) => {
@@ -515,58 +627,53 @@ const USA = () => {
                     stringMode
                     maxLength={15}
                     addonBefore={Phone1CountrySelect}
-                    className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                    className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   />
                 </Form.Item>
                 <Form.Item
                   name="Email_Address"
                   label="Email Address"
                   rules={[{ type: "email" }]}
-                  className="w-[300px]"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 >
                   <Input
                     maxLength={80}
                     addonAfter={<MailOutlined />}
-                    className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                    className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   />
                 </Form.Item>
               </Flex>
               <Form.Item
                 label="Mother DOB"
                 name="Mother_DOB"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <DatePicker
                   format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Father DOB"
                 name="Father_DOB"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <DatePicker
                   format="DD-MMM-YYYY"
-                  className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
             </div>
             <Form.Item
               name="Is_Your_Mother_Or_Father_In_USA"
               label="Is Your Mother Or Father In USA"
-              className="w-[300px]"
             >
               <Radio.Group>
-                <Radio value="yes">Yes</Radio>
-                <Radio value="no">No</Radio>
+                <Radio value="Yes">Yes</Radio>
+                <Radio value="No">No</Radio>
               </Radio.Group>
             </Form.Item>
-            <Form.Item
-              name="Marital_Status1"
-              label="Marital Status"
-              className="w-[300px]"
-            >
+            <Form.Item name="Marital_Status1" label="Marital Status">
               <Radio.Group>
                 <Radio value="Married">Married</Radio>
                 <Radio value="Unmarried">Unmarried</Radio>
@@ -585,11 +692,11 @@ const USA = () => {
                   <legend className="font-bold !text-black">
                     Marital Status
                   </legend>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
                     <Form.Item
                       label="Spouse Name"
                       name="Spouse_Name"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -599,13 +706,13 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="DOB"
                       name="DOB"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -615,13 +722,13 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="City Of Birth"
                       name="City_Of_Birth"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -631,13 +738,13 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Nationality"
                       name="Natiolity"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -647,7 +754,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </div>
@@ -659,53 +766,52 @@ const USA = () => {
             <legend className="font-bold !text-black">
               Occupation Details
             </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
               <Form.Item
                 label="Primary Or Current Occupation"
                 name="Primary_Or_Current_ccupation"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Address Of School Or Work"
                 name="Address_Of_School_Or_Work"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
                 <Input
                   maxLength={255}
-                  className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                  className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 />
               </Form.Item>
               <Form.Item
                 label="Telephone Number"
                 name="Telephone_Number"
-                className="w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               >
-                <InputNumber className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]" />
+                <InputNumber
+                  maxLength={10}
+                  className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
+                />
               </Form.Item>
             </div>
             <Form.Item
               label="Starting Date"
               name="Starting_Date"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <DatePicker
                 format="DD-MMM-YYYY"
-                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
-            <Form.Item
-              name="Previous_Employed1"
-              label="Experience"
-              className="w-[300px]"
-            >
+            <Form.Item name="Previous_Employed1" label="Experience">
               <Radio.Group>
-                <Radio value="yes">Yes</Radio>
-                <Radio value="no">No</Radio>
+                <Radio value="Yes">Yes</Radio>
+                <Radio value="No">No</Radio>
               </Radio.Group>
             </Form.Item>
           </fieldset>
@@ -716,16 +822,16 @@ const USA = () => {
             }
           >
             {({ getFieldValue }) =>
-              getFieldValue("Previous_Employed1") === "yes" && (
+              getFieldValue("Previous_Employed1") === "Yes" && (
                 <fieldset className="p-0">
                   <legend className="font-bold !text-black">
                     Experience Details
                   </legend>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
                     <Form.Item
                       label="Organization Name"
                       name="Organization_Name"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -735,13 +841,13 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Address"
                       name="Address1"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -751,13 +857,13 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Phone Number"
                       name="Phone_Number2"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -796,13 +902,13 @@ const USA = () => {
                         stringMode
                         maxLength={15}
                         addonBefore={Phone2CountrySelect}
-                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Job Title"
                       name="Job_Title"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -812,13 +918,13 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Employment Starting Date"
                       name="Employment_Starting_Date"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -829,13 +935,13 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Employment End Date"
                       name="Employment_End_Date"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -845,13 +951,13 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Main Duty"
                       name="Main_Duty"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -861,7 +967,7 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </div>
@@ -874,8 +980,8 @@ const USA = () => {
             label="Have you ever Attended any Educational institution at secondary level or above?"
           >
             <Radio.Group>
-              <Radio value="yes">Yes</Radio>
-              <Radio value="no">No</Radio>
+              <Radio value="Yes">Yes</Radio>
+              <Radio value="No">No</Radio>
             </Radio.Group>
           </Form.Item>
           <Form.Item
@@ -888,13 +994,13 @@ const USA = () => {
             {({ getFieldValue }) =>
               getFieldValue(
                 "Have_you_ever_Attended_any_Educational_institution_at_secondary_level_or_above"
-              ) === "yes" && (
+              ) === "Yes" && (
                 <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
                     <Form.Item
                       label="Provide name of institution"
                       name="Provide_name_of_institution"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -904,13 +1010,13 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Address"
                       name="Address2"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -921,13 +1027,13 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Course Of Study"
                       name="Course_Of_Study"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -937,15 +1043,15 @@ const USA = () => {
                     >
                       <Input
                         maxLength={255}
-                        className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
                     <Form.Item
                       label="Course Starting Date"
                       name="Course_Starting_Date"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -955,13 +1061,13 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                     <Form.Item
                       label="Course End Date"
                       name="Course_End_Date"
-                      className="w-[300px]"
+                      className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       rules={[
                         {
                           required: true,
@@ -971,7 +1077,7 @@ const USA = () => {
                     >
                       <DatePicker
                         format="DD-MMM-YYYY"
-                        className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                        className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                       />
                     </Form.Item>
                   </div>
@@ -984,14 +1090,14 @@ const USA = () => {
             <Form.Item
               label="List of languages you speak"
               name="List_of_languages_you_speak"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <Select
                 mode="multiple"
                 options={LANGUAGE_OPTIONS}
                 allowClear
                 placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px] max-h-[145px] overflow-y-auto"
+                className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] max-h-[145px] overflow-y-auto"
               />
             </Form.Item>
             <Form.Item
@@ -999,8 +1105,8 @@ const USA = () => {
               label="Have you traveled to any country within last five years?"
             >
               <Radio.Group>
-                <Radio value="yes">Yes</Radio>
-                <Radio value="no">No</Radio>
+                <Radio value="Yes">Yes</Radio>
+                <Radio value="No">No</Radio>
               </Radio.Group>
             </Form.Item>
             <Form.Item
@@ -1013,7 +1119,7 @@ const USA = () => {
               {({ getFieldValue }) =>
                 getFieldValue(
                   "Have_you_travel_to_any_country_within_last_five_years"
-                ) === "yes" && (
+                ) === "Yes" && (
                   <fieldset className="p-0">
                     <legend className="font-bold !text-black !border-b-0 !mb-2">
                       Traveling History
@@ -1069,8 +1175,7 @@ const USA = () => {
                                   ]}
                                 >
                                   <DatePicker
-                                    picker="year"
-                                    format="YYYY"
+                                    format="DD-MMM-YYYY"
                                     className="w-[200px]"
                                   />
                                 </Form.Item>
@@ -1110,11 +1215,10 @@ const USA = () => {
             <Form.Item
               name="Do_you_have_any_health_issues"
               label="Do you have any health issues?"
-              className="w-[300px]"
             >
               <Radio.Group>
-                <Radio value="yes">Yes</Radio>
-                <Radio value="no">No</Radio>
+                <Radio value="Yes">Yes</Radio>
+                <Radio value="No">No</Radio>
               </Radio.Group>
             </Form.Item>
             <Form.Item
@@ -1125,11 +1229,11 @@ const USA = () => {
               }
             >
               {({ getFieldValue }) =>
-                getFieldValue("Do_you_have_any_health_issues") === "yes" && (
+                getFieldValue("Do_you_have_any_health_issues") === "Yes" && (
                   <Form.Item
                     label="Health Issue"
                     name="Health_Issue"
-                    className="w-[300px]"
+                    className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                     rules={[
                       {
                         required: true,
@@ -1143,7 +1247,7 @@ const USA = () => {
                         height: 100,
                         resize: "none",
                       }}
-                      className="sm:!max-w-[210px] md:!max-w-[250px] lg:!max-w-[300px]"
+                      className="sm:!max-w-[200px] md:!max-w-[250px] lg:!max-w-[300px]"
                     />
                   </Form.Item>
                 )
@@ -1157,11 +1261,10 @@ const USA = () => {
             <Form.Item
               name="ave_you_ever_served_in_military"
               label="Have you ever served in military"
-              className="w-[300px]"
             >
               <Radio.Group>
-                <Radio value="yes">Yes</Radio>
-                <Radio value="no">No</Radio>
+                <Radio value="Yes">Yes</Radio>
+                <Radio value="No">No</Radio>
               </Radio.Group>
             </Form.Item>
           </fieldset>
