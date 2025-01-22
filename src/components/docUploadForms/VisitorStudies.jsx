@@ -77,6 +77,7 @@ const VisitorStudies = () => {
 
       if (response.code !== 3000) throw new Error(response.error);
 
+      //Uploading Files to Zoho after successful adding of Record
       const recordId = response.data.ID;
 
       data.TRF?.length > 0 &&

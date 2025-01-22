@@ -68,6 +68,14 @@ const USA = () => {
 
   const lead = useSelector((state) => state.client.details);
 
+  const getFile = (e) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    console.log("Upload: ", e?.fileList);
+    return e?.fileList;
+  };
+
   const isFileEmpty = (_, fileList) => {
     if (fileList && fileList[0]?.size === 0) {
       return Promise.reject(
@@ -77,13 +85,6 @@ const USA = () => {
       );
     }
     return Promise.resolve();
-  };
-
-  const getFile = (e) => {
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
   };
 
   const onFinish = async (data) => {
@@ -144,6 +145,7 @@ const USA = () => {
 
       await ZOHO.CREATOR.init();
       const response = await addRecord("USA", formData);
+      console.log(response);
 
       if (response.code !== 3000) throw new Error(response.error);
 
