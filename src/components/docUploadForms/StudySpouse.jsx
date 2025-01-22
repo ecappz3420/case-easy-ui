@@ -29,10 +29,11 @@ const StudySpouse = () => {
 
       await ZOHO.CREATOR.init();
       const response = await addRecord("Study_Spouse", formattedData);
+      console.log(response);
 
       messageApi.destroy();
       messageApi.success("Record Successfully Added!");
-      console.log(response);
+
       console.log("Submitted Data:", formattedData);
     } catch (error) {
       console.log(error);
