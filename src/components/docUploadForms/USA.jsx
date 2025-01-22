@@ -102,6 +102,7 @@ const USA = () => {
         Mobile: lead.Mobile,
         Email: lead.Email,
 
+        //File upload fields
         Passport: "",
         Aadhar_card: "",
         th1: "",
@@ -148,7 +149,7 @@ const USA = () => {
 
       const recordId = response.data.ID;
 
-      data.Passport.length > 0 &&
+      data.Passport?.length > 0 &&
         console.log(
           await uploadFile(
             "All_Usa",
@@ -157,7 +158,7 @@ const USA = () => {
             data.Passport[0].originFileObj
           )
         );
-      data.Aadhar_card.length > 0 &&
+      data.Aadhar_card?.length > 0 &&
         console.log(
           await uploadFile(
             "All_Usa",
@@ -166,7 +167,7 @@ const USA = () => {
             data.Aadhar_card[0].originFileObj
           )
         );
-      data.th1.length > 0 &&
+      data.th1?.length > 0 &&
         console.log(
           await uploadFile(
             "All_Usa",
@@ -175,11 +176,11 @@ const USA = () => {
             data.th1[0].originFileObj
           )
         );
-      data.th.length > 0 &&
+      data.th?.length > 0 &&
         console.log(
           await uploadFile("All_Usa", recordId, "th", data.th[0].originFileObj)
         );
-      data.TRF.length > 0 &&
+      data.TRF?.length > 0 &&
         console.log(
           await uploadFile(
             "All_Usa",
@@ -188,7 +189,7 @@ const USA = () => {
             data.TRF[0].originFileObj
           )
         );
-      data.Offer_Letter.length > 0 &&
+      data.Offer_Letter?.length > 0 &&
         console.log(
           await uploadFile(
             "All_Usa",
@@ -197,7 +198,7 @@ const USA = () => {
             data.Offer_Letter[0].originFileObj
           )
         );
-      data.I20_Study.length > 0 &&
+      data.I20_Study?.length > 0 &&
         console.log(
           await uploadFile(
             "All_Usa",

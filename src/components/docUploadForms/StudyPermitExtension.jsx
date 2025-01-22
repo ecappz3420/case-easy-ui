@@ -59,6 +59,7 @@ const StudyPermitExtension = () => {
 
         Case_Type: lead.Case_Type,
 
+        //File upload fields
         Medical_Certificate: "",
         Study_Permit: "",
 
