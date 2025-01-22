@@ -1,12 +1,51 @@
-import React from "react";
-import { Form, Select, Input, InputNumber, Checkbox, Button, Flex } from "antd";
-import { CASE_TYPE_OPTIONS } from "./utils/selectOptions";
+import React, { useState } from "react";
+import {
+  Form,
+  Input,
+  InputNumber,
+  Checkbox,
+  Button,
+  Flex,
+  message,
+} from "antd";
+
+import addRecord from "../../api/addRecord";
+import { useSelector } from "react-redux";
 
 const WorkPermitExtension = () => {
   const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
+  const [loading, setLoading] = useState(false);
 
-  const onFinish = (values) => {
-    console.log("Submitted Data:", values);
+  const lead = useSelector((state) => state.client.details);
+
+  const onFinish = async (data) => {
+    try {
+      messageApi.open({
+        type: "loading",
+        content: "Adding Record",
+      });
+      setLoading(true);
+
+      const formattedData = {
+        ...data,
+        Case_Type: lead.Case_Type,
+      };
+
+      await ZOHO.CREATOR.init();
+      const response = await addRecord("Work_Permit_Extension", formattedData);
+      console.log(response);
+
+      messageApi.destroy();
+      messageApi.success("Record Successfully Added!");
+
+      console.log("Submitted Data:", formattedData);
+    } catch (error) {
+      console.log(error);
+      messageApi.error("Error Adding Record");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -19,38 +58,25 @@ const WorkPermitExtension = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 justify-items-start max-w-[100%]">
             <Form.Item
               label="counselling id"
               name="counselling_id"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-              />
-            </Form.Item>
-            <Form.Item
-              label="Case Type"
-              name="Case_Type"
-              initialValue="Work Permit Extension"
-              className="w-[300px]"
-            >
-              <Select
-                placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-                options={CASE_TYPE_OPTIONS}
-                disabled
+                className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
             <Form.Item
               label="Counselling Name"
               name="Counselling_Name"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <Input
                 maxLength={255}
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
               />
             </Form.Item>
           </div>
@@ -58,7 +84,6 @@ const WorkPermitExtension = () => {
             name="Profile_Details"
             valuePropName="checked"
             layout="horizontal"
-            className="w-[300px]"
           >
             <Checkbox>Profile Details</Checkbox>
           </Form.Item>
@@ -67,14 +92,15 @@ const WorkPermitExtension = () => {
             <Form.Item
               label="Visa Chances"
               name="Visa_Chances1"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <InputNumber
-                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
             </Form.Item>
           </fieldset>
+          {contextHolder}
           <Flex justify="center" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
@@ -82,7 +108,12 @@ const WorkPermitExtension = () => {
               </Button>
             </Form.Item>
             <Form.Item label={null}>
-              <Button type="primary" htmlType="submit" className="w-28">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="w-28"
+                loading={loading}
+              >
                 Submit
               </Button>
             </Form.Item>
