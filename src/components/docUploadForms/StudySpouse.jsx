@@ -1,12 +1,45 @@
-import React from "react";
-import { Form, Select, InputNumber, Button, Flex } from "antd";
-import { CASE_TYPE_OPTIONS } from "./utils/selectOptions";
+import React, { useState } from "react";
+import { Form, InputNumber, Button, Flex, message } from "antd";
+
+import addRecord from "../../api/addRecord";
+import { useSelector } from "react-redux";
 
 const StudySpouse = () => {
   const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
+  const [loading, setLoading] = useState(false);
 
-  const onFinish = (values) => {
-    console.log("Submitted Data:", values);
+  const lead = useSelector((state) => state.client.details);
+
+  const onFinish = async (data) => {
+    try {
+      messageApi.open({
+        type: "loading",
+        content: "Adding Record",
+      });
+
+      setLoading(true);
+
+      const formattedData = {
+        ...data,
+
+        Lead: lead.ID,
+        Case_Type: lead.Case_Type,
+      };
+
+      await ZOHO.CREATOR.init();
+      const response = await addRecord("Study_Spouse", formattedData);
+
+      messageApi.destroy();
+      messageApi.success("Record Successfully Added!");
+      console.log(response);
+      console.log("Submitted Data:", formattedData);
+    } catch (error) {
+      console.log(error);
+      messageApi.error("Error Adding Record");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -19,40 +52,20 @@ const StudySpouse = () => {
           scrollToFirstError={true}
           onFinish={onFinish}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[10em] justify-items-start max-w-max">
-            <Form.Item label="Lead" name="Lead" className="w-[300px]">
-              <Select
-                placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-              />
-            </Form.Item>
-            <Form.Item
-              label="Case Type"
-              name="Case_Type"
-              initialValue="Study + Spouse"
-              className="w-[300px]"
-            >
-              <Select
-                placeholder="Choose"
-                className="sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
-                options={CASE_TYPE_OPTIONS}
-                disabled
-              />
-            </Form.Item>
-          </div>
           <fieldset className="p-0">
             <legend className="font-bold !text-black">Visa Chances</legend>
             <Form.Item
               label="Visa Chances"
               name="Visa_Chances1"
-              className="w-[300px]"
+              className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <InputNumber
-                className="w-[300px] sm:max-w-[210px] md:max-w-[250px] lg:max-w-[300px]"
+                className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
             </Form.Item>
           </fieldset>
+          {contextHolder}
           <Flex justify="center" gap="large">
             <Form.Item label={null}>
               <Button className="w-28" htmlType="reset">
@@ -60,7 +73,12 @@ const StudySpouse = () => {
               </Button>
             </Form.Item>
             <Form.Item label={null}>
-              <Button type="primary" htmlType="submit" className="w-28">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="w-28"
+                loading={loading}
+              >
                 Submit
               </Button>
             </Form.Item>
