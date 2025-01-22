@@ -376,6 +376,7 @@ const WorkVisa = () => {
               >
                 <InputNumber
                   max={150}
+                  maxLength={10}
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   placeholder="#######"
                 />

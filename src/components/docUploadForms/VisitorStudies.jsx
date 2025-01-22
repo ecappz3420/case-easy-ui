@@ -213,6 +213,7 @@ const VisitorStudies = () => {
                             min={0}
                             max={100}
                             step={0.01}
+                            maxLength={10}
                             addonAfter="%"
                           />
                         </Form.Item>
