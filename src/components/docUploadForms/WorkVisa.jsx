@@ -1332,6 +1332,7 @@ const WorkVisa = () => {
               className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <InputNumber
+                maxLength={10}
                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
