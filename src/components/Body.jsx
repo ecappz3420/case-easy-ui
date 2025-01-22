@@ -1,26 +1,73 @@
 import React from "react";
-import Tab from "@mui/material/Tab";
-import { Tabs } from "@mui/material";
+import { Tabs } from "antd";
 import ProfileTab from "./ProfileTab";
 import Tasks from "./Tasks";
 import Chat from "./Chat";
 import Document from "./Document";
 
 const Body = () => {
-  const [value, setValue] = React.useState("1");
+  // const [value, setValue] = React.useState("1");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  const CustomTab = (props) => {
-    const { index, children } = props;
-    return (
-      <div className={index == value ? "block" : "hidden"}>{children}</div>
-    );
-  };
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
+  // const CustomTab = (props) => {
+  //   const { index, children } = props;
+  //   return (
+  //     <div className={index == value ? "block" : "hidden"}>{children}</div>
+  //   );
+  // };
+  const items = [
+    {
+      key: "1",
+      label: "PROFILE",
+      children: <ProfileTab />,
+    },
+    {
+      key: "2",
+      label: "QUESTIONNAIRES",
+      children: <div>Tab 2</div>,
+    },
+    {
+      key: "3",
+      label: "DOCUMENTS",
+      children: <Document />,
+    },
+    {
+      key: "4",
+      label: "FORMS",
+      children: <div>Tab 4</div>,
+    },
+    {
+      key: "5",
+      label: "TASKS",
+      children: <Tasks />,
+    },
+    {
+      key: "6",
+      label: "AGREEMENTS AND LETTERS",
+      children: <div>Tab 6</div>,
+    },
+    {
+      key: "7",
+      label: "APPOINTMENTS",
+      children: <div>Tab 7</div>,
+    },
+    {
+      key: "8",
+      label: "COMMUNICATION",
+      children: <Chat />,
+    },
+    {
+      key: "9",
+      label: "BILLING",
+      children: <div>Tab 9</div>,
+    },
+  ];
   return (
     <div className="p-2 rounded-lg mt-3 box-shadow bg-white min-h-[600px]">
-      <Tabs value={value} onChange={handleChange}>
+      <Tabs defaultActiveKey="1" items={items} />
+      {/* <Tabs value={value} onChange={handleChange}>
         <Tab label="profile" className="hover:text-blue-600" value="1" />
         <Tab label="Questionnaires" className="hover:text-blue-600" value="2" />
         <Tab label="Documents" className="hover:text-blue-600" value="3" />
@@ -61,7 +108,7 @@ const Body = () => {
       </CustomTab>
       <CustomTab index="9">
         <div>Tab 9</div>
-      </CustomTab>
+      </CustomTab> */}
     </div>
   );
 };
