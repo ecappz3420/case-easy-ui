@@ -30,16 +30,16 @@ export const CASE_TYPE_OPTIONS = [
     label: "Work Permit Extension",
   },
   {
-    value: "Study + Work Permit Extension",
-    label: "Study + Work Permit Extension",
+    value: "Study+ Work Permit Extension",
+    label: "Study+ Work Permit Extension",
   },
   {
     value: "Work Visa",
     label: "Work Visa",
   },
   {
-    value: "Study + Spouse",
-    label: "Study + Spouse",
+    value: "Study+Spouse",
+    label: "Study+Spouse",
   },
   {
     value: "PR",
@@ -194,8 +194,8 @@ export const TRAVEL_VISA_TYPE_OPTIONS = [
     label: "Visitor Visa",
   },
   {
-    value: "Study + Spouse",
-    label: "Study + Spouse",
+    value: "Study+Spouse",
+    label: "Study+Spouse",
   },
   {
     value: "PR",

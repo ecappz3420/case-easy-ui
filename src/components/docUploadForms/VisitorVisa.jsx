@@ -583,6 +583,7 @@ const VisitorVisa = () => {
               >
                 <InputNumber
                   max={150}
+                  maxLength={10}
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   placeholder="#######"
                 />
@@ -2388,6 +2389,7 @@ const VisitorVisa = () => {
                       ]}
                     >
                       <InputNumber
+                        maxLength={10}
                         className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                         placeholder="#######"
                       />
@@ -2530,6 +2532,7 @@ const VisitorVisa = () => {
               className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
             >
               <InputNumber
+                maxLength={10}
                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                 addonAfter="%"
               />
