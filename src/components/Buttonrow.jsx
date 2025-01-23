@@ -84,7 +84,6 @@ const Buttonrow = () => {
       <Drawer
         title={<h5 className="font-semibold text-gray-500">Notes</h5>}
         open={open}
-        closeIcon={false}
         onClose={() => setOpen(false)}
         width="450"
       >

@@ -61,7 +61,7 @@ const Phone2CountrySelect = (
   </Form.Item>
 );
 
-const USA = () => {
+const USA = ({ setDocObj }) => {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
@@ -212,6 +212,7 @@ const USA = () => {
 
       messageApi.destroy();
       messageApi.success("Record Successfully Added!");
+      setDocObj(true);
       console.log("Submitted Data:", formattedData);
     } catch (error) {
       console.log(error);

@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Checkbox, DatePicker, Input, Button } from "antd";
+import { Form, Checkbox, DatePicker, Input, Button, Flex } from "antd";
 
 const NoteForm = ({ handleClick }) => {
   const [form] = Form.useForm();
