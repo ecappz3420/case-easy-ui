@@ -1,28 +1,54 @@
-import { Button, Checkbox, Datepicker, Textarea, TextInput } from 'flowbite-react'
-import React from 'react'
+import React from "react";
+import { Form, Checkbox, DatePicker, Input, Button } from "antd";
 
-const NoteForm = ({handleClick}) => {
-    return (
-        <form>
-            <div className='mb-5'>
-                <label>Date</label>
-                <Datepicker placeholder='YYY-MM-DD' />
-            </div>
-            <div className="mb-5 flex flex-col">
-                <label>{'Subject (Optional)'}</label>
-                <TextInput />
-            </div>
-            <div className="mb-5 flex flex-col">
-                <label>{'Notes'}</label>
-                <Textarea className='h-[200px]' />
-            </div>
-            <div className='mb-5 flex gap-3 items-center'>
-                <Checkbox />
-                 <div>Notify assigned team by email</div>
-            </div>
-            <button onClick={handleClick} className='bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500'>Save</button>
-        </form>
-    )
-}
+const NoteForm = ({ handleClick }) => {
+  const [form] = Form.useForm();
+  const { TextArea } = Input;
 
-export default NoteForm
+  const onFinish = (data) => {
+    handleClick();
+    console.log("Submitted data: ", data);
+  };
+
+  return (
+    <Form
+      form={form}
+      layout="vertical"
+      scrollToFirstError={true}
+      onFinish={onFinish}
+    >
+      <Form.Item label="Date" name="Date">
+        <DatePicker format="DD-MMM-YYYY" className="w-[300px]" />
+      </Form.Item>
+      <Form.Item label="Subject (Optional)" name="Subject_Optional">
+        <Input className="w-[300px] rounded"></Input>
+      </Form.Item>
+      <Form.Item label="Notes" name="Notes">
+        <TextArea
+          maxLength={100}
+          style={{
+            height: 200,
+            resize: "none",
+          }}
+          className="w-[300px]"
+        />
+      </Form.Item>
+      <Form.Item
+        name="Notify_assigned_team_by_email"
+        valuePropName="checked"
+        layout="horizontal"
+      >
+        <Checkbox>Notify assigned team by email</Checkbox>
+      </Form.Item>
+      <Flex justify="center" gap="large">
+        <Form.Item label={null}>
+          <Button type="primary" htmlType="submit" className="w-28 rounded">
+            Save
+          </Button>
+        </Form.Item>
+      </Flex>
+    </Form>
+  );
+};
+
+export default NoteForm;
