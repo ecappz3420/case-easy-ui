@@ -1,0 +1,9 @@
+export const STUDY_PERMIT_EXTENSION = "All_Study_Permit_Extensions";
+export const STUDY_VISA = "All_Study_Visa";
+export const STUDY_WORK_PERMIT_EXTENSION = "All_Study_Work_Permit_Extensions";
+export const STUDY_SPOUSE = "Study_Spouse_Report";
+export const USA = "All_Usa";
+export const VISITOR_TO_STUDY = "All_Visitor_Studies";
+export const VISITOR_VISA = "All_Visitor_Visa";
+export const WORK_PERMIT_EXTENSION = "All_Work_Permit_Extensions";
+export const WORK_VISA = "All_Work_Visa";

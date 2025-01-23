@@ -19,7 +19,7 @@ import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
 import uploadFile from "../../api/uploadFile";
 
-const VisitorStudies = () => {
+const VisitorStudies = ({ setDocObj }) => {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
@@ -92,7 +92,7 @@ const VisitorStudies = () => {
 
       messageApi.destroy();
       messageApi.success("Record Successfully Added!");
-
+      setDocObj(true);
       console.log("Submitted Data:", formattedData);
     } catch (error) {
       console.log(error);

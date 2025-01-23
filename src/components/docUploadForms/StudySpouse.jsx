@@ -4,7 +4,7 @@ import { Form, InputNumber, Button, Flex, message } from "antd";
 import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
 
-const StudySpouse = () => {
+const StudySpouse = ({ setDocObj }) => {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,7 @@ const StudySpouse = () => {
 
       messageApi.destroy();
       messageApi.success("Record Successfully Added!");
-
+      setDocObj(true);
       console.log("Submitted Data:", formattedData);
     } catch (error) {
       console.log(error);

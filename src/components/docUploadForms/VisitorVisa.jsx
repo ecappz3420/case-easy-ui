@@ -30,7 +30,7 @@ import uploadFile from "../../api/uploadFile";
 
 const { TextArea } = Input;
 
-const VisitorVisa = () => {
+const VisitorVisa = ({ setDocObj }) => {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
@@ -412,6 +412,7 @@ const VisitorVisa = () => {
 
       messageApi.destroy();
       messageApi.success("Record Successfully Added!");
+      setDocObj(true);
       console.log("Submitted Data:", submissionData);
     } catch (error) {
       console.log(error);

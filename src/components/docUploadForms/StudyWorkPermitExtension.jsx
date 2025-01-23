@@ -15,7 +15,7 @@ import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
 import uploadFile from "../../api/uploadFile";
 
-const StudyWorkPermitExtension = () => {
+const StudyWorkPermitExtension = ({ setDocObj }) => {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
@@ -177,6 +177,7 @@ const StudyWorkPermitExtension = () => {
 
       messageApi.destroy();
       messageApi.success("Record Successfully Added!");
+      setDocObj(true);
       console.log("Submitted Data:", data);
     } catch (error) {
       console.log(error);
