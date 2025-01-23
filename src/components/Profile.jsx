@@ -1,6 +1,6 @@
-import { Drawer, DrawerItems, Tooltip } from "flowbite-react";
-import React, { useState } from "react";
-import { Modal, ModalContent } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Drawer, Modal, Upload } from "antd";
+import { Tooltip } from "flowbite-react";
 import ChatMessage from "./ChatMessage";
 import Email from "./Email";
 import { useSelector } from "react-redux";
@@ -12,23 +12,49 @@ const Profile = () => {
   const leadData = useSelector((state) => state.client.details);
   const [imageUrl, setImageUrl] = useState();
 
+  useEffect(() => {});
+
+  const uploadProfilePicture = async (img) => {
+    try {
+      const config = {
+        appName: "visa-management",
+        reportName: "All_Leads",
+        id: leadData.ID,
+        fieldName: "Profile_Picture",
+        file: img,
+      };
+      await ZOHO.CREATOR.init();
+      const response = await ZOHO.CREATOR.API.uploadFile(config);
+      setImageUrl(img);
+      setOpenProfileModal(false);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="">
       <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
         <div className="py-2 px-[30px] flex justify-center items-center">
           <div className="rounded-full relative bg-sky-100 h-[130px] w-[130px] flex justify-center items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="80"
-              height="80"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="text-cyan-500 icon icon-tabler icons-tabler-filled icon-tabler-user"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
-              <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
-            </svg>
+            {imageUrl ? (
+              <img src={imageUrl} />
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="80"
+                height="80"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="text-cyan-500 icon icon-tabler icons-tabler-filled icon-tabler-user"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+                <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
+              </svg>
+            )}
+
             <Tooltip className="text-nowrap" content="Click to change photo">
               <span
                 onClick={() => setOpenProfileModal(true)}
@@ -48,59 +74,31 @@ const Profile = () => {
               </span>
             </Tooltip>
 
-            <Modal open={openProfileModal} size="mini">
-              <ModalContent>
-                <div className="flex justify-between mb-[30px]">
-                  <div className="text-lg">Upload Image</div>
-                  <div
-                    className="cursor-pointer"
-                    onClick={() => setOpenProfileModal(false)}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-x-lg"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="w-full flex justify-center">
-                  <label className="w-[150px] cursor-pointer h-[140px] border border-dashed rounded hover:border-blue-600 flex justify-center items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="25"
-                      height="25"
-                      fill="currentColor"
-                      className="bi bi-plus-lg text-gray-500"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"
-                      />
-                    </svg>
-                  </label>
-                  <input type="file" className="hidden" />
-                </div>
-                <div className="text-center text-sm mt-2">
-                  Supported formats: <br /> JPG/JPEG, PNG
-                </div>
-                <div className="text-center text-md mt-3">
-                  Click to Upload your Image
-                </div>
-                <div className="mt-[30px] text-end">
-                  <button
-                    onClick={() => setOpenProfileModal(false)}
-                    className="text-blue-600 p-2 rounded hover:bg-blue-50"
-                  >
-                    Close
-                  </button>
-                </div>
-              </ModalContent>
+            <Modal
+              open={openProfileModal}
+              onCancel={() => setOpenProfileModal(false)}
+              onClose={() => setOpenProfileModal(false)}
+              title="Upload Image"
+              footer={<></>}
+            >
+              <div className="flex justify-center">
+                <Upload
+                  name="profile-pic"
+                  listType="picture-card"
+                  className="text-center"
+                  maxCount={1}
+                  action={uploadProfilePicture}
+                >
+                  <img src={imageUrl} alt="Upload" />
+                </Upload>
+              </div>
+
+              <div className="text-center text-sm mt-2">
+                Supported formats: <br /> JPG/JPEG, PNG
+              </div>
+              <div className="text-center text-md mt-3">
+                Click to Upload your Image
+              </div>
             </Modal>
           </div>
         </div>
@@ -166,14 +164,11 @@ const Profile = () => {
             </div>
             <Drawer
               open={open}
-              position="right"
-              className="w-[700px]"
+              closeIcon={false}
               onClose={() => setOpen(false)}
+              width="700"
             >
-              <Drawer.Header />
-              <Drawer.Items>
-                <ChatMessage />
-              </Drawer.Items>
+              <ChatMessage />
             </Drawer>
             <Tooltip style="dark" content="test@gmail.com" placement="bottom">
               <div
@@ -201,15 +196,13 @@ const Profile = () => {
                 <div className="text-xs text-blue-600">Email</div>
               </div>
               <Drawer
-                position="right"
-                className="w-[70vw] h-dvh overflow-y-hidden"
                 open={openEmail}
+                closeIcon={false}
                 onClose={() => setOpenEmail(false)}
+                width="70vw"
+                className="h-dvh overflow-y-hidden"
               >
-                <Drawer.Header />
-                <DrawerItems>
-                  <Email />
-                </DrawerItems>
+                <Email />
               </Drawer>
             </Tooltip>
             <Tooltip style="dark" placement="bottom" content="62399-72229">
