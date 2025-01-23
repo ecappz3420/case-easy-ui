@@ -20,53 +20,93 @@ const Body = () => {
   const items = [
     {
       key: "1",
-      label: "PROFILE",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Profile
+        </span>
+      ),
       children: <ProfileTab />,
     },
     {
       key: "2",
-      label: "QUESTIONNAIRES",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Questionnaires
+        </span>
+      ),
       children: <div>Tab 2</div>,
     },
     {
       key: "3",
-      label: "DOCUMENTS",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Documents
+        </span>
+      ),
       children: <Document />,
     },
     {
       key: "4",
-      label: "FORMS",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Forms
+        </span>
+      ),
       children: <div>Tab 4</div>,
     },
     {
       key: "5",
-      label: "TASKS",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Tasks
+        </span>
+      ),
       children: <Tasks />,
     },
     {
       key: "6",
-      label: "AGREEMENTS AND LETTERS",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Agreements and Letters
+        </span>
+      ),
       children: <div>Tab 6</div>,
     },
     {
       key: "7",
-      label: "APPOINTMENTS",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Appointments
+        </span>
+      ),
       children: <div>Tab 7</div>,
     },
     {
       key: "8",
-      label: "COMMUNICATION",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Communication
+        </span>
+      ),
       children: <Chat />,
     },
     {
       key: "9",
-      label: "BILLING",
+      label: (
+        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+          Billing
+        </span>
+      ),
       children: <div>Tab 9</div>,
     },
   ];
   return (
     <div className="p-2 rounded-lg mt-3 box-shadow bg-white min-h-[600px]">
-      <Tabs defaultActiveKey="1" items={items} />
+      <Tabs
+        defaultActiveKey="1"
+        items={items}
+        tabBarStyle={{ marginLeft: "16px" }}
+      />
       {/* <Tabs value={value} onChange={handleChange}>
         <Tab label="profile" className="hover:text-blue-600" value="1" />
         <Tab label="Questionnaires" className="hover:text-blue-600" value="2" />
