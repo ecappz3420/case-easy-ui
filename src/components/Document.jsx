@@ -1,7 +1,6 @@
 import { Button, Modal, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { UploadOutlined } from "@ant-design/icons";
 
 import StudyPermitExtension from "../components/docUploadForms/StudyPermitExtension";
 import StudySpouse from "../components/docUploadForms/StudySpouse";
@@ -129,7 +128,7 @@ const Document = () => {
               </div>
               <Button
                 type="primary"
-                icon={<UploadOutlined />}
+                icon={<i className="bi bi-upload"></i>}
                 onClick={() => setOpen(true)}
                 className="mt-4"
               >
