@@ -16,6 +16,8 @@ import {
 import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
 import uploadFile from "../../api/uploadFile";
+import { STUDY_PERMIT_EXTENSION } from "./utils/reportNameConstants";
+import { STUDY_PERMIT_EXTENSION_FORM } from "./utils/formNameConstants";
 
 const StudyPermitExtension = ({ setDocObj }) => {
   const [form] = Form.useForm();
@@ -70,7 +72,10 @@ const StudyPermitExtension = ({ setDocObj }) => {
       };
 
       await ZOHO.CREATOR.init();
-      const response = await addRecord("Study_Permit_Extension", formattedData);
+      const response = await addRecord(
+        STUDY_PERMIT_EXTENSION_FORM,
+        formattedData
+      );
 
       console.log(response);
       if (response.code !== 3000) throw new Error(response.error);
@@ -81,7 +86,7 @@ const StudyPermitExtension = ({ setDocObj }) => {
       data.Medical_Certificate?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Permit_Extensions",
+            STUDY_PERMIT_EXTENSION,
             recordId,
             "Medical_Certificate",
             data.Medical_Certificate[0].originFileObj
@@ -91,7 +96,7 @@ const StudyPermitExtension = ({ setDocObj }) => {
       data.Study_Permit?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Permit_Extensions",
+            STUDY_PERMIT_EXTENSION,
             recordId,
             "Study_Permit",
             data.Study_Permit[0].originFileObj

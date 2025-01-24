@@ -19,6 +19,8 @@ import {
 import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
 import uploadFile from "../../api/uploadFile";
+import { STUDY_VISA } from "./utils/reportNameConstants";
+import { STUDY_VISA_FORM } from "./utils/formNameConstants";
 
 const { TextArea } = Input;
 
@@ -88,7 +90,7 @@ const StudyVisa = ({ setDocObj }) => {
 
       await ZOHO.CREATOR.init();
 
-      const response = await addRecord("Study_Visa", formattedData);
+      const response = await addRecord(STUDY_VISA_FORM, formattedData);
       if (response.code !== 3000) throw new Error(response.error);
 
       //Uploading Files to Zoho after successful adding of Record
@@ -97,7 +99,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Passport_Upload?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Passport_Upload",
             data.Passport_Upload[0].originFileObj
@@ -106,7 +108,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.TRF?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "TRF",
             data.TRF[0].originFileObj
@@ -115,7 +117,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.th1?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "th1",
             data.th1[0].originFileObj
@@ -123,17 +125,12 @@ const StudyVisa = ({ setDocObj }) => {
         );
       data.th?.length > 0 &&
         console.log(
-          await uploadFile(
-            "All_Study_Visa",
-            recordId,
-            "th",
-            data.th[0].originFileObj
-          )
+          await uploadFile(STUDY_VISA, recordId, "th", data.th[0].originFileObj)
         );
       data.Bachelors?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Bachelors",
             data.Bachelors[0].originFileObj
@@ -142,7 +139,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Masters?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Masters",
             data.Masters[0].originFileObj
@@ -151,7 +148,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Diploma?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Diploma",
             data.Diploma[0].originFileObj
@@ -160,7 +157,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Spouse_Passport?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Spouse_Passport",
             data.Spouse_Passport[0].originFileObj
@@ -169,7 +166,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Pay_Slips?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Pay_Slips",
             data.Pay_Slips[0].originFileObj
@@ -178,7 +175,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Account_Balance?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Account_Balance",
             data.Account_Balance[0].originFileObj
@@ -187,7 +184,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Work_Permit?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Work_Permit",
             data.Work_Permit[0].originFileObj
@@ -196,7 +193,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Job_Letter_Appointment_Letter?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Job_Letter_Appointment_Letter",
             data.Job_Letter_Appointment_Letter[0].originFileObj
@@ -205,7 +202,7 @@ const StudyVisa = ({ setDocObj }) => {
       data.Chat_and_call_History?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Visa",
+            STUDY_VISA,
             recordId,
             "Chat_and_call_History",
             data.Chat_and_call_History[0].originFileObj
