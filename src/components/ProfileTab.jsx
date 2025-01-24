@@ -11,25 +11,25 @@ const ProfileTab = () => {
     <div className="p-2">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
         {/* {Profile} */}
-        <div className="h-[350px] rounded border p-2 mb-3 box-shadow">
+        <div className="rounded border p-2 mb-3 box-shadow text-sm">
           <ProfileCard />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
-          <div className="h-[350px] rounded mb-3 box-shadow border p-2">
+          <div className="rounded mb-3 box-shadow border p-2">
             <CaseInfo />
           </div>
-          <div className="h-[350px] rounded mb-3 box-shadow border p-2">
+          <div className="rounded mb-3 box-shadow border p-2">
             <TeamMembers />
           </div>
         </div>
-        <div className="h-[350px] rounded border mb-3 box-shadow p-2">
+        <div className="rounded border mb-3 box-shadow p-2">
           <Reminders />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
-          <div className="h-[350px] rounded mb-3 box-shadow border p-2">
+          <div className="rounded mb-3 box-shadow border p-2">
             <Milestones />
           </div>
-          <div className="h-[350px] rounded mb-3 box-shadow border p-2">
+          <div className="rounded mb-3 box-shadow border p-2">
             <RelatesCases />
           </div>
         </div>
