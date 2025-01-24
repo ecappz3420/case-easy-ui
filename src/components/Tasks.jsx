@@ -187,7 +187,7 @@ const Tasks = () => {
 
   return (
     <div className="p-2">
-      <div className="text-end">
+      <div className="text-end mb-2">
         <button
           onClick={() => setOpen(true)}
           className="bg-blue-600 py-2 px-3 text-white rounded transition-all hover:bg-blue-500"

@@ -37,7 +37,7 @@ const Chat = () => {
 
   return (
     <div className="p-2">
-      <div className="flex justify-between mt-3">
+      <div className="flex justify-between">
         <Search
           placeholder="Type to Filter"
           allowClear
@@ -105,7 +105,7 @@ const Chat = () => {
             </div> */}
           </div>
           <div className="font-bold mb-5">Message Timeline</div>
-          <div className="text-sm">Now displaying 1 of your latest message</div>
+          <div className="text-xs">Now displaying 1 of your latest message</div>
         </div>
         <div className="flex p-2 gap-1">
           <div className="h-8 flex justify-center items-center w-8 text-blue-600 bg-blue-50 border border-blue-600 text-xs rounded-full">
@@ -122,12 +122,12 @@ const Chat = () => {
                     <span className="font-bold">Arunkumar A</span> chat to{" "}
                     <span className="font-bold">Katy Pery</span>
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-xs text-gray-500">
                     Mon Oct 28, 2024 @ 8:13 AM
                   </div>
                 </div>
               </div>
-              <div className="text-sm">
+              <div className="text-xs">
                 <i className="bi bi-briefcase mr-2"></i>
                 <span className="cursor-pointer font-bold text-blue-600">
                   00002Perry
@@ -135,7 +135,7 @@ const Chat = () => {
               </div>
             </div>
             <div className="p-2">Hi</div>
-            <div className="mt-2 flex gap-3 text-sm">
+            <div className="mt-2 flex gap-3 text-xs">
               <div className="cursor-pointer">
                 <i className="bi bi-reply mr-1"></i>Reply
               </div>

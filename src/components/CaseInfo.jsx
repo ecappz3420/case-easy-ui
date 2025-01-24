@@ -8,20 +8,20 @@ const CaseInfo = () => {
   return (
     <>
       <div className="flex justify-between border-b">
-        <div className="font-bold text-lg">Case Information</div>
-        <div className="cursor-pointer text-blue-600 text-sm">Edit</div>
+        <div className="font-bold text-base">Case Information</div>
+        <div className="cursor-pointer text-blue-600 text-xs">Edit</div>
       </div>
       <div className="mb-2 mt-3">
         <div className="text-slate-500 uppercase text-xs font-semibold ">
           Case Number
         </div>
-        <div className="text-sm">00002-Perry</div>
+        <div className="text-xs">00002-Perry</div>
       </div>
       <div className="my-2">
         <div className="text-slate-500 uppercase text-xs font-semibold ">
           Case Type
         </div>
-        <div className="text-sm">{lead?.Case_Type || ""}</div>
+        <div className="text-xs">{lead?.Case_Type || ""}</div>
       </div>
       <div className="my-2">
         <div className="text-slate-500 uppercase text-xs font-semibold ">
@@ -42,7 +42,7 @@ const CaseInfo = () => {
         <div className="text-slate-500 uppercase text-xs font-semibold ">
           Opened
         </div>
-        <div className="text-sm">Oct 11, 2024</div>
+        <div className="text-xs">Oct 11, 2024</div>
       </div>
       <div className="mt-2">
         <div className="text-slate-500 uppercase text-xs font-semibold ">
@@ -57,7 +57,7 @@ const CaseInfo = () => {
       <div className="w-[200px] mt-3">
         <div className="flex rounded">
           <div
-            className={`w-1/2 text-center p-2 rounded-s-full border-e-0 cursor-pointer border text-sm ${
+            className={`w-1/2 text-center p-2 rounded-s-full border-e-0 cursor-pointer border text-xs ${
               status === "Prospect" ? "bg-blue-600 text-white" : ""
             }`}
             onClick={() => setStatus("Prospect")}
@@ -65,7 +65,7 @@ const CaseInfo = () => {
             Prospect
           </div>
           <div
-            className={`w-1/2 text-center p-2 border border-s-0 text-sm cursor-pointer rounded-e-full ${
+            className={`w-1/2 text-center p-2 border border-s-0 text-xs cursor-pointer rounded-e-full ${
               status === "Client" ? "bg-blue-600 p-2 text-white" : ""
             }`}
             onClick={() => setStatus("Client")}

@@ -22,9 +22,9 @@ const TeamMembers = () => {
       {open === false ? (
         <>
           <div className="flex justify-between border-b">
-            <div className="font-bold text-lg">Team Members</div>
+            <div className="font-bold text-base">Team Members</div>
             <div
-              className="cursor-pointer text-blue-600 text-sm"
+              className="cursor-pointer text-blue-600 text-xs"
               onClick={() => setOpen(true)}
             >
               Edit
@@ -34,13 +34,13 @@ const TeamMembers = () => {
             <div className="flex justify-center">
               <i className="bi bi-folder-x text-[100px] text-blue-600"></i>
             </div>
-            <div className="font-semibold text-blue-600 text-lg text-center">
+            <div className="font-semibold text-blue-600 text-sm text-center">
               No Team Member Assigned
             </div>
-            <div className="mt-3 text-sm text-center">
+            <div className="mt-3 text-xs text-center">
               Only you have the access to the case
             </div>
-            <div className="mt-3 text-sm text-center">
+            <div className="mt-3 text-xs text-center">
               Click{" "}
               <span
                 onClick={() => setOpen(true)}
@@ -56,8 +56,8 @@ const TeamMembers = () => {
       ) : (
         <>
           <div className="flex justify-between border-b">
-            <div className="font-bold text-lg">Team Members</div>
-            <div className="cursor-pointer text-blue-600 text-sm flex gap-2">
+            <div className="font-bold text-base">Team Members</div>
+            <div className="cursor-pointer text-blue-600 text-xs flex gap-2">
               <div onClick={() => setOpen(false)}>Save</div>
               <div onClick={() => setOpen(false)}>Cancel</div>
             </div>
@@ -67,7 +67,7 @@ const TeamMembers = () => {
               allowClear
               options={options}
               value={leadData ? leadData.Assigned_to.display_value : ""}
-              className="w-full"
+              className="w-full text-xs"
             />
           </div>
         </>

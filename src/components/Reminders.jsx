@@ -31,9 +31,9 @@ const Reminders = () => {
   return (
     <>
       <div className="flex justify-between border-b">
-        <div className="font-bold text-lg">Reminders</div>
+        <div className="font-bold text-base">Reminders</div>
         <div
-          className="cursor-pointer text-blue-600 text-sm"
+          className="cursor-pointer text-blue-600 text-xs"
           onClick={() => setOpen(true)}
         >
           Create
@@ -43,13 +43,13 @@ const Reminders = () => {
         <div className="flex justify-center">
           <i className="bi bi-folder-x text-[100px] text-blue-600"></i>
         </div>
-        <div className="font-semibold text-blue-600 text-lg text-center">
+        <div className="font-semibold text-blue-600 text-sm text-center">
           No Reminders Created
         </div>
-        <div className="mt-3 text-sm text-center">
+        <div className="mt-3 text-xs text-center">
           There is no Reminders yet.
         </div>
-        <div className="mt-3 text-sm text-center">
+        <div className="mt-3 text-xs text-center">
           Click{" "}
           <span
             onClick={() => setOpen(true)}

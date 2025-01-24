@@ -102,17 +102,17 @@ const Profile = () => {
           </div>
         </div>
         <div className="">
-          <div className="text-2xl font-semibold py-2 text-blue-500">
+          <div className="text-xl font-semibold py-2 text-blue-500">
             {leadData
               ? `${leadData.Name.first_name} ${leadData.Name.last_name}`
               : ""}
           </div>
-          <div className="text-sm font-semibold">
+          <div className="text-xs font-semibold mb-1">
             Marital Status:{" "}
-            <span className="font-normal">
+            <span className="font-normal me-1">
               {leadData ? leadData.Marital_Status : ""}{" "}
             </span>
-            <span className="text-sm font-semibold">
+            <span className="text-xs font-semibold">
               Date of Birth:{" "}
               <span className="font-normal">
                 {leadData ? leadData.DOB : ""}
@@ -124,12 +124,12 @@ const Profile = () => {
               </small>
             )}
           </div>
-          <div className="text-sm font-semibold">
+          <div className="text-xs font-semibold">
             Country of Residence:{" "}
-            <span className="font-normal">
+            <span className="font-normal me-1">
               {leadData ? leadData.Country_of_Residence : ""}{" "}
             </span>
-            <span className="text-sm font-semibold">
+            <span className="text-xs font-semibold">
               Client ID:{" "}
               <span className="font-normal">
                 {leadData ? leadData.Lead_id : ""}
