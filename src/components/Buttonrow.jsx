@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Drawer, Dropdown, Button, Space } from "antd";
-import { CaretDownOutlined } from "@ant-design/icons";
 import Note from "./Note";
 import NoteForm from "./NoteForm";
 
@@ -43,7 +42,7 @@ const Buttonrow = () => {
           <Space>
             <Button
               type="primary"
-              icon={<CaretDownOutlined />}
+              icon={<i className="bi bi-caret-down-fill"></i>}
               iconPosition="end"
             >
               Case Options
