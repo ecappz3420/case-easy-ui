@@ -1,16 +1,16 @@
 import React from "react";
-import "froala-editor/css/froala_style.min.css";
-import "froala-editor/css/froala_editor.pkgd.min.css";
-import FroalaEditorComponent from "react-froala-wysiwyg";
-import { Button } from "antd";
+import { Input, Button } from "antd";
 
 const ChatMessage = () => {
+  const { TextArea } = Input;
+
   return (
     <div className="border p-2 gap-6 flex flex-col justify-between">
-      <FroalaEditorComponent
-        tag="textarea"
-        config={{
-          heightMin: 300,
+      <TextArea
+        maxLength={500}
+        style={{
+          height: 300,
+          resize: "none",
         }}
       />
       <div>
