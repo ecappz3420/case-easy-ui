@@ -51,7 +51,7 @@ const Chat = () => {
             <Space>
               <Button
                 type="primary"
-                icon={<i class="bi bi-caret-down-fill"></i>}
+                icon={<i className="bi bi-caret-down-fill"></i>}
                 iconPosition="end"
               >
                 Send Communications
