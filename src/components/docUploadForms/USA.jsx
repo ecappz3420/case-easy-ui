@@ -15,12 +15,6 @@ import {
   message,
 } from "antd";
 import {
-  UploadOutlined,
-  MailOutlined,
-  PlusOutlined,
-  CloseOutlined,
-} from "@ant-design/icons";
-import {
   PAYMENT_DETAILS_OPTIONS,
   COUNTRY_CODE_OPTIONS,
 } from "./utils/selectOptions";
@@ -247,7 +241,7 @@ const USA = ({ setDocObj }) => {
             >
               <Upload name="Passport" maxCount={1} beforeUpload={() => false}>
                 <Button
-                  icon={<UploadOutlined />}
+                  icon={<i className="bi bi-upload"></i>}
                   iconPosition="end"
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
@@ -277,7 +271,7 @@ const USA = ({ setDocObj }) => {
                 beforeUpload={() => false}
               >
                 <Button
-                  icon={<UploadOutlined />}
+                  icon={<i className="bi bi-upload"></i>}
                   iconPosition="end"
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
@@ -303,7 +297,7 @@ const USA = ({ setDocObj }) => {
             >
               <Upload name="th1" maxCount={1} beforeUpload={() => false}>
                 <Button
-                  icon={<UploadOutlined />}
+                  icon={<i className="bi bi-upload"></i>}
                   iconPosition="end"
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
@@ -329,7 +323,7 @@ const USA = ({ setDocObj }) => {
             >
               <Upload name="th" maxCount={1} beforeUpload={() => false}>
                 <Button
-                  icon={<UploadOutlined />}
+                  icon={<i className="bi bi-upload"></i>}
                   iconPosition="end"
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
@@ -355,7 +349,7 @@ const USA = ({ setDocObj }) => {
             >
               <Upload name="TRF" maxCount={1} beforeUpload={() => false}>
                 <Button
-                  icon={<UploadOutlined />}
+                  icon={<i className="bi bi-upload"></i>}
                   iconPosition="end"
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
@@ -385,7 +379,7 @@ const USA = ({ setDocObj }) => {
                 beforeUpload={() => false}
               >
                 <Button
-                  icon={<UploadOutlined />}
+                  icon={<i className="bi bi-upload"></i>}
                   iconPosition="end"
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
@@ -411,7 +405,7 @@ const USA = ({ setDocObj }) => {
             >
               <Upload name="I20_Study" maxCount={1} beforeUpload={() => false}>
                 <Button
-                  icon={<UploadOutlined />}
+                  icon={<i className="bi bi-upload"></i>}
                   iconPosition="end"
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
@@ -642,7 +636,7 @@ const USA = ({ setDocObj }) => {
                 >
                   <Input
                     maxLength={80}
-                    addonAfter={<MailOutlined />}
+                    addonAfter={<i className="bi bi-envelope"></i>}
                     className="sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px]"
                   />
                 </Form.Item>
@@ -1150,7 +1144,7 @@ const USA = ({ setDocObj }) => {
                               >
                                 <Button
                                   type="link"
-                                  icon={<CloseOutlined />}
+                                  icon={<i className="bi bi-x"></i>}
                                   danger
                                   onClick={() => remove(name)}
                                 />
@@ -1200,7 +1194,7 @@ const USA = ({ setDocObj }) => {
                               <Button
                                 type="link"
                                 onClick={() => add()}
-                                icon={<PlusOutlined />}
+                                icon={<i className="bi bi-plus"></i>}
                               >
                                 Add New
                               </Button>

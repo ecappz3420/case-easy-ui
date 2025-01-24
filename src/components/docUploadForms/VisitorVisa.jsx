@@ -13,7 +13,6 @@ import {
   Space,
   message,
 } from "antd";
-import { UploadOutlined, PlusOutlined, CloseOutlined } from "@ant-design/icons";
 import {
   WHOM_THEY_MEET_OPTIONS,
   VISIT_PURPOSE_OPTIONS,
@@ -549,7 +548,7 @@ const VisitorVisa = ({ setDocObj }) => {
               >
                 <Upload name="Passport" maxCount={1} beforeUpload={() => false}>
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -735,7 +734,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               beforeUpload={() => false}
                             >
                               <Button
-                                icon={<UploadOutlined />}
+                                icon={<i className="bi bi-upload"></i>}
                                 iconPosition="end"
                                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
@@ -776,7 +775,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               beforeUpload={() => false}
                             >
                               <Button
-                                icon={<UploadOutlined />}
+                                icon={<i className="bi bi-upload"></i>}
                                 iconPosition="end"
                                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
@@ -818,7 +817,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               beforeUpload={() => false}
                             >
                               <Button
-                                icon={<UploadOutlined />}
+                                icon={<i className="bi bi-upload"></i>}
                                 iconPosition="end"
                                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
@@ -859,7 +858,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               beforeUpload={() => false}
                             >
                               <Button
-                                icon={<UploadOutlined />}
+                                icon={<i className="bi bi-upload"></i>}
                                 iconPosition="end"
                                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
@@ -888,7 +887,7 @@ const VisitorVisa = ({ setDocObj }) => {
                     >
                       <Upload name="Convocation_Letter" maxCount={1} beforeUpload={() => false}>
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -936,7 +935,7 @@ const VisitorVisa = ({ setDocObj }) => {
                                   beforeUpload={() => false}
                                 >
                                   <Button
-                                    icon={<UploadOutlined />}
+                                    icon={<i className="bi bi-upload"></i>}
                                     iconPosition="end"
                                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                                   >
@@ -966,7 +965,7 @@ const VisitorVisa = ({ setDocObj }) => {
                                   beforeUpload={() => false}
                                 >
                                   <Button
-                                    icon={<UploadOutlined />}
+                                    icon={<i className="bi bi-upload"></i>}
                                     iconPosition="end"
                                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                                   >
@@ -1010,7 +1009,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               beforeUpload={() => false}
                             >
                               <Button
-                                icon={<UploadOutlined />}
+                                icon={<i className="bi bi-upload"></i>}
                                 iconPosition="end"
                                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
@@ -1053,7 +1052,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               beforeUpload={() => false}
                             >
                               <Button
-                                icon={<UploadOutlined />}
+                                icon={<i className="bi bi-upload"></i>}
                                 iconPosition="end"
                                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
@@ -1109,7 +1108,7 @@ const VisitorVisa = ({ setDocObj }) => {
                     >
                       <Upload name="Completion_Letter" maxCount={1} beforeUpload={() => false}>
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1174,7 +1173,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               beforeUpload={() => false}
                             >
                               <Button
-                                icon={<UploadOutlined />}
+                                icon={<i className="bi bi-upload"></i>}
                                 iconPosition="end"
                                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
@@ -1215,7 +1214,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               beforeUpload={() => false}
                             >
                               <Button
-                                icon={<UploadOutlined />}
+                                icon={<i className="bi bi-upload"></i>}
                                 iconPosition="end"
                                 className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                               >
@@ -1248,7 +1247,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1274,7 +1273,7 @@ const VisitorVisa = ({ setDocObj }) => {
                     >
                       <Upload name="Driving_Licence" maxCount={1} beforeUpload={() => false}>
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1368,7 +1367,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1411,7 +1410,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1454,7 +1453,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1496,7 +1495,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1525,7 +1524,7 @@ const VisitorVisa = ({ setDocObj }) => {
               >
                 <Upload name="Study_Permit" maxCount={1} beforeUpload={() => false}>
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -1566,7 +1565,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1610,7 +1609,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1653,7 +1652,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1696,7 +1695,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1725,7 +1724,7 @@ const VisitorVisa = ({ setDocObj }) => {
               >
                 <Upload name="Translated" maxCount={1} beforeUpload={() => false}>
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -1765,7 +1764,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1807,7 +1806,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1850,7 +1849,7 @@ const VisitorVisa = ({ setDocObj }) => {
                           beforeUpload={() => false}
                         >
                           <Button
-                            icon={<UploadOutlined />}
+                            icon={<i className="bi bi-upload"></i>}
                             iconPosition="end"
                             className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
@@ -1881,7 +1880,7 @@ const VisitorVisa = ({ setDocObj }) => {
                           beforeUpload={() => false}
                         >
                           <Button
-                            icon={<UploadOutlined />}
+                            icon={<i className="bi bi-upload"></i>}
                             iconPosition="end"
                             className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
@@ -1911,7 +1910,7 @@ const VisitorVisa = ({ setDocObj }) => {
                           beforeUpload={() => false}
                         >
                           <Button
-                            icon={<UploadOutlined />}
+                            icon={<i className="bi bi-upload"></i>}
                             iconPosition="end"
                             className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                           >
@@ -1955,7 +1954,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -1984,7 +1983,7 @@ const VisitorVisa = ({ setDocObj }) => {
               >
                 <Upload name="Fard" maxCount={1} beforeUpload={() => false}>
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -2051,7 +2050,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               >
                                 <Button
                                   type="link"
-                                  icon={<CloseOutlined />}
+                                  icon={<i className="bi bi-x"></i>}
                                   danger
                                   onClick={() => remove(name)}
                                 />
@@ -2130,7 +2129,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               <Button
                                 type="link"
                                 onClick={() => add()}
-                                icon={<PlusOutlined />}
+                                icon={<i className="bi bi-plus"></i>}
                               >
                                 Add New
                               </Button>
@@ -2194,7 +2193,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               >
                                 <Button
                                   type="link"
-                                  icon={<CloseOutlined />}
+                                  icon={<i className="bi bi-x"></i>}
                                   danger
                                   onClick={() => remove(name)}
                                 />
@@ -2260,7 +2259,7 @@ const VisitorVisa = ({ setDocObj }) => {
                               <Button
                                 type="link"
                                 onClick={() => add()}
-                                icon={<PlusOutlined />}
+                                icon={<i className="bi bi-plus"></i>}
                               >
                                 Add New
                               </Button>
@@ -2340,7 +2339,7 @@ const VisitorVisa = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -2561,7 +2560,7 @@ const VisitorVisa = ({ setDocObj }) => {
                 beforeUpload={() => false}
               >
                 <Button
-                  icon={<UploadOutlined />}
+                  icon={<i className="bi bi-upload"></i>}
                   iconPosition="end"
                   className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                 >
