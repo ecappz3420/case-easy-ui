@@ -24,7 +24,7 @@ import { LANGUAGE_OPTIONS } from "./utils/languageSelectOptions";
 import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
 import uploadFile from "../../api/uploadFile";
-import { USA } from "./utils/reportNameConstants";
+import { USA as USA_REPORT } from "./utils/reportNameConstants";
 import { USA_FORM } from "./utils/formNameConstants";
 
 const { TextArea } = Input;
@@ -150,7 +150,7 @@ const USA = ({ setDocObj }) => {
       data.Passport?.length > 0 &&
         console.log(
           await uploadFile(
-            USA,
+            USA_REPORT,
             recordId,
             "Passport",
             data.Passport[0].originFileObj
@@ -159,7 +159,7 @@ const USA = ({ setDocObj }) => {
       data.Aadhar_card?.length > 0 &&
         console.log(
           await uploadFile(
-            USA,
+            USA_REPORT,
             recordId,
             "Aadhar_card",
             data.Aadhar_card[0].originFileObj
@@ -167,20 +167,30 @@ const USA = ({ setDocObj }) => {
         );
       data.th1?.length > 0 &&
         console.log(
-          await uploadFile(USA, recordId, "th1", data.th1[0].originFileObj)
+          await uploadFile(
+            USA_REPORT,
+            recordId,
+            "th1",
+            data.th1[0].originFileObj
+          )
         );
       data.th?.length > 0 &&
         console.log(
-          await uploadFile(USA, recordId, "th", data.th[0].originFileObj)
+          await uploadFile(USA_REPORT, recordId, "th", data.th[0].originFileObj)
         );
       data.TRF?.length > 0 &&
         console.log(
-          await uploadFile(USA, recordId, "TRF", data.TRF[0].originFileObj)
+          await uploadFile(
+            USA_REPORT,
+            recordId,
+            "TRF",
+            data.TRF[0].originFileObj
+          )
         );
       data.Offer_Letter?.length > 0 &&
         console.log(
           await uploadFile(
-            USA,
+            USA_REPORT,
             recordId,
             "Offer_Letter",
             data.Offer_Letter[0].originFileObj
@@ -189,7 +199,7 @@ const USA = ({ setDocObj }) => {
       data.I20_Study?.length > 0 &&
         console.log(
           await uploadFile(
-            USA,
+            USA_REPORT,
             recordId,
             "I20_Study",
             data.I20_Study[0].originFileObj
