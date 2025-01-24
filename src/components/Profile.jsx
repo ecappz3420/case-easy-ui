@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Drawer, Modal, Upload } from "antd";
-import { Tooltip } from "flowbite-react";
+import { Drawer, Modal, Upload, Tooltip } from "antd";
 import ChatMessage from "./ChatMessage";
 import Email from "./Email";
 import { useSelector } from "react-redux";
@@ -55,7 +54,7 @@ const Profile = () => {
               </svg>
             )}
 
-            <Tooltip className="text-nowrap" content="Click to change photo">
+            <Tooltip title="Click to change photo">
               <span
                 onClick={() => setOpenProfileModal(true)}
                 className="absolute bottom-[10px] cursor-pointer right-0 bg-white hover:bg-blue-200 hover:transition-all transition-all rounded-full border p-2"
@@ -170,7 +169,7 @@ const Profile = () => {
             >
               <ChatMessage />
             </Drawer>
-            <Tooltip style="dark" content="test@gmail.com" placement="bottom">
+            <Tooltip title="test@gmail.com" placement="bottom">
               <div
                 className="flex justify-center flex-col items-center"
                 onClick={() => setOpenEmail(true)}
@@ -205,7 +204,7 @@ const Profile = () => {
                 <Email />
               </Drawer>
             </Tooltip>
-            <Tooltip style="dark" placement="bottom" content="62399-72229">
+            <Tooltip placement="bottom" title="62399-72229">
               <a href="https://web.telegram.org/k/#6239972229" target="_Blank">
                 <div className="flex justify-center flex-col items-center">
                   <div className="flex justify-center p-2 rounded-full bg-white hover:bg-blue-100 cursor-pointer transition-all">
@@ -229,7 +228,7 @@ const Profile = () => {
                 </div>
               </a>
             </Tooltip>
-            <Tooltip placement="bottom" content="62399-72229">
+            <Tooltip placement="bottom" title="62399-72229">
               <a
                 href="https://api.whatsapp.com/send?phone=6239972229"
                 target="_Blank"
@@ -257,7 +256,7 @@ const Profile = () => {
                 </div>
               </a>
             </Tooltip>
-            <Tooltip placement="bottom" content="62399-72229">
+            <Tooltip placement="bottom" title="62399-72229">
               <a href="">
                 <div className="flex justify-center items-center flex-col">
                   <div className="flex justify-center p-2 rounded-full bg-white hover:bg-blue-100 cursor-pointer transition-all">
