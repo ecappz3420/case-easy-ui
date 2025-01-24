@@ -4,11 +4,11 @@ import ChatMessage from "./ChatMessage";
 import Email from "./Email";
 
 const Chat = () => {
-  const [chatActive, setChatActive] = useState(false);
-  const [emailActive, setEmailActive] = useState(false);
-  const [smsActive, setSmsActive] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [openEmail, setOpenEmail] = useState(false);
+  // const [chatActive, setChatActive] = useState(false);
+  // const [emailActive, setEmailActive] = useState(false);
+  // const [smsActive, setSmsActive] = useState(false);
+  // const [visible, setVisible] = useState(false);
+  // const [openEmail, setOpenEmail] = useState(false);
 
   const { Search } = Input;
   const active = "bg-blue-600 text-white";
@@ -18,13 +18,13 @@ const Chat = () => {
       key: "1",
       label: "Chat",
       icon: <i className="bi bi-chat mr-2"></i>,
-      onClick: setVisible(true),
+      // onClick: setVisible(true),
     },
     {
       key: "2",
       label: "Email",
       icon: <i className="bi bi-envelope mr-2"></i>,
-      onClick: setOpenEmail(true),
+      // onClick: setOpenEmail(true),
     },
     {
       key: "3",
@@ -59,20 +59,7 @@ const Chat = () => {
             </Space>
           </a>
         </Dropdown>
-
-        {/* <Dropdown label="Send Communications" color="blue">
-          <DropdownItem onClick={() => setVisible(true)}>
-            <i className="bi bi-chat mr-2"></i> Chat
-          </DropdownItem>
-          <DropdownItem onClick={() => setOpenEmail(true)}>
-            <i className="bi bi-envelope mr-2"></i>Email
-          </DropdownItem>
-          <DropdownItem>
-            <i className="bi bi-phone mr-2"></i>SMS
-          </DropdownItem>
-        </Dropdown> */}
-
-        <Drawer
+        {/* <Drawer
           open={openEmail}
           closeIcon={false}
           onClose={() => setOpenEmail(false)}
@@ -87,34 +74,12 @@ const Chat = () => {
           width="700"
         >
           <ChatMessage />
-        </Drawer>
-        {/* <Drawer
-          open={openEmail}
-          position="right"
-          className="w-[70vw] overflow-hidden"
-          onClose={() => setOpenEmail(false)}
-        >
-          <Drawer.Header />
-          <Drawer.Items>
-            <Email />
-          </Drawer.Items>
-        </Drawer>
-        <Drawer
-          open={visible}
-          position="right"
-          className="w-[700px]"
-          onClose={() => setVisible(false)}
-        >
-          <DrawerHeader />
-          <DrawerItems>
-            <ChatMessage />
-          </DrawerItems>
         </Drawer> */}
       </div>
       <div className="mt-3 box-shadow border h-[600px] rounded p-4">
         <div className="mb-5">
           <div className="flex mb-5">
-            <div
+            {/* <div
               onClick={() => setEmailActive((curr) => !curr)}
               className={`px-3 py-2 cursor-pointer border ${
                 emailActive && active
@@ -137,7 +102,7 @@ const Chat = () => {
               }`}
             >
               <i className="bi bi-chat mr-2"></i>Chat
-            </div>
+            </div> */}
           </div>
           <div className="font-bold mb-5">Message Timeline</div>
           <div className="text-sm">Now displaying 1 of your latest message</div>
