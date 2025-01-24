@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "semantic-ui-css/semantic.min.css";
 import Profile from "./components/Profile";
 import Buttonrow from "./components/Buttonrow";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -18,7 +17,7 @@ const App = () => {
       const queryParams = await ZOHO.CREATOR.UTIL.getQueryParams();
       const result = await fetchRecordByID(queryParams.lead);
       dispatch(setClient(result));
-      const response = await fetchRecords("All_Users","ID != 0");
+      const response = await fetchRecords("All_Users", "ID != 0");
       dispatch(setTeamMember(response));
     };
     runApi();
