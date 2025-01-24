@@ -24,7 +24,6 @@ const Email = () => {
               options={[{ value: "test@gmail.com", label: "test@gmail.com" }]}
             />
           </Form.Item>
-
           <Form.Item label="To" name="To" className="w-[300px]">
             <Select
               mode="multiple"
