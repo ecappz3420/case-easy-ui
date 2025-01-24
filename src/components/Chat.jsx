@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown, Drawer } from "antd";
-import { Search } from "semantic-ui-react";
+import { Dropdown, Drawer, Input, Space, Button } from "antd";
 import ChatMessage from "./ChatMessage";
 import Email from "./Email";
 
@@ -11,6 +10,7 @@ const Chat = () => {
   const [visible, setVisible] = useState(false);
   const [openEmail, setOpenEmail] = useState(false);
 
+  const { Search } = Input;
   const active = "bg-blue-600 text-white";
 
   const items = [
@@ -33,16 +33,25 @@ const Chat = () => {
     },
   ];
 
+  const onSearch = (value, _e, info) => console.log(info?.source, value);
+
   return (
     <div className="p-2">
       <div className="flex justify-between mt-3">
-        <Search placeholder="Type to Filter" />
+        <Search
+          placeholder="Type to Filter"
+          allowClear
+          onSearch={onSearch}
+          style={{
+            width: 200,
+          }}
+        />
         <Dropdown menu={{ items }} trigger={["click"]}>
           <a onClick={(e) => e.preventDefault()}>
             <Space>
               <Button
                 type="primary"
-                icon={<CaretDownOutlined />}
+                icon={<i class="bi bi-caret-down-fill"></i>}
                 iconPosition="end"
               >
                 Send Communications
