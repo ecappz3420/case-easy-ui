@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown, Drawer, Input, Space, Button } from "antd";
+import { Dropdown, Drawer, Space, Button, Input } from "antd";
 import ChatMessage from "./ChatMessage";
 import Email from "./Email";
 
@@ -37,23 +37,12 @@ const Chat = () => {
 
   return (
     <div className="p-2">
-      <div className="flex justify-between">
-        <Search
-          placeholder="Type to Filter"
-          allowClear
-          onSearch={onSearch}
-          style={{
-            width: 200,
-          }}
-        />
+      <div className="flex justify-between mt-3">
+        <Input placeholder="Type to Filter" />
         <Dropdown menu={{ items }} trigger={["click"]}>
           <a onClick={(e) => e.preventDefault()}>
             <Space>
-              <Button
-                type="primary"
-                icon={<i className="bi bi-caret-down-fill"></i>}
-                iconPosition="end"
-              >
+              <Button type="primary" iconPosition="end">
                 Send Communications
               </Button>
             </Space>
