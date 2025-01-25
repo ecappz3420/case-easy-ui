@@ -1,11 +1,10 @@
-import "froala-editor/css/froala_style.min.css";
-import "froala-editor/css/froala_editor.pkgd.min.css";
-import FroalaEditorComponent from "react-froala-wysiwyg";
 import React from "react";
 import { Form, Select, Button, Input, Flex } from "antd";
 
 const Email = () => {
   const [form] = Form.useForm();
+
+  const { TextArea } = Input;
 
   const onFinish = (data) => {
     console.log("Submitted data: ", data);
@@ -25,7 +24,6 @@ const Email = () => {
               options={[{ value: "test@gmail.com", label: "test@gmail.com" }]}
             />
           </Form.Item>
-
           <Form.Item label="To" name="To" className="w-[300px]">
             <Select
               mode="multiple"
@@ -47,10 +45,11 @@ const Email = () => {
             <Input className="w-[300px] rounded"></Input>
           </Form.Item>
           <div className="flex flex-col gap-2 mb-4">
-            <FroalaEditorComponent
-              tag="textarea"
-              config={{
-                heightMin: 300,
+            <TextArea
+              maxLength={1000}
+              style={{
+                height: 300,
+                resize: "none",
               }}
             />
           </div>

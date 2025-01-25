@@ -3,6 +3,7 @@ import { Form, InputNumber, Button, Flex, message } from "antd";
 
 import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
+import { STUDY_SPOUSE_FORM } from "./utils/formNameConstants";
 
 const StudySpouse = ({ setDocObj }) => {
   const [form] = Form.useForm();
@@ -28,7 +29,7 @@ const StudySpouse = ({ setDocObj }) => {
       };
 
       await ZOHO.CREATOR.init();
-      const response = await addRecord("Study_Spouse", formattedData);
+      const response = await addRecord(STUDY_SPOUSE_FORM, formattedData);
       console.log(response);
 
       messageApi.destroy();

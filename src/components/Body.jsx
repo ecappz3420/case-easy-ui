@@ -10,7 +10,7 @@ const Body = () => {
     {
       key: "1",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Profile
         </span>
       ),
@@ -19,7 +19,7 @@ const Body = () => {
     {
       key: "2",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Questionnaires
         </span>
       ),
@@ -28,7 +28,7 @@ const Body = () => {
     {
       key: "3",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Documents
         </span>
       ),
@@ -37,7 +37,7 @@ const Body = () => {
     {
       key: "4",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Forms
         </span>
       ),
@@ -46,7 +46,7 @@ const Body = () => {
     {
       key: "5",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Tasks
         </span>
       ),
@@ -55,7 +55,7 @@ const Body = () => {
     {
       key: "6",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Agreements and Letters
         </span>
       ),
@@ -64,7 +64,7 @@ const Body = () => {
     {
       key: "7",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Appointments
         </span>
       ),
@@ -73,7 +73,7 @@ const Body = () => {
     {
       key: "8",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Communication
         </span>
       ),
@@ -82,7 +82,7 @@ const Body = () => {
     {
       key: "9",
       label: (
-        <span className="text-sm tracking-wider text-gray-600 hover:text-blue-600 uppercase">
+        <span className="text-xs tracking-wider text-gray-600 hover:text-blue-600 uppercase">
           Billing
         </span>
       ),

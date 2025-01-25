@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Drawer, Dropdown, Button, Space } from "antd";
-import { CaretDownOutlined } from "@ant-design/icons";
 import Note from "./Note";
 import NoteForm from "./NoteForm";
 
@@ -9,7 +8,7 @@ const Buttonrow = () => {
   const [showForm, setShowForm] = useState(false);
   const handleClick = () => setShowForm(false);
 
-  const items = [
+  const caseDropdownOptions = [
     {
       key: "1",
       label: "Download Application",
@@ -38,12 +37,12 @@ const Buttonrow = () => {
 
   return (
     <div className="flex gap-2 mt-[30px] overflow-y-auto">
-      <Dropdown menu={{ items }} trigger={["click"]}>
+      <Dropdown menu={{ caseDropdownOptions }} trigger={["click"]}>
         <a onClick={(e) => e.preventDefault()}>
           <Space>
             <Button
               type="primary"
-              icon={<CaretDownOutlined />}
+              icon={<i className="bi bi-caret-down-fill"></i>}
               iconPosition="end"
             >
               Case Options
@@ -59,26 +58,26 @@ const Buttonrow = () => {
         <DropdownItem>Close</DropdownItem>
         <DropdownItem>Delete</DropdownItem>
       </Dropdown> */}
-      <button className="py-2 px-4 text-sm text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
+      <button className="py-2 px-4 text-xs text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
         <i className="bi bi-person mr-2"></i>Users
       </button>
       <button
         onClick={() => setOpen(true)}
-        className="py-2 px-4 text-sm text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all"
+        className="py-2 px-4 text-xs text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all"
       >
         <i className="bi bi-clipboard mr-2"></i>Notes
       </button>
-      <button className="py-2 px-4 text-sm text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
+      <button className="py-2 px-4 text-xs text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
         <i className="bi bi-clipboard mr-2"></i>Activities
       </button>
-      <button className="py-2 px-4 text-sm text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
+      <button className="py-2 px-4 text-xs text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
         <i className="bi bi-clock mr-2"></i>Time Entries
       </button>
-      <button className="py-2 px-4 text-sm text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
+      <button className="py-2 px-4 text-xs text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
         <i className="bi bi-file-earmark-spreadsheet mr-2"></i>Statement of
         Account
       </button>
-      <button className="py-2 px-4 text-sm text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
+      <button className="py-2 px-4 text-xs text-nowrap bg-white rounded border hover:bg-blue-100 hover:border-blue-500 hover:text-blue-500 transition-all">
         <i className="bi bi-shuffle mr-2"></i>Workflow
       </button>
       <Drawer
@@ -93,7 +92,7 @@ const Buttonrow = () => {
           ) : (
             <button
               onClick={() => setShowForm(true)}
-              className="bg-blue-600 text-white p-2 rounded text-sm transition-all hover:bg-blue-500"
+              className="bg-blue-600 text-white p-2 rounded text-xs transition-all hover:bg-blue-500"
             >
               + Add Note
             </button>
@@ -112,7 +111,7 @@ const Buttonrow = () => {
             ) : (
               <button
                 onClick={() => setShowForm(true)}
-                className="bg-blue-600 text-white p-2 rounded text-sm transition-all hover:bg-blue-500"
+                className="bg-blue-600 text-white p-2 rounded text-xs transition-all hover:bg-blue-500"
               >
                 + Add Note
               </button>

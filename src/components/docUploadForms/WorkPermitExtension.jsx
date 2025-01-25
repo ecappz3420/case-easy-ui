@@ -11,6 +11,7 @@ import {
 
 import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
+import { WORK_PERMIT_EXTENSION_FORM } from "./utils/formNameConstants";
 
 const WorkPermitExtension = ({ setDocObj }) => {
   const [form] = Form.useForm();
@@ -33,7 +34,10 @@ const WorkPermitExtension = ({ setDocObj }) => {
       };
 
       await ZOHO.CREATOR.init();
-      const response = await addRecord("Work_Permit_Extension", formattedData);
+      const response = await addRecord(
+        WORK_PERMIT_EXTENSION_FORM,
+        formattedData
+      );
       console.log(response);
 
       messageApi.destroy();

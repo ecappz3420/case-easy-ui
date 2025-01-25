@@ -7,7 +7,12 @@ const NoteForm = ({ handleClick }) => {
 
   const onFinish = (data) => {
     handleClick();
-    console.log("Submitted data: ", data);
+    const formattedData = {
+      ...data,
+      // Format date fields
+      Date: data.Date?.format("DD-MMM-YYYY") || "",
+    };
+    console.log("Submitted data: ", formattedData);
   };
 
   return (
@@ -21,7 +26,7 @@ const NoteForm = ({ handleClick }) => {
         <DatePicker format="DD-MMM-YYYY" className="w-[300px]" />
       </Form.Item>
       <Form.Item label="Subject (Optional)" name="Subject_Optional">
-        <Input className="w-[300px] rounded"></Input>
+        <Input className="w-[300px] rounded" />
       </Form.Item>
       <Form.Item label="Notes" name="Notes">
         <TextArea

@@ -9,11 +9,12 @@ import {
   Upload,
   message,
 } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
 
 import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
 import uploadFile from "../../api/uploadFile";
+import { STUDY_WORK_PERMIT_EXTENSION } from "./utils/reportNameConstants";
+import { STUDY_WORK_PERMIT_EXTENSION_FORM } from "./utils/formNameConstants";
 
 const StudyWorkPermitExtension = ({ setDocObj }) => {
   const [form] = Form.useForm();
@@ -83,7 +84,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
 
       await ZOHO.CREATOR.init();
       const response = await addRecord(
-        "Study_Work_Permit_Extension",
+        STUDY_WORK_PERMIT_EXTENSION_FORM,
         formattedData
       );
 
@@ -96,7 +97,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.Study_Permit?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "Study_Permit",
             data.Study_Permit[0].originFileObj
@@ -105,7 +106,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.Passport_Visa?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "Passport_Visa",
             data.Passport_Visa[0].originFileObj
@@ -114,7 +115,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.Medical?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "Medical",
             data.Medical[0].originFileObj
@@ -123,7 +124,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.File_upload?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "File_upload",
             data.File_upload[0].originFileObj
@@ -132,7 +133,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.Digital_Photo?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "Digital_Photo",
             data.Digital_Photo[0].originFileObj
@@ -141,7 +142,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.New_Loa_And_2_Pay_Slips?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "New_Loa_And_2_Pay_Slips",
             data.New_Loa_And_2_Pay_Slips[0].originFileObj
@@ -150,7 +151,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.Enrollment_Completion_Letter?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "Enrollment_Completion_Letter",
             data.Enrollment_Completion_Letter[0].originFileObj
@@ -159,7 +160,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.Study_Permit1?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "Study_Permit1",
             data.Study_Permit1[0].originFileObj
@@ -168,7 +169,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
       data.Marriage_Certificate?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Study_Work_Permit_Extensions",
+            STUDY_WORK_PERMIT_EXTENSION,
             recordId,
             "Marriage_Certificate",
             data.Marriage_Certificate[0].originFileObj
@@ -266,7 +267,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
                   beforeUpload={() => false}
                 >
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -296,7 +297,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
                   beforeUpload={() => false}
                 >
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -322,7 +323,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
               >
                 <Upload name="Medical" maxCount={1} beforeUpload={() => false}>
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -352,7 +353,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
                   beforeUpload={() => false}
                 >
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -386,7 +387,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
                   beforeUpload={() => false}
                 >
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -416,7 +417,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
                   beforeUpload={() => false}
                 >
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -446,7 +447,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
                   beforeUpload={() => false}
                 >
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -476,7 +477,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
                   beforeUpload={() => false}
                 >
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >
@@ -506,7 +507,7 @@ const StudyWorkPermitExtension = ({ setDocObj }) => {
                   beforeUpload={() => false}
                 >
                   <Button
-                    icon={<UploadOutlined />}
+                    icon={<i className="bi bi-upload"></i>}
                     iconPosition="end"
                     className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                   >

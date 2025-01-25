@@ -13,11 +13,12 @@ import {
   Divider,
   message,
 } from "antd";
-import { UploadOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
 
 import addRecord from "../../api/addRecord";
 import { useSelector } from "react-redux";
 import uploadFile from "../../api/uploadFile";
+import { VISITOR_TO_STUDY } from "./utils/reportNameConstants";
+import { VISITOR_TO_STUDY_FORM } from "./utils/formNameConstants";
 
 const VisitorStudies = ({ setDocObj }) => {
   const [form] = Form.useForm();
@@ -72,7 +73,7 @@ const VisitorStudies = ({ setDocObj }) => {
         })),
       };
       await ZOHO.CREATOR.init();
-      const response = await addRecord("Visitor_to_Study", formattedData);
+      const response = await addRecord(VISITOR_TO_STUDY_FORM, formattedData);
       console.log(response);
 
       if (response.code !== 3000) throw new Error(response.error);
@@ -83,7 +84,7 @@ const VisitorStudies = ({ setDocObj }) => {
       data.TRF?.length > 0 &&
         console.log(
           await uploadFile(
-            "All_Visitor_Studies",
+            VISITOR_TO_STUDY,
             recordId,
             "TRF",
             data.TRF[0].originFileObj
@@ -168,7 +169,7 @@ const VisitorStudies = ({ setDocObj }) => {
                       >
                         <Button
                           type="link"
-                          icon={<CloseOutlined />}
+                          icon={<i className="bi bi-x"></i>}
                           danger
                           onClick={() => remove(name)}
                           className="mb-7"
@@ -228,7 +229,7 @@ const VisitorStudies = ({ setDocObj }) => {
                       <Button
                         type="link"
                         onClick={() => add()}
-                        icon={<PlusOutlined />}
+                        icon={<i className="bi bi-plus"></i>}
                       >
                         Add New
                       </Button>
@@ -281,7 +282,7 @@ const VisitorStudies = ({ setDocObj }) => {
                         beforeUpload={() => false}
                       >
                         <Button
-                          icon={<UploadOutlined />}
+                          icon={<i className="bi bi-upload"></i>}
                           iconPosition="end"
                           className="w-[300px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] mb-1"
                         >
@@ -328,7 +329,7 @@ const VisitorStudies = ({ setDocObj }) => {
                             >
                               <Button
                                 type="link"
-                                icon={<CloseOutlined />}
+                                icon={<i className="bi bi-x"></i>}
                                 danger
                                 onClick={() => remove(name)}
                               />
@@ -403,7 +404,7 @@ const VisitorStudies = ({ setDocObj }) => {
                             <Button
                               type="link"
                               onClick={() => add()}
-                              icon={<PlusOutlined />}
+                              icon={<i className="bi bi-plus"></i>}
                             >
                               Add New
                             </Button>
