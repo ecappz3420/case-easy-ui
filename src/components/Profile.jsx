@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Drawer, Modal, Upload, Tooltip } from "antd";
+import { Drawer, Modal, Upload, Tooltip, Divider } from "antd";
 import ChatMessage from "./ChatMessage";
 import Email from "./Email";
 import { useSelector } from "react-redux";
@@ -112,6 +112,7 @@ const Profile = () => {
             <span className="font-normal me-1">
               {leadData ? leadData.Marital_Status : ""}{" "}
             </span>
+            <Divider type="vertical" />
             <span className="text-xs font-semibold">
               Date of Birth:{" "}
               <span className="font-normal">
@@ -120,7 +121,7 @@ const Profile = () => {
             </span>
             {leadData && leadData.Age && (
               <small className="bg-blue-600 p-1 rounded-xl text-white font-semibold text-[10px] ms-2">
-                {leadData && leadData.AGE && `AGE:${leadData.Age}`}
+                {leadData && leadData.Age && `AGE: ${leadData.Age}`}
               </small>
             )}
           </div>
@@ -129,10 +130,11 @@ const Profile = () => {
             <span className="font-normal me-1">
               {leadData ? leadData.Country_of_Residence : ""}{" "}
             </span>
+            <Divider type="vertical" />
             <span className="text-xs font-semibold">
               Client ID:{" "}
               <span className="font-normal">
-                {leadData ? leadData.Lead_id : ""}
+                {leadData ? leadData.ID : ""}
               </span>
             </span>
           </div>
