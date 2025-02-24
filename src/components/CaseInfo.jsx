@@ -15,7 +15,7 @@ const CaseInfo = () => {
         <div className="text-slate-500 uppercase text-xs font-semibold ">
           Case Number
         </div>
-        <div className="text-xs">{lead?.ID || ""}</div>
+        <div className="text-xs">{lead?.Lead_id || ""}</div>
       </div>
       <div className="my-2">
         <div className="text-slate-500 uppercase text-xs font-semibold ">
