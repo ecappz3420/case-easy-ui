@@ -11,11 +11,24 @@
 
 .ant-tabs-content,
 .ant-tabs-tabpane {
-  height: 600px;
+  height: 1890px;
 }
+
+@media (min-width: 1024px) {
+  .ant-tabs-content,
+  .ant-tabs-tabpane {
+    height: 700px;
+  }
+}
+
 .ant-tabs-content-holder {
-  overflow-y: auto;
-  height: 600px;
+  height: 1890px;
+}
+
+@media (min-width: 1024px) {
+  .ant-tabs-content-holder {
+    height: 700px;
+  }
 }
 
 /* Thin scrollbar only for Webkit-based browsers*/

@@ -29,7 +29,7 @@ const ProfileTab = () => {
           <div className="rounded mb-3 box-shadow border p-2">
             <Milestones />
           </div>
-          <div className="rounded mb-3 box-shadow border p-2">
+          <div className="rounded mb-0 lg:mb-3 box-shadow border p-2">
             <RelatesCases />
           </div>
         </div>
