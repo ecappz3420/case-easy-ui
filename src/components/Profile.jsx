@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Drawer, Modal, Upload, Tooltip } from "antd";
+import { Drawer, Modal, Upload, Tooltip, Divider } from "antd";
 import ChatMessage from "./ChatMessage";
 import Email from "./Email";
 import { useSelector } from "react-redux";
@@ -101,34 +101,38 @@ const Profile = () => {
             </Modal>
           </div>
         </div>
-        <div className="">
-          <div className="text-xl font-semibold py-2 text-blue-500">
+        <div className="flex justify-center flex-col">
+          <div className="text-xl font-semibold py-2 text-blue-500 text-center md:text-start">
             {leadData
               ? `${leadData.Name.first_name} ${leadData.Name.last_name}`
               : ""}
           </div>
-          <div className="text-xs font-semibold mb-1">
-            Marital Status:{" "}
-            <span className="font-normal me-1">
-              {leadData ? leadData.Marital_Status : ""}{" "}
+          <div className="flex flex-wrap gap-y-2 w-5/6 items-center justify-center self-center md:justify-start md:self-auto">
+            <span className="text-xs font-semibold">
+              Marital Status:{" "}
+              <span className="font-normal">
+                {leadData ? leadData.Marital_Status : ""}{" "}
+              </span>
             </span>
+            <Divider type="vertical" />
             <span className="text-xs font-semibold">
               Date of Birth:{" "}
               <span className="font-normal">
                 {leadData ? leadData.DOB : ""}
               </span>
+              {leadData && leadData.Age && (
+                <small className="bg-blue-600 p-1 rounded-xl text-white font-semibold text-[10px] mx-2">
+                  {leadData && leadData.Age && `AGE: ${leadData.Age}`}
+                </small>
+              )}
             </span>
-            {leadData && leadData.Age && (
-              <small className="bg-blue-600 p-1 rounded-xl text-white font-semibold text-[10px] ms-2">
-                {leadData && leadData.AGE && `AGE:${leadData.Age}`}
-              </small>
-            )}
-          </div>
-          <div className="text-xs font-semibold">
-            Country of Residence:{" "}
-            <span className="font-normal me-1">
-              {leadData ? leadData.Country_of_Residence : ""}{" "}
+            <span className="text-xs font-semibold">
+              Country of Residence:{" "}
+              <span className="font-normal me-1">
+                {leadData ? leadData.Country_of_Residence : ""}{" "}
+              </span>
             </span>
+            <Divider type="vertical" />
             <span className="text-xs font-semibold">
               Client ID:{" "}
               <span className="font-normal">
@@ -136,7 +140,7 @@ const Profile = () => {
               </span>
             </span>
           </div>
-          <div className="flex gap-[30px] my-3">
+          <div className="flex gap-[30px] my-3 justify-center md:justify-start">
             <div
               className="flex justify-center flex-col items-center"
               onClick={() => setOpen(true)}

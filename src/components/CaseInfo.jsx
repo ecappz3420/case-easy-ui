@@ -15,7 +15,7 @@ const CaseInfo = () => {
         <div className="text-slate-500 uppercase text-xs font-semibold ">
           Case Number
         </div>
-        <div className="text-xs">00002-Perry</div>
+        <div className="text-xs">{lead?.Lead_id || ""}</div>
       </div>
       <div className="my-2">
         <div className="text-slate-500 uppercase text-xs font-semibold ">
@@ -37,12 +37,13 @@ const CaseInfo = () => {
         <div className="text-slate-500 uppercase text-xs font-semibold ">
           Referral Source
         </div>
+        <div className="text-xs">{lead?.Referral_Person_Name || ""}</div>
       </div>
       <div className="my-2">
         <div className="text-slate-500 uppercase text-xs font-semibold ">
           Opened
         </div>
-        <div className="text-xs">Oct 11, 2024</div>
+        <div className="text-xs">{}</div>
       </div>
       <div className="mt-2">
         <div className="text-slate-500 uppercase text-xs font-semibold ">

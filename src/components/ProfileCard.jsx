@@ -16,40 +16,8 @@ const ProfileCard = () => {
           Edit
         </a>
       </div>
-      <div className="font-semibold py-3 border-b text-blue-600 cursor-pointer text-sm">
-        Primary
-      </div>
       <div className="overflow-y-auto h-[270px]">
-        <div className="font-bold py-1">Demographic</div>
-        <div className="text-slate-500 font-semibold text-xs">
-          Associated Company
-        </div>
-        <div className="text-xl">
-          <i className="bi bi-dash-lg"></i>
-        </div>
-        <div className="text-slate-500 font-semibold text-xs">UCI</div>
-        <div className="text-xl">
-          <i className="bi bi-dash-lg"></i>
-        </div>
-        <div className="flex justify-between">
-          <div className="w-1/2 mb-1">
-            <div className="text-slate-500 font-semibold text-xs">
-              Passport No
-            </div>
-            <div className="text-xl">
-              <i className="bi bi-dash-lg"></i>
-            </div>
-          </div>
-          <div className="w-1/2 mb-1">
-            <div className="text-slate-500 font-semibold text-xs">
-              Passport Expiry
-            </div>
-            <div className="text-xl">
-              <i className="bi bi-dash-lg"></i>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-3">
           <div className="w-1/2 mb-1">
             <div className="text-slate-500 font-semibold text-xs uppercase">
               First Name
@@ -60,7 +28,7 @@ const ProfileCard = () => {
           </div>
           <div className="w-1/2 mb-1">
             <div className="text-slate-500 font-semibold text-xs uppercase">
-              last Name
+              Last Name
             </div>
             <div className="text-xs">
               {client ? client.Name.last_name : "-"}
@@ -69,14 +37,14 @@ const ProfileCard = () => {
         </div>
         <div className="flex justify-between">
           <div className="w-1/2 mb-1">
-            <div className="text-slate-500 font-semibold text-xs">
-              DATE OF BIRTH
+            <div className="text-slate-500 font-semibold text-xs uppercase">
+              Date of Birth
             </div>
             <div className="text-xs">{client ? client.DOB : ""}</div>
           </div>
           <div className="w-1/2 mb-1">
-            <div className="text-slate-500 font-semibold text-xs">AGE</div>
-            <div className="text-xs">24</div>
+            <div className="text-slate-500 font-semibold text-xs uppercase">Age</div>
+            <div className="text-xs">{client ? client?.Age : ""}</div>
           </div>
         </div>
         <div className="flex justify-between">
@@ -92,7 +60,7 @@ const ProfileCard = () => {
             <div className="text-slate-500 font-semibold text-xs uppercase">
               Country of Citizenship
             </div>
-            <div className="text-xs">{"1) Canada"}</div>
+            <div className="text-xs">{}</div>
           </div>
         </div>
         <div className="flex justify-between">
@@ -100,14 +68,14 @@ const ProfileCard = () => {
             <div className="text-slate-500 font-semibold text-xs uppercase">
               Marital Status
             </div>
-            <div className="text-xs">Never Married/Status</div>
+            <div className="text-xs">{client ? client?.Marital_Status : ""}</div>
           </div>
-          <div className="w-1/2 mb-1">
+          {/* <div className="w-1/2 mb-1">
             <div className="text-slate-500 font-semibold text-xs uppercase">
               Client ID
             </div>
-            <div className="text-xs">{client ? client.Lead_id : ""}</div>
-          </div>
+            <div className="text-xs">{client ? client.ID : ""}</div>
+          </div> */}
         </div>
         <div className="flex justify-between">
           <div className="w-1/2 mb-1">
@@ -126,7 +94,7 @@ const ProfileCard = () => {
           </div>
         </div>
         <div className="flex justify-between">
-          <div className="w-1/2 mb-1"></div>
+          {/* <div className="w-1/2 mb-1"></div> */}
           <div className="w-1/2 mb-1">
             <div className="text-slate-500 font-semibold text-xs uppercase">
               Primary Phone
@@ -149,6 +117,46 @@ const ProfileCard = () => {
             </div>
             <div className="text-xs">
               {client ? client.Secondary_Number : ""}
+            </div>
+          </div>
+        </div>
+        <div className="text-slate-500 font-semibold text-xs uppercase">
+          Description
+        </div>
+        <div className="text-xs mb-1">
+          {client ? client.Description : "-"}
+        </div>
+        <div className="flex justify-between">
+          <div className="w-1/2 mb-1">
+            <div className="text-slate-500 font-semibold text-xs">
+              Associated Company
+            </div>
+            <div className="text-xl">
+              <i className="bi bi-dash-lg"></i>
+            </div>
+          </div>
+          <div className="w-1/2 mb-1">
+            <div className="text-slate-500 font-semibold text-xs">UCI</div>
+            <div className="text-xl">
+              <i className="bi bi-dash-lg"></i>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-between">
+          <div className="w-1/2 mb-1">
+            <div className="text-slate-500 font-semibold text-xs">
+              Passport No
+            </div>
+            <div className="text-xl">
+              <i className="bi bi-dash-lg"></i>
+            </div>
+          </div>
+          <div className="w-1/2 mb-1">
+            <div className="text-slate-500 font-semibold text-xs">
+              Passport Expiry
+            </div>
+            <div className="text-xl">
+              <i className="bi bi-dash-lg"></i>
             </div>
           </div>
         </div>
